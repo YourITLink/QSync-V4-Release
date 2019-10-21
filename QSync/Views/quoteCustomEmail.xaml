@@ -1,0 +1,26 @@
+﻿<Window x:Class="QSync.Views.quoteCustomEmail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QSync.Views"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource WordBlueBrush}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="{StaticResource FontSizeRegular}"
+        FontFamily="{StaticResource App}"
+        Title="Quotation Email Editor" Height="494.155" Width="773.511" Icon="/QSync;component/Resources/QSync_Q.png" WindowStartupLocation="CenterScreen">
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo ProgressValue="4"/>
+    </Window.TaskbarItemInfo>
+    <Grid>
+        <TextBox Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="58,10,0,0" TextWrapping="Wrap" x:Name="emailAdd" VerticalAlignment="Top" Width="120"/>
+        <TextBox Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="242,10,0,0" TextWrapping="Wrap" x:Name="qtNbr" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Send Email" Click="emailQuote_Click" HorizontalAlignment="Left" Margin="635,412,0,0" VerticalAlignment="Top" Width="107"/>
+        <TextBox x:Name="msgBody" HorizontalAlignment="Left" Height="334" Margin="10,55,0,0" TextWrapping="Wrap" Width="747" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True" Text="{Binding customEmailTemplate, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True"/>
+        <Label Content="Make required changes to the email body below and press &quot;Send Email&quot; when complete" Margin="20,10,7,0" VerticalAlignment="Top" Width="741" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Foreground="#FFFF5500" FontWeight="Bold"/>
+
+
+    </Grid>
+</Window>

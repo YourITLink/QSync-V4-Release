@@ -1,0 +1,215 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:QSync.Views"
+        xmlns:QSync="clr-namespace:QSync" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="QSync.Views.BuildChanges"
+        TextElement.Foreground="{DynamicResource WordBlueBrush}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        mc:Ignorable="d"
+        Title="Main Menu QSync V4.0 | Your IT Link | Able Door Services" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto"
+        WindowStartupLocation="CenterOwner" WindowState="Maximized" Height="1000" Width="1920" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <!-- Insert here your Data Templates -->
+        <DataTemplate x:Key="SampleTemplate">
+            <StackPanel/>
+        </DataTemplate>
+        <RoutedUICommand x:Key="FirstCommand" Text="First"/>
+        <RoutedUICommand x:Key="LastCommand" Text="Last"/>
+        <RoutedUICommand x:Key="NextCommand" Text="Next"/>
+        <RoutedUICommand x:Key="PreviousCommand" Text="Previous"/>
+        <RoutedUICommand x:Key="DeleteCustomerCommand" Text="Delete Customer"/>
+        <RoutedUICommand x:Key="DeleteOrderCommand" Text="Delete Order"/>
+        <RoutedUICommand x:Key="UpdateCommand" Text="Update"/>
+        <RoutedUICommand x:Key="AddCommand" Text="Add"/>
+        <RoutedUICommand x:Key="CancelCommand" Text="Cancel"/>
+        <RoutedUICommand x:Key="CommitInvoice" Text="Commit"/>
+
+        <CollectionViewSource x:Key="buildChanxViewSource" d:DesignSource="{d:DesignInstance {x:Type QSync:BuildChanx}, CreateList=True}"/>
+
+    </Window.Resources>
+    <TextElement.FontSize>
+        <StaticResource ResourceKey="FontSizeRegular"/>
+    </TextElement.FontSize>
+    <Window.FontFamily>
+        <StaticResource ResourceKey="App"/>
+    </Window.FontFamily>
+    <Window.InputBindings>
+        <!-- Example of Keyboard shortcuts -->
+        <KeyBinding Command="{Binding SaveCmd}" Key="S" Modifiers="Ctrl" />
+        <KeyBinding Command="{Binding SaveAsCmd}" Gesture="Ctrl+Shift+S" />
+        <KeyBinding Command="{Binding OpenCmd}" Gesture="Ctrl+O" />
+        <KeyBinding Command="{Binding NewCmd}" Gesture="Ctrl+N" />
+        <KeyBinding Command="{Binding ExitCmd}" Gesture="Alt+F4" />
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource FirstCommand}" Executed="FirstCommandHandler"/>
+        <CommandBinding Command="{StaticResource LastCommand}" Executed="LastCommandHandler"/>
+        <CommandBinding Command="{StaticResource NextCommand}" Executed="NextCommandHandler"/>
+        <CommandBinding Command="{StaticResource PreviousCommand}" Executed="PreviousCommandHandler"/>
+        <!--    <CommandBinding Command="{StaticResource DeleteCustomerCommand}" Executed="RefreshBuildCommandHandler"/> -->
+        <!--    <CommandBinding Command="{StaticResource DeleteOrderCommand}" Executed="DeleteOrderCommandHandler"/> -->
+        <CommandBinding Command="{StaticResource UpdateCommand}" Executed="UpdateCommandHandler"/>
+        <CommandBinding Command="{StaticResource AddCommand}" Executed="AddCommandHandler"/>
+        <!--   <CommandBinding Command="{StaticResource CancelCommand}" Executed="CancelCommandHandler"/> -->
+    </Window.CommandBindings>
+
+    <DockPanel>
+        <!-- File Menu -->
+        <Menu DockPanel.Dock="Top" Margin="0,0,0.4,0">
+            <MenuItem Header="File" FontSize="18">
+                <MenuItem Header="New Quote" Click="OpenQuotes_Click" InputGestureText="Ctrl+Q"/>
+                <MenuItem Header="New Invoice" Click="OpenInvoices_Click" />
+                <MenuItem Header="Enter Service" Click="OpenServices_Click" />
+                <Separator />
+                <MenuItem Header="Main Menu" Click="MainMenu_Click" />
+                <MenuItem Header="Exit QSync" Click="CloseQSync_Click" />
+            </MenuItem>
+            <MenuItem Header="Quotes" FontSize="18">
+                <MenuItem Header="Create a Quote" Click="OpenQuotes_Click" InputGestureText="Ctrl+Q" />
+                <MenuItem Header="Search for a Quote" Click="OpenQuotes_Click" InputGestureText="Ctrl+F" />
+                <MenuItem Header="QSync Email System" Click="OpenQuotes_Click" InputGestureText="Ctrl+E" />
+            </MenuItem>
+            <MenuItem Header="Service" FontSize="18">
+                <MenuItem Header="View Customers" Click="OpenServices_Click"  />
+                <MenuItem Header="Return DSR's" Click="OpenServices_Click"  />
+                <MenuItem Header="Create DSR's" Click="OpenServices_Click" />
+            </MenuItem>
+            <MenuItem Header="Invoices" FontSize="18">
+                <MenuItem Header="New Dummy Invoice" Click="OpenInvoices_Click" />
+                <MenuItem Header="Load Invoices" Click="OpenInvoices_Click" />
+                <MenuItem Header="Find a Dummy Invoice" Click="OpenInvoices_Click" />
+            </MenuItem>
+            <MenuItem Header="Shutter Profiller" FontSize="18">
+                <MenuItem Header="Build a Door" />
+                <MenuItem Header="Lookup Previous" />
+            </MenuItem>
+            <MenuItem Header="Customise" FontSize="18">
+                <MenuItem Header="My Settings" />
+                <MenuItem Header="Create DSR's"  />
+            </MenuItem>
+            <MenuItem Header="Manager Menu" FontSize="18">
+                <MenuItem Header="QSync Maintenance"  />
+                <MenuItem Header="Reset User Password"  />
+                <MenuItem Header="Access Levels"  />
+                <MenuItem Header="Quote Conditions" />
+            </MenuItem>
+            <MenuItem Header="Your IT Link" FontSize="18">
+                <MenuItem Header="Build Changes"  />
+                <MenuItem Header="Dev Test Screen 1"  />
+                <MenuItem Header="Dev Test Screen 2"  />
+            </MenuItem>
+            <MenuItem Header="About" FontSize="18"/>
+            <MenuItem Header="View Changes" FontSize="18">
+                <MenuItem Header="Get Displayed Build" Click="GetBuild_Click"  />
+                <MenuItem Header="Update Displayed Build" Click="SetBuild_Click"/>
+            </MenuItem>
+
+        </Menu>
+
+        <DockPanel Margin="0">
+            <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" Height="80">
+                <materialDesign:DrawerHost Height="99">
+                    <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryDark" DockPanel.Dock="Top" Background="#FF263B8F">
+                        <DockPanel>
+                            <TextBlock x:Name="lblLocation" Foreground="{StaticResource WordOrangeBrush}" Text="USERLOCATION" FontSize="22" HorizontalAlignment="Left"/>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Margin="0,0,0,0" Foreground="{StaticResource WordYellowBrush}" TextAlignment="Center" DockPanel.Dock="Right"><Run Text="Build Changes - QSync - Able Door Services"/></TextBlock>
+                        </DockPanel>
+                    </materialDesign:ColorZone>
+                </materialDesign:DrawerHost>
+            </StackPanel>
+            <!-- Top Icon Bar -->
+
+
+            <!-- Footer placeholder -->
+            <Frame DockPanel.Dock="Bottom" x:Name="Footer" />
+
+            <Grid Visibility="Visible">
+                <StackPanel Orientation="Vertical" Margin="0,76,0,0" HorizontalAlignment="Left">
+                    <Button x:Name="btnFirst" Content="|◄ Oldest" Grid.Row="2" FontSize="18" Grid.Column="0" Command="{StaticResource FirstCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Background="{StaticResource WordBlueBrush}" Foreground="{StaticResource WordYellowBrush}" BorderBrush="{StaticResource WordBlueBrush}" Opacity="1" Width="130" ToolTip="First Record"  Height="60"/>
+                    <Button x:Name="btnPrev" Content="◄ Prev" Grid.Row="2" FontSize="18" Grid.Column="0" Command="{StaticResource PreviousCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Background="{StaticResource WordBlueBrush}" Width="130" ToolTip="Previous Record" BorderBrush="#FF263B8F" Opacity="1" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
+                    <Button x:Name="btnNext" Content="Fwd ►" Grid.Row="2" FontSize="18" Grid.Column="11" Command="{StaticResource NextCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Next Record" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
+                    <Button x:Name="btnLast" Content="Newest ►|" Grid.Row="2" FontSize="18" Grid.Column="12" Command="{StaticResource LastCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Last Record" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Opacity="1" Background="#FF263B8F" Margin="10,5" Height="60"/>
+                    <Button x:Name="btnAdd" Content="New Build" Grid.Row="2" Grid.Column="5" Command="{StaticResource AddCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Create New Build Record" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" FontSize="18" Height="60"/>
+                    <Button x:Name="btnUpdate" Content="Save" Grid.Row="2" Grid.Column="3" Command="{StaticResource UpdateCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Save Changes to Records" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" FontSize="18" Height="60"/>
+                    <Button x:Name="btnCommit" Visibility="Collapsed" Content="Commit" Grid.Row="2" Click="AddRecord_Click" Grid.Column="8" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Commit new Build to Database" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" FontSize="18" Height="60"/>
+                    <Button x:Name="btnCancel" Content="Refresh" Grid.Row="2" Grid.Column="7" Command="{StaticResource DeleteCustomerCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Refresh Records" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" FontSize="18" Height="60"/>
+                </StackPanel>
+
+                <Grid x:Name="existingBuildChangeDataGrid" DataContext="{StaticResource buildChanxViewSource}" VerticalAlignment="Top" Margin="155,30,0,0" Visibility="Visible" HorizontalAlignment="Left" Height="848" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" Width="1600">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="800"/>
+                        <ColumnDefinition Width="800"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="new_Mmbr" materialDesign:HintAssist.Hint="New Version Number" VerticalAlignment="Center" Text="{Binding New_MMBR, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Margin="0,4,341,5" Height="60" Grid.Column="0" FontSize="22" Foreground="#FF263B8F"/>
+                    <TextBox x:Name="mmbr" materialDesign:HintAssist.Hint="Replacing Vers" VerticalAlignment="Center" Text="{Binding MMBR, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Margin="0,4,341,4" Height="40" Grid.Column="1" FontSize="16"/>
+                    <DatePicker x:Name="changeDate" Grid.Row="1" Grid.Column="0" SelectedDate="{Binding ChangeDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Changes Commenced" VerticalAlignment="Stretch" Margin="0,5,269,3" Height="40" FontSize="16"/>
+                    <DatePicker x:Name="relDate" Grid.Row="1" Grid.Column="1" SelectedDate="{Binding VersionReleaseDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Date of Release" VerticalAlignment="Stretch" Margin="0,4,269,4" Height="40" FontSize="16"/>
+                    <TextBox x:Name="status" materialDesign:HintAssist.Hint="Release Status" VerticalAlignment="Center" Text="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="3" Margin="0,4,341,4" Height="40" Grid.Column="0" FontSize="16"/>
+                    <CheckBox x:Name="relComplete" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding ReleaseComplete, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="0" Grid.Row="5" Margin="10,0,141,0" Content="Completed/Replaced" Height="40"/>
+                    <TextBox x:Name="appliedChanges" materialDesign:HintAssist.Hint="Changes Applied to Version" VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding AppliedChanges, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="6" Margin="3,5,-136,-253" Grid.Column="0" FontSize="16"
+                             VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="642" VerticalContentAlignment="Top" Grid.ColumnSpan="2" AcceptsReturn="True"/>
+
+                </Grid>
+
+                <!-- End of EXISTING DATA form -->
+
+
+
+                <!-- NEW DATA GRID VIEW -->
+
+                <Grid x:Name="newBuildChangesDataGrid" VerticalAlignment="Top" DataContext="{Binding newBuildChanges, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, UpdateSourceTrigger=Explicit}" Margin="155,30,0,0" Visibility="Collapsed" HorizontalAlignment="Left" Width="1748" Height="375">
+
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="800"/>
+                        <ColumnDefinition Width="800"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="addnew_Mmbr" materialDesign:HintAssist.Hint="New Version Number" VerticalAlignment="Center" Text="{Binding New_MMBR, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Margin="0,4,341,5" Height="60" Grid.Column="0" FontSize="22" Foreground="#FF263B8F"/>
+                    <TextBox x:Name="addmmbr" materialDesign:HintAssist.Hint="Replacing Vers" VerticalAlignment="Center" Text="{Binding MMBR, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Margin="0,4,341,4" Height="40" Grid.Column="1" FontSize="16"/>
+                    <DatePicker x:Name="addchangeDate" Grid.Row="1" Grid.Column="0" SelectedDate="{Binding ChangeDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Changes Commenced" VerticalAlignment="Stretch" Margin="0,5,269,3" Height="40" FontSize="16"/>
+                    <DatePicker x:Name="addrelDate" Grid.Row="1" Grid.Column="1" SelectedDate="{Binding VersionReleaseDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Date of Release" VerticalAlignment="Stretch" Margin="0,4,269,4" Height="40" FontSize="16"/>
+                    <TextBox x:Name="addstatus" materialDesign:HintAssist.Hint="Release Status" VerticalAlignment="Center" Text="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="3" Margin="0,4,341,4" Height="40" Grid.Column="0" FontSize="16"/>
+                    <CheckBox x:Name="addrelComplete" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding ReleaseComplete, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="0" Grid.Row="5" Margin="10,0,141,0" Content="Completed/Replaced" Height="40"/>
+                    <TextBox x:Name="addappliedChanges" materialDesign:HintAssist.Hint="Changes Applied to Version" VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding AppliedChanges, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="6" Margin="3,5,-136,-253" Grid.Column="0" FontSize="16"
+                             VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="642" VerticalContentAlignment="Top" Grid.ColumnSpan="2" AcceptsReturn="True"/>
+
+
+                </Grid>
+
+                <!-- INTERNAL ID NUMBER -->
+                <TextBlock x:Name="QID" HorizontalAlignment="Left" Height="30" Margin="1775,-64,0,0" TextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" FontSize="24" Foreground="#FFFDD835" FontWeight="Bold"><Run Text="{Binding Text, ElementName=new_Mmbr}"/></TextBlock>
+                <TextBox x:Name="displayedBuild" HorizontalAlignment="Left" Height="30" Margin="1463,-64,0,0" TextWrapping="Wrap" Text="{Binding Version, Source={StaticResource Settings}}" VerticalAlignment="Top" Width="153" Foreground="#FF2196F3" Style="{Binding Mode=OneWay}" FontSize="18" Background="{DynamicResource WordBlueBrush}" BorderBrush="{DynamicResource WordBlueBrush}"/>
+                <Label Style="{Binding Mode=OneWay, Source={StaticResource FontSizeXLarge}}" Content="Displayed Build" HorizontalAlignment="Left" Margin="1317,-66,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.364,0.519" Width="141" Foreground="#DDFBF6F6" Height="30" FontSize="18"/>
+
+
+
+
+
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</Window>

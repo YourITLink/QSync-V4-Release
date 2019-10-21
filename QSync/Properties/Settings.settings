@@ -1,0 +1,127 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="QSync.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="dbconnect" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=abledoors.net.au;user id=abab1199_qadacc;password=@mjK%U5eyNOK;persistsecurityinfo=True;database=abab1199_qsync&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=abledoors.net.au;user id=abab1199_qadacc;password=@mjK%U5eyNOK;persistsecurityinfo=True;database=abab1199_qsync</Value>
+    </Setting>
+    <Setting Name="Username" Type="System.String" Scope="User">
+      <Value Profile="(Default)">User</Value>
+    </Setting>
+    <Setting Name="Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Name</Value>
+    </Setting>
+    <Setting Name="Accesslevel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Level</Value>
+    </Setting>
+    <Setting Name="Qid" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ID</Value>
+    </Setting>
+    <Setting Name="MyUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">@abledoors.com.au</Value>
+    </Setting>
+    <Setting Name="userEmail" Type="System.String" Scope="User">
+      <Value Profile="(Default)">this is why craig@youritlink.com.au</Value>
+    </Setting>
+    <Setting Name="userPW" Type="System.String" Scope="User">
+      <Value Profile="(Default)">this is why WPT$Matrix4390</Value>
+    </Setting>
+    <Setting Name="userSMTP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">this is why smtp.office365.com</Value>
+    </Setting>
+    <Setting Name="userSMTPPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">587</Value>
+    </Setting>
+    <Setting Name="userReplyTo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Not in use</Value>
+    </Setting>
+    <Setting Name="emailUsed" Type="System.String" Scope="User">
+      <Value Profile="(Default)">User</Value>
+    </Setting>
+    <Setting Name="redLoad" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="QSyncReportsConnection" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=abledoors.net.au;user id=abab1199_qadacc;password=@mjK%U5eyNOK;convert zero datetime=True;persistsecurityinfo=True;database=abab1199_qsync&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=abledoors.net.au;user id=abab1199_qadacc;password=@mjK%U5eyNOK;convert zero datetime=True;persistsecurityinfo=True;database=abab1199_qsync</Value>
+    </Setting>
+    <Setting Name="abab1199_qsyncConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;server=abledoors.net.au;user id=abab1199_qadacc;password=@mjK%U5eyNOK;database=abab1199_qsync;convert zero datetime=True;persistsecurityinfo=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">server=abledoors.net.au;user id=abab1199_qadacc;password=@mjK%U5eyNOK;database=abab1199_qsync;convert zero datetime=True;persistsecurityinfo=True</Value>
+    </Setting>
+    <Setting Name="ReportsFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\QSync\Templates\</Value>
+    </Setting>
+    <Setting Name="TempReportsFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\QSync\</Value>
+    </Setting>
+    <Setting Name="Status" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Welcome to QSync | For Support Call 0410 669 634 | QSync  by Your IT Link</Value>
+    </Setting>
+    <Setting Name="Icon" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/Resources/favicon.ico</Value>
+    </Setting>
+    <Setting Name="DBBacukup" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\QSync\Backup\</Value>
+    </Setting>
+    <Setting Name="DBBackupConn" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">server=abledoors.net.au;user id=abab1199_qadacc;password=@mjK%U5eyNOK;convert zero datetime=True;database=abab1199_qsync;charset=utf8</Value>
+    </Setting>
+    <Setting Name="ReportsVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4.4</Value>
+    </Setting>
+    <Setting Name="Version" Type="System.String" Scope="User">
+      <Value Profile="(Default)">QSync V4.0.1.30</Value>
+    </Setting>
+    <Setting Name="stdEmailTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Hi,
+
+Thank you for your time today! Please find attached a quotation for works required / requested for your premises. 
+If you wish to go ahead with the quotation please complete the attached "QuoteAcceptance.pdf" document and send either via email to: doorservice@abledoors.com.au or via fax on: 02-9757-1652.
+
+If you have any questions or concerns, please do not hesitate to contact us.
+
+Regards,
+
+Craig McEwen
+Able Door Services (NSW) Pty Ltd
+24 Hours Emergency Service
+Ph: 02 9757-1877
+www.abledoors.com.au</Value>
+    </Setting>
+    <Setting Name="customEmailTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Hi,
+
+Thank you for your time today! Please find attached a quotation for works required / requested for your premises. 
+If you wish to go ahead with the quotation please complete the attached "QuoteAcceptance.pdf" document and send either via email to: doorservice@abledoors.com.au or via fax on: 02-9757-1652.
+
+If you have any questions or concerns, please do not hesitate to contact us.
+
+Regards,
+
+Craig McEwen
+Able Door Services (NSW) Pty Ltd
+24 Hours Emergency Service
+Ph: 02 9757-1877
+www.abledoors.com.au</Value>
+    </Setting>
+    <Setting Name="PMR" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PMR-V4.0</Value>
+    </Setting>
+    <Setting Name="INV" Type="System.String" Scope="User">
+      <Value Profile="(Default)">INV-V4.0</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

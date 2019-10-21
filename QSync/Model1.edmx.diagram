@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd095db4d08544a7a9021eec13e7ccd3" Name="Diagram1" ZoomLevel="57">
+        <EntityTypeShape EntityType="abab1199_qsyncModel.C06mm" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.C08mm" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.C10mm" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.AluminiumShutter" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.BuildChanx" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.customer" Width="1.5" PointX="11" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.invitem" Width="1.5" PointX="24" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.invoice" Width="1.5" PointX="21.875" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.message" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.nswpc" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.quoteitem" Width="1.5" PointX="19.875" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.quote" Width="1.5" PointX="17.375" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.service" Width="1.5" PointX="14.625" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.shuttersheet" Width="1.5" PointX="2.625" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.site" Width="1.5" PointX="14.625" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.staff" Width="1.5" PointX="4.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.state" Width="1.5" PointX="6.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.tandc" Width="1.5" PointX="4.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.variable" Width="1.5" PointX="0.5" PointY="11" IsExpanded="true" />
+        <AssociationConnector Association="abab1199_qsyncModel.QNL" />
+        <AssociationConnector Association="abab1199_qsyncModel.invoiceinvitem" />
+        <AssociationConnector Association="abab1199_qsyncModel.customersite" />
+        <AssociationConnector Association="abab1199_qsyncModel.customerservice" />
+        <AssociationConnector Association="abab1199_qsyncModel.siteservice" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.customercontmaster" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.customermaster" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.qtPreRepID" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.AbleQuote" Width="1.5" PointX="9.375" PointY="14.75" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.AppAccess" Width="1.5" PointX="11.375" PointY="4.75" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.QuoteDateCorrection" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.QuoteFL" Width="1.5" PointX="11.375" PointY="14.75" />
+        <EntityTypeShape EntityType="abab1199_qsyncModel.QuoteItemsFL" Width="1.5" PointX="17.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

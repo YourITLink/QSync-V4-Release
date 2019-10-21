@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="abab1199_qsyncConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="abab1199_qsyncConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QSync.Properties.Settings.GlobalReference.Default.abab1199_qsyncConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Quote" msprop:Generator_TableClassName="QuoteDataTable" msprop:Generator_TableVarName="tableQuote" msprop:Generator_RowChangedName="QuoteRowChanged" msprop:Generator_TablePropName="Quote" msprop:Generator_RowDeletingName="QuoteRowDeleting" msprop:Generator_RowChangingName="QuoteRowChanging" msprop:Generator_RowEvHandlerName="QuoteRowChangeEventHandler" msprop:Generator_RowDeletedName="QuoteRowDeleted" msprop:Generator_RowClassName="QuoteRow" msprop:Generator_UserTableName="Quote" msprop:Generator_RowEvArgName="QuoteRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="QuoteNumber" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnQuoteNumber" msprop:Generator_ColumnPropNameInRow="QuoteNumber" msprop:Generator_ColumnPropNameInTable="QuoteNumberColumn" msprop:Generator_UserColumnName="QuoteNumber" type="xs:int" minOccurs="0" />
+              <xs:element name="Company" msprop:Generator_ColumnVarNameInTable="columnCompany" msprop:Generator_ColumnPropNameInRow="Company" msprop:Generator_ColumnPropNameInTable="CompanyColumn" msprop:Generator_UserColumnName="Company" type="xs:string" minOccurs="0" />
+              <xs:element name="Rep" msprop:Generator_ColumnVarNameInTable="columnRep" msprop:Generator_ColumnPropNameInRow="Rep" msprop:Generator_ColumnPropNameInTable="RepColumn" msprop:Generator_UserColumnName="Rep" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="QuoteItems" msprop:Generator_TableClassName="QuoteItemsDataTable" msprop:Generator_TableVarName="tableQuoteItems" msprop:Generator_RowChangedName="QuoteItemsRowChanged" msprop:Generator_TablePropName="QuoteItems" msprop:Generator_RowDeletingName="QuoteItemsRowDeleting" msprop:Generator_RowChangingName="QuoteItemsRowChanging" msprop:Generator_RowEvHandlerName="QuoteItemsRowChangeEventHandler" msprop:Generator_RowDeletedName="QuoteItemsRowDeleted" msprop:Generator_RowClassName="QuoteItemsRow" msprop:Generator_UserTableName="QuoteItems" msprop:Generator_RowEvArgName="QuoteItemsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="QNL" msprop:Generator_ColumnVarNameInTable="columnQNL" msprop:Generator_ColumnPropNameInRow="QNL" msprop:Generator_ColumnPropNameInTable="QNLColumn" msprop:Generator_UserColumnName="QNL" type="xs:int" minOccurs="0" />
+              <xs:element name="ItemNumber" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnItemNumber" msprop:Generator_ColumnPropNameInRow="ItemNumber" msprop:Generator_ColumnPropNameInTable="ItemNumberColumn" msprop:Generator_UserColumnName="ItemNumber" type="xs:int" minOccurs="0" />
+              <xs:element name="ItemDescription" msprop:Generator_ColumnVarNameInTable="columnItemDescription" msprop:Generator_ColumnPropNameInRow="ItemDescription" msprop:Generator_ColumnPropNameInTable="ItemDescriptionColumn" msprop:Generator_UserColumnName="ItemDescription" type="xs:string" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:Quote" />
+      <xs:field xpath="mstns:QuoteNumber" />
+    </xs:unique>
+    <xs:unique name="QuoteItems_Constraint1" msdata:ConstraintName="Constraint1">
+      <xs:selector xpath=".//mstns:QuoteItems" />
+      <xs:field xpath="mstns:ItemNumber" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Quote_QuoteItems" msdata:parent="Quote" msdata:child="QuoteItems" msdata:parentkey="QuoteNumber" msdata:childkey="QNL" msprop:Generator_UserChildTable="QuoteItems" msprop:Generator_ChildPropName="GetQuoteItemsRows" msprop:Generator_UserRelationName="Quote_QuoteItems" msprop:Generator_ParentPropName="QuoteRow" msprop:Generator_RelationVarName="relationQuote_QuoteItems" msprop:Generator_UserParentTable="Quote" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

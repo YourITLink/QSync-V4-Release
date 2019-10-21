@@ -1,0 +1,16 @@
+﻿<syncfusion:RibbonWindow
+        xmlns:sync="http://schemas.syncfusion.com/wpf" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+        xmlns:local="clr-namespace:QSync.Reporting"
+        xmlns:syncfusion="clr-namespace:Syncfusion.Windows.Tools.Controls;assembly=Syncfusion.Tools.WPF"
+        xmlns:Reporting="clr-namespace:Syncfusion.Windows.Reports.Designer;assembly=Syncfusion.ReportDesigner.WPF"
+        x:Class="QSync.Reporting.Window1"
+        mc:Ignorable="d"
+        Title="Window1" Height="1339.333" Width="1427" SnapsToDevicePixels="True" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+
+    <Grid>
+        <sync:ReportDesigner HorizontalAlignment="Left" Margin="10,0,0,-1" VerticalAlignment="Top" Height="1311" Width="1410"/>
+    </Grid>
+</syncfusion:RibbonWindow>

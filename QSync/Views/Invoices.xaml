@@ -1,0 +1,235 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QSync.Views"
+        xmlns:localVMs="clr-namespace:QSync.ViewModels"
+        xmlns:localModels="clr-namespace:QSync.Models"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
+        xmlns:QSync="clr-namespace:QSync" x:Class="QSync.Views.Invoices"
+        TextElement.Foreground="{DynamicResource WordBlueBrush}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="{StaticResource FontSizeRegular}"
+        FontFamily="{StaticResource App}"
+        mc:Ignorable="d"
+        Title="QSync V4.0 by Your IT Link - Able Door Services (NSW) Pty Ltd" Height="1000" Width="1920" ScrollViewer.CanContentScroll="True"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded">
+    <Window.Resources>
+        <!-- Insert here your Data Templates -->
+        <DataTemplate x:Key="SampleTemplate">
+            <StackPanel/>
+        </DataTemplate>
+        <RoutedUICommand x:Key="FirstCommand" Text="First"/>
+        <RoutedUICommand x:Key="LastCommand" Text="Last"/>
+        <RoutedUICommand x:Key="NextCommand" Text="Next"/>
+        <RoutedUICommand x:Key="PreviousCommand" Text="Previous"/>
+        <RoutedUICommand x:Key="DeleteCustomerCommand" Text="Delete Customer"/>
+        <RoutedUICommand x:Key="DeleteOrderCommand" Text="Delete Order"/>
+        <RoutedUICommand x:Key="UpdateCommand" Text="Update"/>
+        <RoutedUICommand x:Key="AddCommand" Text="Add"/>
+        <RoutedUICommand x:Key="CancelCommand" Text="Cancel"/>
+        <RoutedUICommand x:Key="CommitInvoice" Text="Commit"/>
+        <CollectionViewSource x:Key="invoiceViewSource" d:DesignSource="{d:DesignInstance {x:Type QSync:invoice}, CreateList=True}"/>
+        <CollectionViewSource x:Key="invoiceinvitemsViewSource" Source="{Binding invitems, Source={StaticResource invoiceViewSource}}"/>
+    </Window.Resources>
+    <Window.InputBindings>
+        <!-- Example of Keyboard shortcuts -->
+        <KeyBinding Command="{Binding SaveCmd}" Key="S" Modifiers="Ctrl" />
+        <KeyBinding Command="{Binding SaveAsCmd}" Gesture="Ctrl+Shift+S" />
+        <KeyBinding Command="{Binding OpenCmd}" Gesture="Ctrl+O" />
+        <KeyBinding Command="{Binding NewCmd}" Gesture="Ctrl+N" />
+        <KeyBinding Command="{Binding ExitCmd}" Gesture="Alt+F4" />
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource FirstCommand}" Executed="FirstCommandHandler"/>
+        <CommandBinding Command="{StaticResource LastCommand}" Executed="LastCommandHandler"/>
+        <CommandBinding Command="{StaticResource NextCommand}" Executed="NextCommandHandler"/>
+        <CommandBinding Command="{StaticResource PreviousCommand}" Executed="PreviousCommandHandler"/>
+        <CommandBinding Command="{StaticResource DeleteCustomerCommand}" Executed="DeleteCustomerCommandHandler"/>
+        <CommandBinding Command="{StaticResource DeleteOrderCommand}" Executed="DeleteOrderCommandHandler"/>
+        <CommandBinding Command="{StaticResource UpdateCommand}" Executed="UpdateCommandHandler"/>
+        <CommandBinding Command="{StaticResource AddCommand}" Executed="AddCommandHandler"/>
+        <CommandBinding Command="{StaticResource CancelCommand}" Executed="CancelCommandHandler"/>
+    </Window.CommandBindings>
+
+    <DockPanel>
+        <!-- File Menu -->
+        <Menu DockPanel.Dock="Top" Margin="0,0,0.4,0">
+            <MenuItem Header="File" FontSize="18">
+                <MenuItem Header="New Quote" Click="OpenQuotes_Click" InputGestureText="Ctrl+Q"/>
+                <MenuItem Header="New Invoice" Click="OpenInvoices_Click" />
+                <MenuItem Header="Enter Service" Click="OpenServices_Click" />
+                <Separator />
+                <MenuItem Header="Main Menu" Click="MainMenu_Click" />
+                <MenuItem Header="Exit QSync" Click="CloseQSync_Click" />
+            </MenuItem>
+            <MenuItem Header="Quotes" FontSize="18">
+                <MenuItem Header="Create a Quote" Click="OpenQuotes_Click" InputGestureText="Ctrl+Q" />
+                <MenuItem Header="Search for a Quote" Click="OpenQuotes_Click" InputGestureText="Ctrl+F" />
+                <MenuItem Header="QSync Email System" Click="OpenQuotes_Click" InputGestureText="Ctrl+E" />
+            </MenuItem>
+            <MenuItem Header="Service" FontSize="18">
+                <MenuItem Header="View Customers" Click="OpenServices_Click"  />
+                <MenuItem Header="Return DSR's" Click="OpenServices_Click"  />
+                <MenuItem Header="Create DSR's" Click="OpenServices_Click" />
+            </MenuItem>
+            <MenuItem Header="Invoices" FontSize="18">
+                <MenuItem Header="New Dummy Invoice" Click="OpenInvoices_Click" />
+                <MenuItem Header="Load Invoices" Click="OpenInvoices_Click" />
+                <MenuItem Header="Find a Dummy Invoice" Click="OpenInvoices_Click" />
+            </MenuItem>
+            <MenuItem Header="Shutter Profiller" FontSize="18">
+                <MenuItem Header="Build a Door" />
+                <MenuItem Header="Lookup Previous" />
+            </MenuItem>
+            <MenuItem Header="Customise" FontSize="18">
+                <MenuItem Header="My Settings" />
+                <MenuItem Header="Create DSR's"  />
+            </MenuItem>
+            <MenuItem Header="Manager Menu" FontSize="18">
+                <MenuItem Header="QSync Maintenance"  />
+                <MenuItem Header="Reset User Password"  />
+                <MenuItem Header="Access Levels"  />
+                <MenuItem Header="Quote Conditions" />
+            </MenuItem>
+            <MenuItem Header="Your IT Link" FontSize="18">
+                <MenuItem Header="Build Changes"  />
+                <MenuItem Header="Dev Test Screen 1"  />
+                <MenuItem Header="Dev Test Screen 2"  />
+            </MenuItem>
+            <MenuItem Header="About" FontSize="18"/>
+        </Menu>
+
+        <DockPanel Margin="0,0,0,24">
+            <StackPanel Width="1920" VerticalAlignment="Top" DockPanel.Dock="Top" Height="70">
+                <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding IsChecked, ElementName=MenuToggleButton}" Height="69">
+                    <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryDark" DockPanel.Dock="Top" Background="#FF263B8F">
+                        <DockPanel>
+                            <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False" x:Name="MenuToggleButton" Foreground="#FFFDD835"/>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Margin="0,10,40,0" Foreground="#FFFDD835" Width="1920" TextAlignment="Center"><Run Text="Invoice Screen - QSync - Able Door Services"/></TextBlock>
+                        </DockPanel>
+                    </materialDesign:ColorZone>
+                </materialDesign:DrawerHost>
+            </StackPanel>
+            <!-- Top Icon Bar -->
+
+            <!-- Footer placeholder -->
+            <Frame DockPanel.Dock="Bottom" x:Name="Footer" />
+
+            <!-- Command Buttons -->
+            <Grid Margin="0,-0.333" Visibility="Visible">
+                <StackPanel Orientation="Vertical" Margin="0,76,0,0" HorizontalAlignment="Left">
+                    <Button x:Name="btnFirst" Content="|◄ Oldest" Grid.Row="2" FontSize="18" Grid.Column="0" Command="{StaticResource FirstCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Resource name: MaterialDesignRaisedButton" Background="#FF263B8F" BorderBrush="#FF263B8F" Opacity="1" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
+                    <Button x:Name="btnPrev" Content="◄ Prev" Grid.Row="2" FontSize="18" Grid.Column="0" Command="{StaticResource PreviousCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Resource name: MaterialDesignRaisedButton" Background="#FF263B8F" BorderBrush="#FF263B8F" Opacity="1" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
+                    <Button x:Name="btnNext" Content="Fwd ►" Grid.Row="2" FontSize="18" Grid.Column="11" Command="{StaticResource NextCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Resource name: MaterialDesignRaisedButton" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
+                    <Button x:Name="btnLast" Content="Newest ►|" Grid.Row="2" FontSize="18" Grid.Column="12" Command="{StaticResource LastCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Resource name: MaterialDesignRaisedButton" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Opacity="1" Background="#FF263B8F" Margin="10,5" Height="60"/>
+                    <Button x:Name="btnAdd" Content="New Invoice" Grid.Row="2" Grid.Column="5" Command="{StaticResource AddCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Resource name: MaterialDesignRaisedButton" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" FontSize="18" Height="60"/>
+                    <Button x:Name="btnUpdate" Content="Save" Grid.Row="2" Grid.Column="3" Command="{StaticResource UpdateCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Resource name: MaterialDesignRaisedButton" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" FontSize="18" Height="60"/>
+                    <Button x:Name="btnCommit" Visibility="Collapsed" Content="Commit" Grid.Row="2" Click="AddRecord_Click" Grid.Column="8" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Resource name: MaterialDesignRaisedButton" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" FontSize="18" Height="60"/>
+                    <Button x:Name="btnCancel" Content="Refresh" Grid.Row="2" Grid.Column="7" Command="{StaticResource DeleteCustomerCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Resource name: MaterialDesignRaisedButton" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" FontSize="18" Height="60"/>
+                </StackPanel>
+
+                <Grid x:Name="existingInvoiceDataGrid" VerticalAlignment="Top" DataContext="{StaticResource invoiceViewSource}" Margin="155,30,0,0" Visibility="Visible" HorizontalAlignment="Left" Width="1748" Height="375">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="600"/>
+                        <ColumnDefinition Width="600"/>
+                        <ColumnDefinition Width="600"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="type" Grid.Row="0" Grid.Column="0" Text="{Binding InvCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Invoice Type" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Height="40" FontSize="16"/>
+                    <TextBox x:Name="company" Grid.Row="1" Grid.Column="0" Text="{Binding CompCust, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Company" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Height="40" FontSize="16"/>
+                    <TextBox x:Name="contact" Grid.Row="2" Grid.Column="0" Text="{Binding Contact, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Contact Person" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Height="40" FontSize="16"/>
+                    <TextBox x:Name="address" Grid.Row="3" Grid.Column="0" VerticalContentAlignment="Top" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Address" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Height="120" Grid.RowSpan="2" FontSize="16" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True"/>
+                    <TextBox x:Name="phone" Grid.Row="5" Grid.Column="0" Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Phone No" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Height="40" FontSize="16"/>
+                    <TextBox x:Name="originv" materialDesign:HintAssist.Hint="Original Invoice No" Width="300" Text="{Binding OrigInvNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Margin="10,0,70,0" Height="40" Grid.Column="1" FontSize="16"/>
+                    <TextBox x:Name="saddress" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Top" Text="{Binding SAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Site Address" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Height="120" Grid.RowSpan="2" FontSize="16" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True"/>
+                    <DatePicker x:Name="invdate" Grid.Row="3" Grid.Column="1" SelectedDate="{Binding InvoiceDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Invoice Date" Width="300" VerticalAlignment="Stretch" Margin="10,0,70,0" Height="40" FontSize="16"/>
+                    <TextBox x:Name="custorder" Grid.Row="4" Grid.Column="1" Text="{Binding CustomerOrderNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Customer Order #" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Height="40" FontSize="16"/>
+                    <TextBox x:Name="accountno" materialDesign:HintAssist.Hint="Account No" Width="300" Text="{Binding AccountNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="5" Margin="10,0,70,0" Height="40" Grid.Column="1" FontSize="16"/>
+                    <TextBox x:Name="user" Grid.Row="0" Grid.Column="2" Text="{Binding User, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Created By" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Height="40" FontSize="16"/>
+                    <TextBox x:Name="custemail" Grid.Row="1" Grid.Column="2" Text="{Binding CustEmail, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Customer Email" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Height="40" FontSize="16"/>
+                    <TextBox x:Name="invno" Grid.Column="2" Text="{Binding InvoiceNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Invoice Number" Width="150" VerticalAlignment="Center"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="391,-89,59,90" Height="40" HorizontalAlignment="Center" Focusable="False" Foreground="#FFFDD835" FontSize="16"/>
+
+                    <!-- Selected Inv Type = Selected Address -->
+                    <!-- Itype = FullAddress -->
+
+
+
+                </Grid>
+
+                <Grid x:Name="newInvoiceDataGrid" Visibility="Collapsed" VerticalAlignment="Top" DataContext="{Binding newInvoice, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, UpdateSourceTrigger=Explicit}" Margin="155,30,0,0" HorizontalAlignment="Left" Width="1748" Height="375">
+
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="600"/>
+                        <ColumnDefinition Width="600"/>
+                        <ColumnDefinition Width="600"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="add_invCodeComboBox" Loaded="Add_invCodeComboBox_Loaded" SelectionChanged="Add_invCodeComboBox_SelectionChanged" materialDesign:HintAssist.Hint="Invoice Code" Grid.Column="0" DisplayMemberPath="InvCode" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Stretch" Width="300" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16">
+                    </ComboBox>
+                    <TextBox x:Name="add_company" Grid.Row="1" Grid.Column="0" Text="{Binding CompCust, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Company" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="3" Height="40" FontSize="16"/>
+                    <TextBox x:Name="add_contact" Grid.Row="2" Grid.Column="0" Text="{Binding Contact, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Contact Person" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="3" Height="40" FontSize="16"/>
+                    <TextBox x:Name="add_address" VerticalContentAlignment="Top" Grid.Row="3" Grid.Column="0" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Address" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="3" Height="120" Grid.RowSpan="2" FontSize="16"/>
+                    <TextBox x:Name="add_phone" Grid.Row="5" Grid.Column="0" Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Phone No" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="3" Height="40" FontSize="16"/>
+                    <TextBox x:Name="add_originv" materialDesign:HintAssist.Hint="Original Invoice No" Width="300" Text="{Binding OrigInvNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Margin="3" Height="40" Grid.Column="1" FontSize="16"/>
+                    <TextBox x:Name="add_saddress" VerticalContentAlignment="Top" Grid.Row="1" Grid.Column="1" Text="{Binding SAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Site Address" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="3" Height="120" Grid.RowSpan="2" FontSize="16"/>
+                    <DatePicker x:Name="add_invdate" Grid.Row="3" Grid.Column="1" SelectedDate="{Binding InvoiceDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Invoice Date" Width="300" VerticalAlignment="Stretch" Margin="3" Height="40" FontSize="16"/>
+                    <TextBox x:Name="add_custorder" Grid.Row="4" Grid.Column="1" Text="{Binding CustomerOrderNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Customer Order #" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="3" Height="40" FontSize="16"/>
+                    <TextBox x:Name="add_accountno" materialDesign:HintAssist.Hint="Account No" Width="300" Text="{Binding AccountNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="5" Margin="3" Height="40" Grid.Column="1" FontSize="16"/>
+                    <ComboBox x:Name="add_user" materialDesign:HintAssist.Hint="User" Grid.Column="2" Height="Auto" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Stretch" Width="300" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16">
+                        <ComboBoxItem>vicki@abledoors.com.au</ComboBoxItem>
+                        <ComboBoxItem>samantha@abledoors.com.au</ComboBoxItem>
+                        <ComboBoxItem>eileen@abledoors.com.au</ComboBoxItem>
+                        <ComboBoxItem>jane@abledoors.com.au</ComboBoxItem>
+                        <ComboBoxItem>gary@abledoors.com.au</ComboBoxItem>
+                    </ComboBox>
+                    <TextBox x:Name="add_custemail" Grid.Row="1" Grid.Column="2" Text="{Binding CustEmail, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Customer Email" Width="300"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="3" Height="40" FontSize="16"/>
+
+                </Grid>
+                <!-- End of Insert form -->
+                <Grid Margin="0,0,-0.4,-0.134">
+                    <DataGrid x:Name="invitemsDataGrid" AutoGenerateColumns="False" Visibility="Visible" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource invoiceinvitemsViewSource}}" Margin="148,397,10.333,0.333" RowDetailsVisibilityMode="VisibleWhenSelected" FontSize="16" FontFamily="Roboto" CanUserSortColumns="False" CanUserReorderColumns="False" SelectionUnit="Cell">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="qty" Binding="{Binding QTY}" Header="QTY" Width="SizeToHeader" FontFamily="Roboto" FontSize="16"/>
+                            <DataGridTextColumn x:Name="item" Binding="{Binding Item}" Header="Item" Width="*" FontFamily="Roboto" FontSize="16"/>
+                            <DataGridTextColumn x:Name="price" Binding="{Binding Price}" Header="Price" Width="150" FontFamily="Roboto" FontSize="16"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                </Grid>
+
+
+
+
+
+
+
+
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</Window>

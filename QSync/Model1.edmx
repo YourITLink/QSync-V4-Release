@@ -1,0 +1,2061 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="abab1199_qsyncModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="06mm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COL 1" Type="decimal" Precision="2" Scale="1" />
+          <Property Name="COL 2" Type="int" />
+          <Property Name="COL 3" Type="int" />
+          <Property Name="COL 4" Type="int" />
+          <Property Name="COL 5" Type="int" />
+          <Property Name="COL 6" Type="int" />
+          <Property Name="COL 7" Type="int" />
+          <Property Name="COL 8" Type="varchar" MaxLength="4" />
+          <Property Name="COL 9" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="08mm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COL 1" Type="decimal" Precision="2" Scale="1" />
+          <Property Name="COL 2" Type="int" />
+          <Property Name="COL 3" Type="int" />
+          <Property Name="COL 4" Type="int" />
+          <Property Name="COL 5" Type="int" />
+          <Property Name="COL 6" Type="int" />
+          <Property Name="COL 7" Type="int" />
+          <Property Name="COL 8" Type="int" />
+          <Property Name="COL 9" Type="int" />
+          <Property Name="COL 10" Type="varchar" MaxLength="4" />
+          <Property Name="COL 11" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="10mm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COL 1" Type="decimal" Precision="2" Scale="1" />
+          <Property Name="COL 2" Type="int" />
+          <Property Name="COL 3" Type="int" />
+          <Property Name="COL 4" Type="int" />
+          <Property Name="COL 5" Type="int" />
+          <Property Name="COL 6" Type="int" />
+          <Property Name="COL 7" Type="int" />
+          <Property Name="COL 8" Type="int" />
+          <Property Name="COL 9" Type="int" />
+          <Property Name="COL 10" Type="int" />
+          <Property Name="COL 11" Type="int" />
+          <Property Name="COL 12" Type="int" />
+          <Property Name="COL 13" Type="int" />
+          <Property Name="COL 14" Type="int" />
+        </EntityType>
+        <EntityType Name="AluminiumShutters">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COL 1" Type="int" />
+          <Property Name="COL 2" Type="int" />
+          <Property Name="COL 3" Type="int" />
+          <Property Name="COL 4" Type="int" />
+          <Property Name="COL 5" Type="int" />
+          <Property Name="COL 6" Type="int" />
+          <Property Name="COL 7" Type="int" />
+          <Property Name="COL 8" Type="int" />
+          <Property Name="COL 9" Type="int" />
+          <Property Name="COL 10" Type="int" />
+          <Property Name="COL 11" Type="int" />
+          <Property Name="COL 12" Type="int" />
+          <Property Name="COL 13" Type="int" />
+          <Property Name="COL 14" Type="int" />
+          <Property Name="COL 15" Type="int" />
+          <Property Name="COL 16" Type="int" />
+          <Property Name="COL 17" Type="int" />
+          <Property Name="COL 18" Type="int" />
+        </EntityType>
+        <EntityType Name="BuildChanges">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MMBR" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="New_MMBR" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="AppliedChanges" Type="longtext" />
+          <Property Name="ChangeDate" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VersionReleaseDate" Type="date" />
+          <Property Name="ReleaseComplete" Type="int" />
+        </EntityType>
+        <EntityType Name="customercontmaster">
+          <Key>
+            <PropertyRef Name="MasterCC" />
+          </Key>
+          <Property Name="MasterCC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MCID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="40" />
+          <Property Name="Position" Type="varchar" MaxLength="30" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" />
+          <Property Name="Mob" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Comments" Type="text" />
+          <Property Name="Current" Type="int" />
+        </EntityType>
+        <EntityType Name="customermaster">
+          <Key>
+            <PropertyRef Name="MasterID" />
+          </Key>
+          <Property Name="MasterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompCust" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="80" />
+          <Property Name="Suburb" Type="varchar" MaxLength="40" />
+          <Property Name="State" Type="varchar" MaxLength="3" />
+          <Property Name="PC" Type="varchar" MaxLength="5" />
+          <Property Name="MainPh" Type="varchar" MaxLength="10" />
+          <Property Name="MainFax" Type="varchar" MaxLength="10" />
+          <Property Name="MainMob" Type="varchar" MaxLength="10" />
+          <Property Name="MainEmail" Type="varchar" MaxLength="100" />
+          <Property Name="Current" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="CustNo" />
+          </Key>
+          <Property Name="CustNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" />
+          <Property Name="ContactName" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Suburb" Type="int" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="InstallJobs" Type="varchar" MaxLength="50" />
+          <Property Name="Comments" Type="mediumtext" />
+          <Property Name="ServicedSites" Type="bit" />
+          <Property Name="Current" Type="bit" />
+          <Property Name="IntCustNo" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="invitems">
+          <Key>
+            <PropertyRef Name="ItemNumber" />
+          </Key>
+          <Property Name="ItemNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="int" Nullable="false" />
+          <Property Name="Item" Type="varchar" MaxLength="255" />
+          <Property Name="QTY" Type="int" />
+          <Property Name="Price" Type="double" />
+        </EntityType>
+        <EntityType Name="invoices">
+          <Key>
+            <PropertyRef Name="InvoiceNumber" />
+          </Key>
+          <Property Name="InvoiceNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrigInvNumber" Type="int" />
+          <Property Name="InvoiceDate" Type="date" />
+          <Property Name="CustomerOrderNo" Type="varchar" MaxLength="45" />
+          <Property Name="Contact" Type="varchar" MaxLength="45" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" />
+          <Property Name="AccountNo" Type="varchar" MaxLength="40" />
+          <Property Name="CompCust" Type="varchar" MaxLength="255" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Suburb" Type="varchar" MaxLength="45" />
+          <Property Name="State" Type="varchar" MaxLength="4" />
+          <Property Name="PostCode" Type="varchar" MaxLength="4" />
+          <Property Name="SAddress" Type="varchar" MaxLength="255" />
+          <Property Name="SSuburb" Type="varchar" MaxLength="45" />
+          <Property Name="SState" Type="varchar" MaxLength="10" />
+          <Property Name="SPostCode" Type="varchar" MaxLength="4" />
+          <Property Name="Comments" Type="mediumtext" />
+          <Property Name="InvCode" Type="varchar" MaxLength="4" />
+          <Property Name="CustEmail" Type="varchar" MaxLength="255" />
+          <Property Name="User" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="MsgID" />
+          </Key>
+          <Property Name="MsgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MsgDate" Type="date" />
+          <Property Name="MsgPriority" Type="varchar" MaxLength="30" />
+          <Property Name="Heading" Type="varchar" MaxLength="100" />
+          <Property Name="Message" Type="varchar" MaxLength="500" />
+          <Property Name="PostDate" Type="date" />
+          <Property Name="ExpiryDate" Type="date" />
+          <Property Name="Hide" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nswpc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Pcode" Type="double" />
+          <Property Name="Locality" Type="varchar" MaxLength="255" />
+          <Property Name="State" Type="varchar" MaxLength="255" />
+          <Property Name="Comments" Type="varchar" MaxLength="100" />
+          <Property Name="Category" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="qtPreRepID">
+          <Key>
+            <PropertyRef Name="QuoteNumber" />
+          </Key>
+          <Property Name="QuoteNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Representative" Type="varchar" MaxLength="255" />
+          <Property Name="repMobile" Type="varchar" MaxLength="15" />
+          <Property Name="repID" Type="varchar" MaxLength="4" />
+          <Property Name="Date1" Type="date" />
+          <Property Name="MasterID" Type="int" />
+          <Property Name="Company" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Suburb" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="4" />
+          <Property Name="PostCode" Type="int" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="JobLocation" Type="varchar" MaxLength="255" />
+          <Property Name="StrataNo" Type="varchar" MaxLength="50" />
+          <Property Name="RefNo" Type="varchar" MaxLength="50" />
+          <Property Name="SiteContact" Type="varchar" MaxLength="255" />
+          <Property Name="SCPhone" Type="varchar" MaxLength="255" />
+          <Property Name="SCMobile" Type="varchar" MaxLength="255" />
+          <Property Name="SCEmail" Type="varchar" MaxLength="255" />
+          <Property Name="Attachments" Type="mediumblob" />
+          <Property Name="COD" Type="int" />
+          <Property Name="SvnDays" Type="int" />
+          <Property Name="OrderNo" Type="int" />
+          <Property Name="PROGRESSPAYMENT" Type="int" />
+          <Property Name="Induction" Type="int" />
+          <Property Name="Inductiontime" Type="varchar" MaxLength="255" />
+          <Property Name="SWMS" Type="int" />
+          <Property Name="App" Type="varchar" MaxLength="255" />
+          <Property Name="Notes" Type="mediumtext" />
+          <Property Name="Info" Type="varchar" MaxLength="255" />
+          <Property Name="ModifyStamp" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="quoteitems">
+          <Key>
+            <PropertyRef Name="ItemNumber" />
+          </Key>
+          <Property Name="ItemNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuoteNumber" Type="varchar" MaxLength="45" />
+          <Property Name="ItemDescription" Type="mediumtext" />
+          <Property Name="Details" Type="mediumtext" />
+          <Property Name="Price" Type="double" />
+          <Property Name="QNL" Type="int" Nullable="false" />
+          <Property Name="ModifyStamp" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="quotes">
+          <Key>
+            <PropertyRef Name="QuoteNumber" />
+          </Key>
+          <Property Name="QuoteNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Representative" Type="varchar" MaxLength="255" />
+          <Property Name="repMobile" Type="varchar" MaxLength="15" />
+          <Property Name="repID" Type="varchar" MaxLength="4" />
+          <Property Name="Date1" Type="date" />
+          <Property Name="MasterID" Type="int" />
+          <Property Name="Company" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Suburb" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="4" />
+          <Property Name="PostCode" Type="int" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="JobLocation" Type="varchar" MaxLength="255" />
+          <Property Name="StrataNo" Type="varchar" MaxLength="50" />
+          <Property Name="RefNo" Type="varchar" MaxLength="50" />
+          <Property Name="SiteContact" Type="varchar" MaxLength="255" />
+          <Property Name="SCPhone" Type="varchar" MaxLength="255" />
+          <Property Name="SCMobile" Type="varchar" MaxLength="255" />
+          <Property Name="SCEmail" Type="varchar" MaxLength="255" />
+          <Property Name="Attachments" Type="mediumblob" />
+          <Property Name="COD" Type="int" />
+          <Property Name="SvnDays" Type="int" />
+          <Property Name="OrderNo" Type="int" />
+          <Property Name="PROGRESSPAYMENT" Type="int" />
+          <Property Name="Induction" Type="int" />
+          <Property Name="Inductiontime" Type="varchar" MaxLength="255" />
+          <Property Name="SWMS" Type="int" />
+          <Property Name="App" Type="varchar" MaxLength="255" />
+          <Property Name="Notes" Type="mediumtext" />
+          <Property Name="Info" Type="varchar" MaxLength="255" />
+          <Property Name="ModifyStamp" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="services">
+          <Key>
+            <PropertyRef Name="SvcNo" />
+          </Key>
+          <Property Name="SiteNo" Type="int" Nullable="false" />
+          <Property Name="CustNo" Type="int" Nullable="false" />
+          <Property Name="SvcNo" Type="int" Nullable="false" />
+          <Property Name="Fixer" Type="text" />
+          <Property Name="SvcDate" Type="text" />
+          <Property Name="c1" Type="int" />
+          <Property Name="c2" Type="int" />
+          <Property Name="c3" Type="int" />
+          <Property Name="c4" Type="int" />
+          <Property Name="c5" Type="int" />
+          <Property Name="c6" Type="int" />
+          <Property Name="c7" Type="int" />
+          <Property Name="c8" Type="int" />
+          <Property Name="c9" Type="int" />
+          <Property Name="c10" Type="int" />
+          <Property Name="c11" Type="int" />
+          <Property Name="c12" Type="int" />
+          <Property Name="c13" Type="int" />
+          <Property Name="c14" Type="int" />
+          <Property Name="c15" Type="int" />
+          <Property Name="c16" Type="int" />
+          <Property Name="c17" Type="int" />
+          <Property Name="Asmt" Type="int" />
+          <Property Name="rg" Type="int" />
+          <Property Name="rfg" Type="int" />
+          <Property Name="stg" Type="int" />
+          <Property Name="repsl" Type="int" />
+          <Property Name="strb" Type="int" />
+          <Property Name="refc" Type="int" />
+          <Property Name="chc" Type="int" />
+          <Property Name="chf" Type="int" />
+          <Property Name="fixerrep" Type="text" />
+          <Property Name="tr1" Type="int" />
+          <Property Name="tr2" Type="int" />
+          <Property Name="tr3" Type="int" />
+          <Property Name="inv" Type="int" />
+        </EntityType>
+        <EntityType Name="shuttersheet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuoteID" Type="int" Nullable="false" />
+          <Property Name="ContMasterID" Type="int" Nullable="false" />
+          <Property Name="JobNumber" Type="double" />
+          <Property Name="JobNumber2" Type="varchar" MaxLength="255" />
+          <Property Name="Date" Type="datetime" Precision="0" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="255" />
+          <Property Name="StreetAddress" Type="varchar" MaxLength="255" />
+          <Property Name="Suburb" Type="varchar" MaxLength="255" />
+          <Property Name="Contact" Type="varchar" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="255" />
+          <Property Name="Order_Number" Type="varchar" MaxLength="255" />
+          <Property Name="Standard" Type="varchar" MaxLength="255" />
+          <Property Name="Width" Type="double" />
+          <Property Name="Height" Type="double" />
+          <Property Name="Centre" Type="double" />
+          <Property Name="Springs" Type="varchar" MaxLength="255" />
+          <Property Name="SlatSize" Type="varchar" MaxLength="255" />
+          <Property Name="Gauge" Type="double" />
+          <Property Name="Collars" Type="varchar" MaxLength="255" />
+          <Property Name="RevMount" Type="varchar" MaxLength="255" />
+          <Property Name="WireByAble" Type="varchar" MaxLength="255" />
+          <Property Name="FixingType" Type="double" />
+          <Property Name="BottomRail" Type="double" />
+          <Property Name="Drive" Type="double" />
+          <Property Name="Finish" Type="double" />
+          <Property Name="Hand" Type="double" />
+          <Property Name="CapRight" Type="bool" />
+          <Property Name="CapLeft" Type="bool" />
+          <Property Name="Windlock" Type="varchar" MaxLength="255" />
+          <Property Name="TrackSize" Type="varchar" MaxLength="255" />
+          <Property Name="DriveFixing" Type="double" />
+          <Property Name="Options1" Type="varchar" MaxLength="255" />
+          <Property Name="Options2" Type="varchar" MaxLength="255" />
+          <Property Name="Options3" Type="varchar" MaxLength="255" />
+          <Property Name="Options4" Type="varchar" MaxLength="255" />
+          <Property Name="Options5" Type="varchar" MaxLength="255" />
+          <Property Name="Colour" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sites">
+          <Key>
+            <PropertyRef Name="SiteNo" />
+          </Key>
+          <Property Name="CustNo" Type="int" Nullable="false" />
+          <Property Name="SiteNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteName" Type="varchar" MaxLength="50" />
+          <Property Name="SiteContact" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Suburb" Type="int" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
+          <Property Name="FaxNo" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="InstallRefNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Comments" Type="mediumtext" />
+          <Property Name="ServiceCustomer" Type="bit" />
+          <Property Name="LastServiceDate" Type="datetime" Precision="0" />
+          <Property Name="NextServiceDate" Type="varchar" MaxLength="50" />
+          <Property Name="3MonthSvc" Type="varchar" MaxLength="50" />
+          <Property Name="6MonthSvc" Type="varchar" MaxLength="50" />
+          <Property Name="YearlyService" Type="varchar" MaxLength="50" />
+          <Property Name="SingleService" Type="varchar" MaxLength="50" />
+          <Property Name="ConfirmService" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="double" />
+          <Property Name="MapRef" Type="varchar" MaxLength="50" />
+          <Property Name="AcctCust" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GrantAccess" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="QuoteID" Type="varchar" MaxLength="4" />
+          <Property Name="Current" Type="bool" />
+          <Property Name="Mobile" Type="varchar" MaxLength="255" />
+          <Property Name="UserName" Type="varchar" MaxLength="45" />
+          <Property Name="Password" Type="varchar" MaxLength="45" />
+          <Property Name="PasswordOld" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="QSyncAccess" Type="varchar" MaxLength="20" />
+          <Property Name="userEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangePW" Type="int" />
+        </EntityType>
+        <EntityType Name="states">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item" Type="varchar" MaxLength="45" />
+          <Property Name="StorageItem" Type="varchar" MaxLength="45" />
+          <Property Name="Active" Type="enum" />
+        </EntityType>
+        <EntityType Name="tandc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="lineNum" Type="int" />
+          <Property Name="terms" Type="varchar" MaxLength="503" />
+          <Property Name="active" Type="int" />
+          <Property Name="mod_Stamp" Type="varchar" MaxLength="19" />
+        </EntityType>
+        <EntityType Name="variables">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gtype" Type="text" />
+          <Property Name="Item" Type="varchar" MaxLength="150" />
+          <Property Name="StorageItem" Type="varchar" MaxLength="150" />
+          <Property Name="Active" Type="enum" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.abab1199_qsync.AbleQuotes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AbleQuotes">
+          <Key>
+            <PropertyRef Name="QuoteNumber" />
+            <PropertyRef Name="ModifyStamp" />
+          </Key>
+          <Property Name="QuoteNumber" Type="int" Nullable="false" />
+          <Property Name="Representative" Type="varchar" MaxLength="255" />
+          <Property Name="repMobile" Type="varchar" MaxLength="15" />
+          <Property Name="repID" Type="varchar" MaxLength="4" />
+          <Property Name="Date1" Type="date" />
+          <Property Name="MasterID" Type="int" />
+          <Property Name="Company" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Suburb" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="4" />
+          <Property Name="PostCode" Type="int" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="JobLocation" Type="varchar" MaxLength="255" />
+          <Property Name="StrataNo" Type="varchar" MaxLength="50" />
+          <Property Name="RefNo" Type="varchar" MaxLength="50" />
+          <Property Name="SiteContact" Type="varchar" MaxLength="255" />
+          <Property Name="SCPhone" Type="varchar" MaxLength="255" />
+          <Property Name="SCMobile" Type="varchar" MaxLength="255" />
+          <Property Name="SCEmail" Type="varchar" MaxLength="255" />
+          <Property Name="Attachments" Type="mediumblob" />
+          <Property Name="COD" Type="int" />
+          <Property Name="SvnDays" Type="int" />
+          <Property Name="OrderNo" Type="int" />
+          <Property Name="PROGRESSPAYMENT" Type="int" />
+          <Property Name="Induction" Type="int" />
+          <Property Name="Inductiontime" Type="varchar" MaxLength="255" />
+          <Property Name="SWMS" Type="int" />
+          <Property Name="App" Type="varchar" MaxLength="255" />
+          <Property Name="Notes" Type="mediumtext" />
+          <Property Name="Info" Type="varchar" MaxLength="255" />
+          <Property Name="ModifyStamp" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.abab1199_qsync.AppAccess' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AppAccess">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="GrantAccess" />
+            <PropertyRef Name="userEmail" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="GrantAccess" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="QuoteID" Type="varchar" MaxLength="4" />
+          <Property Name="Current" Type="bool" />
+          <Property Name="Mobile" Type="varchar" MaxLength="255" />
+          <Property Name="UserName" Type="varchar" MaxLength="45" />
+          <Property Name="Password" Type="varchar" MaxLength="45" />
+          <Property Name="QSyncAccess" Type="varchar" MaxLength="20" />
+          <Property Name="userEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChangePW" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.abab1199_qsync.QuoteDateCorrections' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="QuoteDateCorrections">
+          <Key>
+            <PropertyRef Name="QuoteNumber" />
+            <PropertyRef Name="ModifyStamp" />
+          </Key>
+          <Property Name="QuoteNumber" Type="int" Nullable="false" />
+          <Property Name="Representative" Type="varchar" MaxLength="255" />
+          <Property Name="Date1" Type="date" />
+          <Property Name="ModifyStamp" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.abab1199_qsync.QuoteFL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="QuoteFL">
+          <Key>
+            <PropertyRef Name="QuoteNumber" />
+            <PropertyRef Name="ModifyStamp" />
+          </Key>
+          <Property Name="QuoteNumber" Type="int" Nullable="false" />
+          <Property Name="Representative" Type="varchar" MaxLength="255" />
+          <Property Name="repMobile" Type="varchar" MaxLength="15" />
+          <Property Name="repID" Type="varchar" MaxLength="4" />
+          <Property Name="Date1" Type="date" />
+          <Property Name="MasterID" Type="int" />
+          <Property Name="Company" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="Suburb" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="4" />
+          <Property Name="PostCode" Type="int" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="JobLocation" Type="varchar" MaxLength="255" />
+          <Property Name="StrataNo" Type="varchar" MaxLength="50" />
+          <Property Name="RefNo" Type="varchar" MaxLength="50" />
+          <Property Name="SiteContact" Type="varchar" MaxLength="255" />
+          <Property Name="SCPhone" Type="varchar" MaxLength="255" />
+          <Property Name="SCMobile" Type="varchar" MaxLength="255" />
+          <Property Name="SCEmail" Type="varchar" MaxLength="255" />
+          <Property Name="Attachments" Type="mediumblob" />
+          <Property Name="COD" Type="int" />
+          <Property Name="SvnDays" Type="int" />
+          <Property Name="OrderNo" Type="int" />
+          <Property Name="PROGRESSPAYMENT" Type="int" />
+          <Property Name="Induction" Type="int" />
+          <Property Name="Inductiontime" Type="varchar" MaxLength="255" />
+          <Property Name="SWMS" Type="int" />
+          <Property Name="App" Type="varchar" MaxLength="255" />
+          <Property Name="Notes" Type="mediumtext" />
+          <Property Name="Info" Type="varchar" MaxLength="255" />
+          <Property Name="ModifyStamp" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.abab1199_qsync.QuoteItemsFL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="QuoteItemsFL">
+          <Key>
+            <PropertyRef Name="ItemNumber" />
+            <PropertyRef Name="QNL" />
+            <PropertyRef Name="ModifyStamp" />
+          </Key>
+          <Property Name="ItemNumber" Type="int" Nullable="false" />
+          <Property Name="QuoteNumber" Type="varchar" MaxLength="45" />
+          <Property Name="ItemDescription" Type="mediumtext" />
+          <Property Name="Details" Type="mediumtext" />
+          <Property Name="Price" Type="double" />
+          <Property Name="QNL" Type="int" Nullable="false" />
+          <Property Name="ModifyStamp" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <Function Name="get_easyLoad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="abab1199_qsync">
+          <Parameter Name="page_from" Type="int" Mode="In" />
+          <Parameter Name="page_size" Type="int" Mode="In" />
+        </Function>
+        <Function Name="QUOTESLOADING" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="abab1199_qsync" />
+        <EntityContainer Name="abab1199_qsyncModelStoreContainer">
+          <EntitySet Name="06mm" EntityType="Self.06mm" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="08mm" EntityType="Self.08mm" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="10mm" EntityType="Self.10mm" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="AluminiumShutters" EntityType="Self.AluminiumShutters" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="BuildChanges" EntityType="Self.BuildChanges" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="customercontmaster" EntityType="Self.customercontmaster" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="customermaster" EntityType="Self.customermaster" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="invitems" EntityType="Self.invitems" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="invoices" EntityType="Self.invoices" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="messages" EntityType="Self.messages" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="nswpc" EntityType="Self.nswpc" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="qtPreRepID" EntityType="Self.qtPreRepID" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="quoteitems" EntityType="Self.quoteitems" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="quotes" EntityType="Self.quotes" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="services" EntityType="Self.services" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="shuttersheet" EntityType="Self.shuttersheet" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="sites" EntityType="Self.sites" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="staff" EntityType="Self.staff" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="states" EntityType="Self.states" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="tandc" EntityType="Self.tandc" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="variables" EntityType="Self.variables" Schema="abab1199_qsync" store:Type="Tables" />
+          <EntitySet Name="AbleQuotes" EntityType="Self.AbleQuotes" store:Type="Views" store:Schema="abab1199_qsync">
+            <DefiningQuery>SELECT
+`AbleQuotes`.`QuoteNumber`, 
+`AbleQuotes`.`Representative`, 
+`AbleQuotes`.`repMobile`, 
+`AbleQuotes`.`repID`, 
+`AbleQuotes`.`Date1`, 
+`AbleQuotes`.`MasterID`, 
+`AbleQuotes`.`Company`, 
+`AbleQuotes`.`Address`, 
+`AbleQuotes`.`Suburb`, 
+`AbleQuotes`.`State`, 
+`AbleQuotes`.`PostCode`, 
+`AbleQuotes`.`ContactPerson`, 
+`AbleQuotes`.`Phone`, 
+`AbleQuotes`.`Fax`, 
+`AbleQuotes`.`Mobile`, 
+`AbleQuotes`.`Email`, 
+`AbleQuotes`.`JobLocation`, 
+`AbleQuotes`.`StrataNo`, 
+`AbleQuotes`.`RefNo`, 
+`AbleQuotes`.`SiteContact`, 
+`AbleQuotes`.`SCPhone`, 
+`AbleQuotes`.`SCMobile`, 
+`AbleQuotes`.`SCEmail`, 
+`AbleQuotes`.`Attachments`, 
+`AbleQuotes`.`COD`, 
+`AbleQuotes`.`SvnDays`, 
+`AbleQuotes`.`OrderNo`, 
+`AbleQuotes`.`PROGRESSPAYMENT`, 
+`AbleQuotes`.`Induction`, 
+`AbleQuotes`.`Inductiontime`, 
+`AbleQuotes`.`SWMS`, 
+`AbleQuotes`.`App`, 
+`AbleQuotes`.`Notes`, 
+`AbleQuotes`.`Info`, 
+`AbleQuotes`.`ModifyStamp`
+FROM `AbleQuotes` AS `AbleQuotes`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AppAccess" EntityType="Self.AppAccess" store:Type="Views" store:Schema="abab1199_qsync">
+            <DefiningQuery>SELECT
+`AppAccess`.`ID`, 
+`AppAccess`.`GrantAccess`, 
+`AppAccess`.`Name`, 
+`AppAccess`.`QuoteID`, 
+`AppAccess`.`Current`, 
+`AppAccess`.`Mobile`, 
+`AppAccess`.`UserName`, 
+`AppAccess`.`Password`, 
+`AppAccess`.`QSyncAccess`, 
+`AppAccess`.`userEmail`, 
+`AppAccess`.`ChangePW`
+FROM `AppAccess` AS `AppAccess`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="QuoteDateCorrections" EntityType="Self.QuoteDateCorrections" store:Type="Views" store:Schema="abab1199_qsync">
+            <DefiningQuery>SELECT
+`QuoteDateCorrections`.`QuoteNumber`, 
+`QuoteDateCorrections`.`Representative`, 
+`QuoteDateCorrections`.`Date1`, 
+`QuoteDateCorrections`.`ModifyStamp`
+FROM `QuoteDateCorrections` AS `QuoteDateCorrections`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="QuoteFL" EntityType="Self.QuoteFL" store:Type="Views" store:Schema="abab1199_qsync">
+            <DefiningQuery>SELECT
+`QuoteFL`.`QuoteNumber`, 
+`QuoteFL`.`Representative`, 
+`QuoteFL`.`repMobile`, 
+`QuoteFL`.`repID`, 
+`QuoteFL`.`Date1`, 
+`QuoteFL`.`MasterID`, 
+`QuoteFL`.`Company`, 
+`QuoteFL`.`Address`, 
+`QuoteFL`.`Suburb`, 
+`QuoteFL`.`State`, 
+`QuoteFL`.`PostCode`, 
+`QuoteFL`.`ContactPerson`, 
+`QuoteFL`.`Phone`, 
+`QuoteFL`.`Fax`, 
+`QuoteFL`.`Mobile`, 
+`QuoteFL`.`Email`, 
+`QuoteFL`.`JobLocation`, 
+`QuoteFL`.`StrataNo`, 
+`QuoteFL`.`RefNo`, 
+`QuoteFL`.`SiteContact`, 
+`QuoteFL`.`SCPhone`, 
+`QuoteFL`.`SCMobile`, 
+`QuoteFL`.`SCEmail`, 
+`QuoteFL`.`Attachments`, 
+`QuoteFL`.`COD`, 
+`QuoteFL`.`SvnDays`, 
+`QuoteFL`.`OrderNo`, 
+`QuoteFL`.`PROGRESSPAYMENT`, 
+`QuoteFL`.`Induction`, 
+`QuoteFL`.`Inductiontime`, 
+`QuoteFL`.`SWMS`, 
+`QuoteFL`.`App`, 
+`QuoteFL`.`Notes`, 
+`QuoteFL`.`Info`, 
+`QuoteFL`.`ModifyStamp`
+FROM `QuoteFL` AS `QuoteFL`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="QuoteItemsFL" EntityType="Self.QuoteItemsFL" store:Type="Views" store:Schema="abab1199_qsync">
+            <DefiningQuery>SELECT
+`QuoteItemsFL`.`ItemNumber`, 
+`QuoteItemsFL`.`QuoteNumber`, 
+`QuoteItemsFL`.`ItemDescription`, 
+`QuoteItemsFL`.`Details`, 
+`QuoteItemsFL`.`Price`, 
+`QuoteItemsFL`.`QNL`, 
+`QuoteItemsFL`.`ModifyStamp`
+FROM `QuoteItemsFL` AS `QuoteItemsFL`</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="abab1199_qsyncModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C06mm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COL_1" Type="Decimal" />
+          <Property Name="COL_2" Type="Int32" />
+          <Property Name="COL_3" Type="Int32" />
+          <Property Name="COL_4" Type="Int32" />
+          <Property Name="COL_5" Type="Int32" />
+          <Property Name="COL_6" Type="Int32" />
+          <Property Name="COL_7" Type="Int32" />
+          <Property Name="COL_8" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="COL_9" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="C08mm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COL_1" Type="Decimal" />
+          <Property Name="COL_2" Type="Int32" />
+          <Property Name="COL_3" Type="Int32" />
+          <Property Name="COL_4" Type="Int32" />
+          <Property Name="COL_5" Type="Int32" />
+          <Property Name="COL_6" Type="Int32" />
+          <Property Name="COL_7" Type="Int32" />
+          <Property Name="COL_8" Type="Int32" />
+          <Property Name="COL_9" Type="Int32" />
+          <Property Name="COL_10" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="COL_11" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="C10mm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COL_1" Type="Decimal" />
+          <Property Name="COL_2" Type="Int32" />
+          <Property Name="COL_3" Type="Int32" />
+          <Property Name="COL_4" Type="Int32" />
+          <Property Name="COL_5" Type="Int32" />
+          <Property Name="COL_6" Type="Int32" />
+          <Property Name="COL_7" Type="Int32" />
+          <Property Name="COL_8" Type="Int32" />
+          <Property Name="COL_9" Type="Int32" />
+          <Property Name="COL_10" Type="Int32" />
+          <Property Name="COL_11" Type="Int32" />
+          <Property Name="COL_12" Type="Int32" />
+          <Property Name="COL_13" Type="Int32" />
+          <Property Name="COL_14" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AluminiumShutter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COL_1" Type="Int32" />
+          <Property Name="COL_2" Type="Int32" />
+          <Property Name="COL_3" Type="Int32" />
+          <Property Name="COL_4" Type="Int32" />
+          <Property Name="COL_5" Type="Int32" />
+          <Property Name="COL_6" Type="Int32" />
+          <Property Name="COL_7" Type="Int32" />
+          <Property Name="COL_8" Type="Int32" />
+          <Property Name="COL_9" Type="Int32" />
+          <Property Name="COL_10" Type="Int32" />
+          <Property Name="COL_11" Type="Int32" />
+          <Property Name="COL_12" Type="Int32" />
+          <Property Name="COL_13" Type="Int32" />
+          <Property Name="COL_14" Type="Int32" />
+          <Property Name="COL_15" Type="Int32" />
+          <Property Name="COL_16" Type="Int32" />
+          <Property Name="COL_17" Type="Int32" />
+          <Property Name="COL_18" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BuildChanx">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MMBR" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="New_MMBR" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AppliedChanges" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="ChangeDate" Type="DateTime" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VersionReleaseDate" Type="DateTime" />
+          <Property Name="ReleaseComplete" Type="Int32" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="CustNo" />
+          </Key>
+          <Property Name="CustNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Suburb" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InstallJobs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="ServicedSites" Type="Boolean" />
+          <Property Name="Current" Type="Boolean" />
+          <Property Name="IntCustNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sites" Relationship="abab1199_qsyncModel.customersite" FromRole="customer" ToRole="site" />
+          <NavigationProperty Name="services" Relationship="abab1199_qsyncModel.customerservice" FromRole="customer" ToRole="service" />
+        </EntityType>
+        <EntityType Name="invitem">
+          <Key>
+            <PropertyRef Name="ItemNumber" />
+          </Key>
+          <Property Name="ItemNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceNumber" Type="Int32" Nullable="false" />
+          <Property Name="Item" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="QTY" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <NavigationProperty Name="invoice" Relationship="abab1199_qsyncModel.invoiceinvitem" FromRole="invitem" ToRole="invoice" />
+        </EntityType>
+        <EntityType Name="invoice">
+          <Key>
+            <PropertyRef Name="InvoiceNumber" />
+          </Key>
+          <Property Name="InvoiceNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrigInvNumber" Type="Int32" />
+          <Property Name="InvoiceDate" Type="DateTime" />
+          <Property Name="CustomerOrderNo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CompCust" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Suburb" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="SAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SSuburb" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="SState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SPostCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="InvCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="CustEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="User" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="invitems" Relationship="abab1199_qsyncModel.invoiceinvitem" FromRole="invoice" ToRole="invitem" />
+        </EntityType>
+        <EntityType Name="message">
+          <Key>
+            <PropertyRef Name="MsgID" />
+          </Key>
+          <Property Name="MsgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MsgDate" Type="DateTime" />
+          <Property Name="MsgPriority" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Heading" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Message1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PostDate" Type="DateTime" />
+          <Property Name="ExpiryDate" Type="DateTime" />
+          <Property Name="Hide" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nswpc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Pcode" Type="Double" />
+          <Property Name="Locality" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="quoteitem">
+          <Key>
+            <PropertyRef Name="ItemNumber" />
+          </Key>
+          <Property Name="ItemNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuoteNumber" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ItemDescription" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="QNL" Type="Int32" Nullable="false" />
+          <Property Name="ModifyStamp" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="quote" Relationship="abab1199_qsyncModel.QNL" FromRole="quoteitem" ToRole="quote" />
+        </EntityType>
+        <EntityType Name="quote">
+          <Key>
+            <PropertyRef Name="QuoteNumber" />
+          </Key>
+          <Property Name="QuoteNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Representative" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="repMobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="repID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Date1" Type="DateTime" />
+          <Property Name="MasterID" Type="Int32" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Suburb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="Int32" />
+          <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JobLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StrataNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SiteContact" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SCPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SCMobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SCEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Attachments" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="COD" Type="Int32" />
+          <Property Name="SvnDays" Type="Int32" />
+          <Property Name="OrderNo" Type="Int32" />
+          <Property Name="PROGRESSPAYMENT" Type="Int32" />
+          <Property Name="Induction" Type="Int32" />
+          <Property Name="Inductiontime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SWMS" Type="Int32" />
+          <Property Name="App" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="Info" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyStamp" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="quoteitems" Relationship="abab1199_qsyncModel.QNL" FromRole="quote" ToRole="quoteitem" />
+        </EntityType>
+        <EntityType Name="service">
+          <Key>
+            <PropertyRef Name="SvcNo" />
+          </Key>
+          <Property Name="SiteNo" Type="Int32" Nullable="false" />
+          <Property Name="CustNo" Type="Int32" Nullable="false" />
+          <Property Name="SvcNo" Type="Int32" Nullable="false" />
+          <Property Name="Fixer" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="SvcDate" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="c1" Type="Int32" />
+          <Property Name="c2" Type="Int32" />
+          <Property Name="c3" Type="Int32" />
+          <Property Name="c4" Type="Int32" />
+          <Property Name="c5" Type="Int32" />
+          <Property Name="c6" Type="Int32" />
+          <Property Name="c7" Type="Int32" />
+          <Property Name="c8" Type="Int32" />
+          <Property Name="c9" Type="Int32" />
+          <Property Name="c10" Type="Int32" />
+          <Property Name="c11" Type="Int32" />
+          <Property Name="c12" Type="Int32" />
+          <Property Name="c13" Type="Int32" />
+          <Property Name="c14" Type="Int32" />
+          <Property Name="c15" Type="Int32" />
+          <Property Name="c16" Type="Int32" />
+          <Property Name="c17" Type="Int32" />
+          <Property Name="Asmt" Type="Int32" />
+          <Property Name="rg" Type="Int32" />
+          <Property Name="rfg" Type="Int32" />
+          <Property Name="stg" Type="Int32" />
+          <Property Name="repsl" Type="Int32" />
+          <Property Name="strb" Type="Int32" />
+          <Property Name="refc" Type="Int32" />
+          <Property Name="chc" Type="Int32" />
+          <Property Name="chf" Type="Int32" />
+          <Property Name="fixerrep" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="tr1" Type="Int32" />
+          <Property Name="tr2" Type="Int32" />
+          <Property Name="tr3" Type="Int32" />
+          <Property Name="inv" Type="Int32" />
+          <NavigationProperty Name="customer" Relationship="abab1199_qsyncModel.customerservice" FromRole="service" ToRole="customer" />
+          <NavigationProperty Name="site" Relationship="abab1199_qsyncModel.siteservice" FromRole="service" ToRole="site" />
+        </EntityType>
+        <EntityType Name="shuttersheet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuoteID" Type="Int32" Nullable="false" />
+          <Property Name="ContMasterID" Type="Int32" Nullable="false" />
+          <Property Name="JobNumber" Type="Double" />
+          <Property Name="JobNumber2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" />
+          <Property Name="CustomerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StreetAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Suburb" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Order_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Standard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Width" Type="Double" />
+          <Property Name="Height" Type="Double" />
+          <Property Name="Centre" Type="Double" />
+          <Property Name="Springs" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SlatSize" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gauge" Type="Double" />
+          <Property Name="Collars" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RevMount" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="WireByAble" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FixingType" Type="Double" />
+          <Property Name="BottomRail" Type="Double" />
+          <Property Name="Drive" Type="Double" />
+          <Property Name="Finish" Type="Double" />
+          <Property Name="Hand" Type="Double" />
+          <Property Name="CapRight" Type="Boolean" />
+          <Property Name="CapLeft" Type="Boolean" />
+          <Property Name="Windlock" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TrackSize" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DriveFixing" Type="Double" />
+          <Property Name="Options1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Options2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Options3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Options4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Options5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Colour" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="site">
+          <Key>
+            <PropertyRef Name="SiteNo" />
+          </Key>
+          <Property Name="CustNo" Type="Int32" Nullable="false" />
+          <Property Name="SiteNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SiteContact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Suburb" Type="Int32" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaxNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InstallRefNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceCustomer" Type="Boolean" />
+          <Property Name="LastServiceDate" Type="DateTime" />
+          <Property Name="NextServiceDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C3MonthSvc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C6MonthSvc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YearlyService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SingleService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="MapRef" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AcctCust" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="customer" Relationship="abab1199_qsyncModel.customersite" FromRole="site" ToRole="customer" />
+          <NavigationProperty Name="services" Relationship="abab1199_qsyncModel.siteservice" FromRole="site" ToRole="service" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GrantAccess" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="QuoteID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Current" Type="Boolean" />
+          <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordOld" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QSyncAccess" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="userEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ChangePW" Type="Int32" />
+        </EntityType>
+        <EntityType Name="state">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="StorageItem" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tandc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="lineNum" Type="Int32" />
+          <Property Name="terms" Type="String" MaxLength="503" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Int32" />
+          <Property Name="mod_Stamp" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="variable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gtype" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Item" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="StorageItem" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="AbleDBEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C06mm" EntityType="Self.C06mm" />
+          <EntitySet Name="C08mm" EntityType="Self.C08mm" />
+          <EntitySet Name="C10mm" EntityType="Self.C10mm" />
+          <EntitySet Name="AluminiumShutters" EntityType="Self.AluminiumShutter" />
+          <EntitySet Name="BuildChanges" EntityType="Self.BuildChanx" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="invitems" EntityType="Self.invitem" />
+          <EntitySet Name="invoices" EntityType="Self.invoice" />
+          <EntitySet Name="messages" EntityType="Self.message" />
+          <EntitySet Name="nswpcs" EntityType="Self.nswpc" />
+          <EntitySet Name="quoteitems" EntityType="Self.quoteitem" />
+          <EntitySet Name="quotes" EntityType="Self.quote" />
+          <EntitySet Name="services" EntityType="Self.service" />
+          <EntitySet Name="shuttersheets" EntityType="Self.shuttersheet" />
+          <EntitySet Name="sites" EntityType="Self.site" />
+          <EntitySet Name="staffs" EntityType="Self.staff" />
+          <EntitySet Name="states" EntityType="Self.state" />
+          <EntitySet Name="tandcs" EntityType="Self.tandc" />
+          <EntitySet Name="variables" EntityType="Self.variable" />
+          <AssociationSet Name="QNL" Association="abab1199_qsyncModel.QNL">
+            <End Role="quote" EntitySet="quotes" />
+            <End Role="quoteitem" EntitySet="quoteitems" />
+          </AssociationSet>
+          <AssociationSet Name="invoiceinvitem" Association="abab1199_qsyncModel.invoiceinvitem">
+            <End Role="invoice" EntitySet="invoices" />
+            <End Role="invitem" EntitySet="invitems" />
+          </AssociationSet>
+          <AssociationSet Name="customersite" Association="abab1199_qsyncModel.customersite">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="site" EntitySet="sites" />
+          </AssociationSet>
+          <AssociationSet Name="customerservice" Association="abab1199_qsyncModel.customerservice">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="service" EntitySet="services" />
+          </AssociationSet>
+          <AssociationSet Name="siteservice" Association="abab1199_qsyncModel.siteservice">
+            <End Role="site" EntitySet="sites" />
+            <End Role="service" EntitySet="services" />
+          </AssociationSet>
+          <EntitySet Name="customercontmasters" EntityType="abab1199_qsyncModel.customercontmaster" />
+          <EntitySet Name="customermasters" EntityType="abab1199_qsyncModel.customermaster" />
+          <EntitySet Name="qtPreRepIDs" EntityType="abab1199_qsyncModel.qtPreRepID" />
+          <EntitySet Name="AbleQuotes" EntityType="abab1199_qsyncModel.AbleQuote" />
+          <EntitySet Name="AppAccesses" EntityType="abab1199_qsyncModel.AppAccess" />
+          <EntitySet Name="QuoteDateCorrections" EntityType="abab1199_qsyncModel.QuoteDateCorrection" />
+          <EntitySet Name="QuoteFLs" EntityType="abab1199_qsyncModel.QuoteFL" />
+          <EntitySet Name="QuoteItemsFLs" EntityType="abab1199_qsyncModel.QuoteItemsFL" />
+          <FunctionImport Name="get_easyLoad" ReturnType="Collection(abab1199_qsyncModel.get_easyLoad_Result)">
+            <Parameter Name="page_from" Mode="In" Type="Int32" />
+            <Parameter Name="page_size" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="QUOTESLOADING" ReturnType="Collection(abab1199_qsyncModel.QUOTESLOADING_Result)" />
+        </EntityContainer>
+        <Association Name="QNL">
+          <End Type="abab1199_qsyncModel.quote" Role="quote" Multiplicity="1" />
+          <End Type="abab1199_qsyncModel.quoteitem" Role="quoteitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quote">
+              <PropertyRef Name="QuoteNumber" />
+            </Principal>
+            <Dependent Role="quoteitem">
+              <PropertyRef Name="QNL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="invoiceinvitem">
+          <End Type="abab1199_qsyncModel.invoice" Role="invoice" Multiplicity="1" />
+          <End Type="abab1199_qsyncModel.invitem" Role="invitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="invoice">
+              <PropertyRef Name="InvoiceNumber" />
+            </Principal>
+            <Dependent Role="invitem">
+              <PropertyRef Name="InvoiceNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customersite">
+          <End Type="abab1199_qsyncModel.customer" Role="customer" Multiplicity="1" />
+          <End Type="abab1199_qsyncModel.site" Role="site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="CustNo" />
+            </Principal>
+            <Dependent Role="site">
+              <PropertyRef Name="CustNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customerservice">
+          <End Type="abab1199_qsyncModel.customer" Role="customer" Multiplicity="1" />
+          <End Type="abab1199_qsyncModel.service" Role="service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="CustNo" />
+            </Principal>
+            <Dependent Role="service">
+              <PropertyRef Name="CustNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="siteservice">
+          <End Type="abab1199_qsyncModel.site" Role="site" Multiplicity="1" />
+          <End Type="abab1199_qsyncModel.service" Role="service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="site">
+              <PropertyRef Name="SiteNo" />
+            </Principal>
+            <Dependent Role="service">
+              <PropertyRef Name="SiteNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="customercontmaster">
+          <Key>
+            <PropertyRef Name="MasterCC" />
+          </Key>
+          <Property Name="MasterCC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MCID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Mob" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Current" Type="Int32" />
+        </EntityType>
+        <EntityType Name="customermaster">
+          <Key>
+            <PropertyRef Name="MasterID" />
+          </Key>
+          <Property Name="MasterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompCust" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Suburb" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="PC" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="MainPh" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MainFax" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MainMob" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MainEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Current" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="qtPreRepID">
+          <Key>
+            <PropertyRef Name="QuoteNumber" />
+          </Key>
+          <Property Name="QuoteNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Representative" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="repMobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="repID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Date1" Type="DateTime" />
+          <Property Name="MasterID" Type="Int32" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Suburb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="Int32" />
+          <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JobLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StrataNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SiteContact" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SCPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SCMobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SCEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Attachments" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="COD" Type="Int32" />
+          <Property Name="SvnDays" Type="Int32" />
+          <Property Name="OrderNo" Type="Int32" />
+          <Property Name="PROGRESSPAYMENT" Type="Int32" />
+          <Property Name="Induction" Type="Int32" />
+          <Property Name="Inductiontime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SWMS" Type="Int32" />
+          <Property Name="App" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="Info" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyStamp" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="AbleQuote">
+          <Key>
+            <PropertyRef Name="QuoteNumber" />
+            <PropertyRef Name="ModifyStamp" />
+          </Key>
+          <Property Name="QuoteNumber" Type="Int32" Nullable="false" />
+          <Property Name="Representative" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="repMobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="repID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Date1" Type="DateTime" />
+          <Property Name="MasterID" Type="Int32" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Suburb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="Int32" />
+          <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JobLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StrataNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SiteContact" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SCPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SCMobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SCEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Attachments" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="COD" Type="Int32" />
+          <Property Name="SvnDays" Type="Int32" />
+          <Property Name="OrderNo" Type="Int32" />
+          <Property Name="PROGRESSPAYMENT" Type="Int32" />
+          <Property Name="Induction" Type="Int32" />
+          <Property Name="Inductiontime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SWMS" Type="Int32" />
+          <Property Name="App" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="Info" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyStamp" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppAccess">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="GrantAccess" />
+            <PropertyRef Name="userEmail" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="GrantAccess" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="QuoteID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Current" Type="Boolean" />
+          <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="QSyncAccess" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="userEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChangePW" Type="Int32" />
+        </EntityType>
+        <EntityType Name="QuoteDateCorrection">
+          <Key>
+            <PropertyRef Name="QuoteNumber" />
+            <PropertyRef Name="ModifyStamp" />
+          </Key>
+          <Property Name="QuoteNumber" Type="Int32" Nullable="false" />
+          <Property Name="Representative" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Date1" Type="DateTime" />
+          <Property Name="ModifyStamp" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuoteFL">
+          <Key>
+            <PropertyRef Name="QuoteNumber" />
+            <PropertyRef Name="ModifyStamp" />
+          </Key>
+          <Property Name="QuoteNumber" Type="Int32" Nullable="false" />
+          <Property Name="Representative" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="repMobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="repID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Date1" Type="DateTime" />
+          <Property Name="MasterID" Type="Int32" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Suburb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="Int32" />
+          <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JobLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StrataNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SiteContact" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SCPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SCMobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SCEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Attachments" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="COD" Type="Int32" />
+          <Property Name="SvnDays" Type="Int32" />
+          <Property Name="OrderNo" Type="Int32" />
+          <Property Name="PROGRESSPAYMENT" Type="Int32" />
+          <Property Name="Induction" Type="Int32" />
+          <Property Name="Inductiontime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SWMS" Type="Int32" />
+          <Property Name="App" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="Info" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifyStamp" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuoteItemsFL">
+          <Key>
+            <PropertyRef Name="ItemNumber" />
+            <PropertyRef Name="QNL" />
+            <PropertyRef Name="ModifyStamp" />
+          </Key>
+          <Property Name="ItemNumber" Type="Int32" Nullable="false" />
+          <Property Name="QuoteNumber" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ItemDescription" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="QNL" Type="Int32" Nullable="false" />
+          <Property Name="ModifyStamp" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="get_easyLoad_Result" />
+        <ComplexType Name="QUOTESLOADING_Result" />
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="abab1199_qsyncModelStoreContainer" CdmEntityContainer="AbleDBEntity">
+          <EntitySetMapping Name="C06mm">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.C06mm">
+              <MappingFragment StoreEntitySet="06mm">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="COL_1" ColumnName="COL 1" />
+                <ScalarProperty Name="COL_2" ColumnName="COL 2" />
+                <ScalarProperty Name="COL_3" ColumnName="COL 3" />
+                <ScalarProperty Name="COL_4" ColumnName="COL 4" />
+                <ScalarProperty Name="COL_5" ColumnName="COL 5" />
+                <ScalarProperty Name="COL_6" ColumnName="COL 6" />
+                <ScalarProperty Name="COL_7" ColumnName="COL 7" />
+                <ScalarProperty Name="COL_8" ColumnName="COL 8" />
+                <ScalarProperty Name="COL_9" ColumnName="COL 9" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C08mm">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.C08mm">
+              <MappingFragment StoreEntitySet="08mm">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="COL_1" ColumnName="COL 1" />
+                <ScalarProperty Name="COL_2" ColumnName="COL 2" />
+                <ScalarProperty Name="COL_3" ColumnName="COL 3" />
+                <ScalarProperty Name="COL_4" ColumnName="COL 4" />
+                <ScalarProperty Name="COL_5" ColumnName="COL 5" />
+                <ScalarProperty Name="COL_6" ColumnName="COL 6" />
+                <ScalarProperty Name="COL_7" ColumnName="COL 7" />
+                <ScalarProperty Name="COL_8" ColumnName="COL 8" />
+                <ScalarProperty Name="COL_9" ColumnName="COL 9" />
+                <ScalarProperty Name="COL_10" ColumnName="COL 10" />
+                <ScalarProperty Name="COL_11" ColumnName="COL 11" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C10mm">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.C10mm">
+              <MappingFragment StoreEntitySet="10mm">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="COL_1" ColumnName="COL 1" />
+                <ScalarProperty Name="COL_2" ColumnName="COL 2" />
+                <ScalarProperty Name="COL_3" ColumnName="COL 3" />
+                <ScalarProperty Name="COL_4" ColumnName="COL 4" />
+                <ScalarProperty Name="COL_5" ColumnName="COL 5" />
+                <ScalarProperty Name="COL_6" ColumnName="COL 6" />
+                <ScalarProperty Name="COL_7" ColumnName="COL 7" />
+                <ScalarProperty Name="COL_8" ColumnName="COL 8" />
+                <ScalarProperty Name="COL_9" ColumnName="COL 9" />
+                <ScalarProperty Name="COL_10" ColumnName="COL 10" />
+                <ScalarProperty Name="COL_11" ColumnName="COL 11" />
+                <ScalarProperty Name="COL_12" ColumnName="COL 12" />
+                <ScalarProperty Name="COL_13" ColumnName="COL 13" />
+                <ScalarProperty Name="COL_14" ColumnName="COL 14" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AluminiumShutters">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.AluminiumShutter">
+              <MappingFragment StoreEntitySet="AluminiumShutters">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="COL_1" ColumnName="COL 1" />
+                <ScalarProperty Name="COL_2" ColumnName="COL 2" />
+                <ScalarProperty Name="COL_3" ColumnName="COL 3" />
+                <ScalarProperty Name="COL_4" ColumnName="COL 4" />
+                <ScalarProperty Name="COL_5" ColumnName="COL 5" />
+                <ScalarProperty Name="COL_6" ColumnName="COL 6" />
+                <ScalarProperty Name="COL_7" ColumnName="COL 7" />
+                <ScalarProperty Name="COL_8" ColumnName="COL 8" />
+                <ScalarProperty Name="COL_9" ColumnName="COL 9" />
+                <ScalarProperty Name="COL_10" ColumnName="COL 10" />
+                <ScalarProperty Name="COL_11" ColumnName="COL 11" />
+                <ScalarProperty Name="COL_12" ColumnName="COL 12" />
+                <ScalarProperty Name="COL_13" ColumnName="COL 13" />
+                <ScalarProperty Name="COL_14" ColumnName="COL 14" />
+                <ScalarProperty Name="COL_15" ColumnName="COL 15" />
+                <ScalarProperty Name="COL_16" ColumnName="COL 16" />
+                <ScalarProperty Name="COL_17" ColumnName="COL 17" />
+                <ScalarProperty Name="COL_18" ColumnName="COL 18" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BuildChanges">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.BuildChanx">
+              <MappingFragment StoreEntitySet="BuildChanges">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MMBR" ColumnName="MMBR" />
+                <ScalarProperty Name="New_MMBR" ColumnName="New_MMBR" />
+                <ScalarProperty Name="AppliedChanges" ColumnName="AppliedChanges" />
+                <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="VersionReleaseDate" ColumnName="VersionReleaseDate" />
+                <ScalarProperty Name="ReleaseComplete" ColumnName="ReleaseComplete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.customer">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="CustNo" ColumnName="CustNo" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="InstallJobs" ColumnName="InstallJobs" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ServicedSites" ColumnName="ServicedSites" />
+                <ScalarProperty Name="Current" ColumnName="Current" />
+                <ScalarProperty Name="IntCustNo" ColumnName="IntCustNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invitems">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.invitem">
+              <MappingFragment StoreEntitySet="invitems">
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invoices">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.invoice">
+              <MappingFragment StoreEntitySet="invoices">
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="OrigInvNumber" ColumnName="OrigInvNumber" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="CustomerOrderNo" ColumnName="CustomerOrderNo" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="CompCust" ColumnName="CompCust" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="SAddress" ColumnName="SAddress" />
+                <ScalarProperty Name="SSuburb" ColumnName="SSuburb" />
+                <ScalarProperty Name="SState" ColumnName="SState" />
+                <ScalarProperty Name="SPostCode" ColumnName="SPostCode" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="InvCode" ColumnName="InvCode" />
+                <ScalarProperty Name="CustEmail" ColumnName="CustEmail" />
+                <ScalarProperty Name="User" ColumnName="User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="messages">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.message">
+              <MappingFragment StoreEntitySet="messages">
+                <ScalarProperty Name="MsgID" ColumnName="MsgID" />
+                <ScalarProperty Name="MsgDate" ColumnName="MsgDate" />
+                <ScalarProperty Name="MsgPriority" ColumnName="MsgPriority" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="Message1" ColumnName="Message" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="Hide" ColumnName="Hide" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nswpcs">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.nswpc">
+              <MappingFragment StoreEntitySet="nswpc">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Pcode" ColumnName="Pcode" />
+                <ScalarProperty Name="Locality" ColumnName="Locality" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="quoteitems">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.quoteitem">
+              <MappingFragment StoreEntitySet="quoteitems">
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+                <ScalarProperty Name="QuoteNumber" ColumnName="QuoteNumber" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="QNL" ColumnName="QNL" />
+                <ScalarProperty Name="ModifyStamp" ColumnName="ModifyStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="quotes">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.quote">
+              <MappingFragment StoreEntitySet="quotes">
+                <ScalarProperty Name="QuoteNumber" ColumnName="QuoteNumber" />
+                <ScalarProperty Name="Representative" ColumnName="Representative" />
+                <ScalarProperty Name="repMobile" ColumnName="repMobile" />
+                <ScalarProperty Name="repID" ColumnName="repID" />
+                <ScalarProperty Name="Date1" ColumnName="Date1" />
+                <ScalarProperty Name="MasterID" ColumnName="MasterID" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="JobLocation" ColumnName="JobLocation" />
+                <ScalarProperty Name="StrataNo" ColumnName="StrataNo" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="SiteContact" ColumnName="SiteContact" />
+                <ScalarProperty Name="SCPhone" ColumnName="SCPhone" />
+                <ScalarProperty Name="SCMobile" ColumnName="SCMobile" />
+                <ScalarProperty Name="SCEmail" ColumnName="SCEmail" />
+                <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+                <ScalarProperty Name="SvnDays" ColumnName="SvnDays" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="PROGRESSPAYMENT" ColumnName="PROGRESSPAYMENT" />
+                <ScalarProperty Name="Induction" ColumnName="Induction" />
+                <ScalarProperty Name="Inductiontime" ColumnName="Inductiontime" />
+                <ScalarProperty Name="SWMS" ColumnName="SWMS" />
+                <ScalarProperty Name="App" ColumnName="App" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="ModifyStamp" ColumnName="ModifyStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="services">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.service">
+              <MappingFragment StoreEntitySet="services">
+                <ScalarProperty Name="SiteNo" ColumnName="SiteNo" />
+                <ScalarProperty Name="CustNo" ColumnName="CustNo" />
+                <ScalarProperty Name="SvcNo" ColumnName="SvcNo" />
+                <ScalarProperty Name="Fixer" ColumnName="Fixer" />
+                <ScalarProperty Name="SvcDate" ColumnName="SvcDate" />
+                <ScalarProperty Name="c1" ColumnName="c1" />
+                <ScalarProperty Name="c2" ColumnName="c2" />
+                <ScalarProperty Name="c3" ColumnName="c3" />
+                <ScalarProperty Name="c4" ColumnName="c4" />
+                <ScalarProperty Name="c5" ColumnName="c5" />
+                <ScalarProperty Name="c6" ColumnName="c6" />
+                <ScalarProperty Name="c7" ColumnName="c7" />
+                <ScalarProperty Name="c8" ColumnName="c8" />
+                <ScalarProperty Name="c9" ColumnName="c9" />
+                <ScalarProperty Name="c10" ColumnName="c10" />
+                <ScalarProperty Name="c11" ColumnName="c11" />
+                <ScalarProperty Name="c12" ColumnName="c12" />
+                <ScalarProperty Name="c13" ColumnName="c13" />
+                <ScalarProperty Name="c14" ColumnName="c14" />
+                <ScalarProperty Name="c15" ColumnName="c15" />
+                <ScalarProperty Name="c16" ColumnName="c16" />
+                <ScalarProperty Name="c17" ColumnName="c17" />
+                <ScalarProperty Name="Asmt" ColumnName="Asmt" />
+                <ScalarProperty Name="rg" ColumnName="rg" />
+                <ScalarProperty Name="rfg" ColumnName="rfg" />
+                <ScalarProperty Name="stg" ColumnName="stg" />
+                <ScalarProperty Name="repsl" ColumnName="repsl" />
+                <ScalarProperty Name="strb" ColumnName="strb" />
+                <ScalarProperty Name="refc" ColumnName="refc" />
+                <ScalarProperty Name="chc" ColumnName="chc" />
+                <ScalarProperty Name="chf" ColumnName="chf" />
+                <ScalarProperty Name="fixerrep" ColumnName="fixerrep" />
+                <ScalarProperty Name="tr1" ColumnName="tr1" />
+                <ScalarProperty Name="tr2" ColumnName="tr2" />
+                <ScalarProperty Name="tr3" ColumnName="tr3" />
+                <ScalarProperty Name="inv" ColumnName="inv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shuttersheets">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.shuttersheet">
+              <MappingFragment StoreEntitySet="shuttersheet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="ContMasterID" ColumnName="ContMasterID" />
+                <ScalarProperty Name="JobNumber" ColumnName="JobNumber" />
+                <ScalarProperty Name="JobNumber2" ColumnName="JobNumber2" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Order_Number" ColumnName="Order_Number" />
+                <ScalarProperty Name="Standard" ColumnName="Standard" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Centre" ColumnName="Centre" />
+                <ScalarProperty Name="Springs" ColumnName="Springs" />
+                <ScalarProperty Name="SlatSize" ColumnName="SlatSize" />
+                <ScalarProperty Name="Gauge" ColumnName="Gauge" />
+                <ScalarProperty Name="Collars" ColumnName="Collars" />
+                <ScalarProperty Name="RevMount" ColumnName="RevMount" />
+                <ScalarProperty Name="WireByAble" ColumnName="WireByAble" />
+                <ScalarProperty Name="FixingType" ColumnName="FixingType" />
+                <ScalarProperty Name="BottomRail" ColumnName="BottomRail" />
+                <ScalarProperty Name="Drive" ColumnName="Drive" />
+                <ScalarProperty Name="Finish" ColumnName="Finish" />
+                <ScalarProperty Name="Hand" ColumnName="Hand" />
+                <ScalarProperty Name="CapRight" ColumnName="CapRight" />
+                <ScalarProperty Name="CapLeft" ColumnName="CapLeft" />
+                <ScalarProperty Name="Windlock" ColumnName="Windlock" />
+                <ScalarProperty Name="TrackSize" ColumnName="TrackSize" />
+                <ScalarProperty Name="DriveFixing" ColumnName="DriveFixing" />
+                <ScalarProperty Name="Options1" ColumnName="Options1" />
+                <ScalarProperty Name="Options2" ColumnName="Options2" />
+                <ScalarProperty Name="Options3" ColumnName="Options3" />
+                <ScalarProperty Name="Options4" ColumnName="Options4" />
+                <ScalarProperty Name="Options5" ColumnName="Options5" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sites">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.site">
+              <MappingFragment StoreEntitySet="sites">
+                <ScalarProperty Name="CustNo" ColumnName="CustNo" />
+                <ScalarProperty Name="SiteNo" ColumnName="SiteNo" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="SiteContact" ColumnName="SiteContact" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="InstallRefNumber" ColumnName="InstallRefNumber" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ServiceCustomer" ColumnName="ServiceCustomer" />
+                <ScalarProperty Name="LastServiceDate" ColumnName="LastServiceDate" />
+                <ScalarProperty Name="NextServiceDate" ColumnName="NextServiceDate" />
+                <ScalarProperty Name="C3MonthSvc" ColumnName="3MonthSvc" />
+                <ScalarProperty Name="C6MonthSvc" ColumnName="6MonthSvc" />
+                <ScalarProperty Name="YearlyService" ColumnName="YearlyService" />
+                <ScalarProperty Name="SingleService" ColumnName="SingleService" />
+                <ScalarProperty Name="ConfirmService" ColumnName="ConfirmService" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="MapRef" ColumnName="MapRef" />
+                <ScalarProperty Name="AcctCust" ColumnName="AcctCust" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staffs">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.staff">
+              <MappingFragment StoreEntitySet="staff">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GrantAccess" ColumnName="GrantAccess" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="Current" ColumnName="Current" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordOld" ColumnName="PasswordOld" />
+                <ScalarProperty Name="QSyncAccess" ColumnName="QSyncAccess" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="ChangePW" ColumnName="ChangePW" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="states">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.state">
+              <MappingFragment StoreEntitySet="states">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="StorageItem" ColumnName="StorageItem" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tandcs">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.tandc">
+              <MappingFragment StoreEntitySet="tandc">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lineNum" ColumnName="lineNum" />
+                <ScalarProperty Name="terms" ColumnName="terms" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="mod_Stamp" ColumnName="mod_Stamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="variables">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.variable">
+              <MappingFragment StoreEntitySet="variables">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gtype" ColumnName="gtype" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="StorageItem" ColumnName="StorageItem" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customercontmasters">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.customercontmaster">
+              <MappingFragment StoreEntitySet="customercontmaster">
+                <ScalarProperty Name="Current" ColumnName="Current" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mob" ColumnName="Mob" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MCID" ColumnName="MCID" />
+                <ScalarProperty Name="MasterCC" ColumnName="MasterCC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customermasters">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.customermaster">
+              <MappingFragment StoreEntitySet="customermaster">
+                <ScalarProperty Name="Current" ColumnName="Current" />
+                <ScalarProperty Name="MainEmail" ColumnName="MainEmail" />
+                <ScalarProperty Name="MainMob" ColumnName="MainMob" />
+                <ScalarProperty Name="MainFax" ColumnName="MainFax" />
+                <ScalarProperty Name="MainPh" ColumnName="MainPh" />
+                <ScalarProperty Name="PC" ColumnName="PC" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompCust" ColumnName="CompCust" />
+                <ScalarProperty Name="MasterID" ColumnName="MasterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="qtPreRepIDs">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.qtPreRepID">
+              <MappingFragment StoreEntitySet="qtPreRepID">
+                <ScalarProperty Name="ModifyStamp" ColumnName="ModifyStamp" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="App" ColumnName="App" />
+                <ScalarProperty Name="SWMS" ColumnName="SWMS" />
+                <ScalarProperty Name="Inductiontime" ColumnName="Inductiontime" />
+                <ScalarProperty Name="Induction" ColumnName="Induction" />
+                <ScalarProperty Name="PROGRESSPAYMENT" ColumnName="PROGRESSPAYMENT" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="SvnDays" ColumnName="SvnDays" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+                <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+                <ScalarProperty Name="SCEmail" ColumnName="SCEmail" />
+                <ScalarProperty Name="SCMobile" ColumnName="SCMobile" />
+                <ScalarProperty Name="SCPhone" ColumnName="SCPhone" />
+                <ScalarProperty Name="SiteContact" ColumnName="SiteContact" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="StrataNo" ColumnName="StrataNo" />
+                <ScalarProperty Name="JobLocation" ColumnName="JobLocation" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="MasterID" ColumnName="MasterID" />
+                <ScalarProperty Name="Date1" ColumnName="Date1" />
+                <ScalarProperty Name="repID" ColumnName="repID" />
+                <ScalarProperty Name="repMobile" ColumnName="repMobile" />
+                <ScalarProperty Name="Representative" ColumnName="Representative" />
+                <ScalarProperty Name="QuoteNumber" ColumnName="QuoteNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AbleQuotes">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.AbleQuote">
+              <MappingFragment StoreEntitySet="AbleQuotes">
+                <ScalarProperty Name="ModifyStamp" ColumnName="ModifyStamp" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="App" ColumnName="App" />
+                <ScalarProperty Name="SWMS" ColumnName="SWMS" />
+                <ScalarProperty Name="Inductiontime" ColumnName="Inductiontime" />
+                <ScalarProperty Name="Induction" ColumnName="Induction" />
+                <ScalarProperty Name="PROGRESSPAYMENT" ColumnName="PROGRESSPAYMENT" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="SvnDays" ColumnName="SvnDays" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+                <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+                <ScalarProperty Name="SCEmail" ColumnName="SCEmail" />
+                <ScalarProperty Name="SCMobile" ColumnName="SCMobile" />
+                <ScalarProperty Name="SCPhone" ColumnName="SCPhone" />
+                <ScalarProperty Name="SiteContact" ColumnName="SiteContact" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="StrataNo" ColumnName="StrataNo" />
+                <ScalarProperty Name="JobLocation" ColumnName="JobLocation" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="MasterID" ColumnName="MasterID" />
+                <ScalarProperty Name="Date1" ColumnName="Date1" />
+                <ScalarProperty Name="repID" ColumnName="repID" />
+                <ScalarProperty Name="repMobile" ColumnName="repMobile" />
+                <ScalarProperty Name="Representative" ColumnName="Representative" />
+                <ScalarProperty Name="QuoteNumber" ColumnName="QuoteNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppAccesses">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.AppAccess">
+              <MappingFragment StoreEntitySet="AppAccess">
+                <ScalarProperty Name="ChangePW" ColumnName="ChangePW" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="QSyncAccess" ColumnName="QSyncAccess" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Current" ColumnName="Current" />
+                <ScalarProperty Name="QuoteID" ColumnName="QuoteID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GrantAccess" ColumnName="GrantAccess" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuoteDateCorrections">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.QuoteDateCorrection">
+              <MappingFragment StoreEntitySet="QuoteDateCorrections">
+                <ScalarProperty Name="ModifyStamp" ColumnName="ModifyStamp" />
+                <ScalarProperty Name="Date1" ColumnName="Date1" />
+                <ScalarProperty Name="Representative" ColumnName="Representative" />
+                <ScalarProperty Name="QuoteNumber" ColumnName="QuoteNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuoteFLs">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.QuoteFL">
+              <MappingFragment StoreEntitySet="QuoteFL">
+                <ScalarProperty Name="ModifyStamp" ColumnName="ModifyStamp" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="App" ColumnName="App" />
+                <ScalarProperty Name="SWMS" ColumnName="SWMS" />
+                <ScalarProperty Name="Inductiontime" ColumnName="Inductiontime" />
+                <ScalarProperty Name="Induction" ColumnName="Induction" />
+                <ScalarProperty Name="PROGRESSPAYMENT" ColumnName="PROGRESSPAYMENT" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="SvnDays" ColumnName="SvnDays" />
+                <ScalarProperty Name="COD" ColumnName="COD" />
+                <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+                <ScalarProperty Name="SCEmail" ColumnName="SCEmail" />
+                <ScalarProperty Name="SCMobile" ColumnName="SCMobile" />
+                <ScalarProperty Name="SCPhone" ColumnName="SCPhone" />
+                <ScalarProperty Name="SiteContact" ColumnName="SiteContact" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="StrataNo" ColumnName="StrataNo" />
+                <ScalarProperty Name="JobLocation" ColumnName="JobLocation" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="MasterID" ColumnName="MasterID" />
+                <ScalarProperty Name="Date1" ColumnName="Date1" />
+                <ScalarProperty Name="repID" ColumnName="repID" />
+                <ScalarProperty Name="repMobile" ColumnName="repMobile" />
+                <ScalarProperty Name="Representative" ColumnName="Representative" />
+                <ScalarProperty Name="QuoteNumber" ColumnName="QuoteNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuoteItemsFLs">
+            <EntityTypeMapping TypeName="abab1199_qsyncModel.QuoteItemsFL">
+              <MappingFragment StoreEntitySet="QuoteItemsFL">
+                <ScalarProperty Name="ModifyStamp" ColumnName="ModifyStamp" />
+                <ScalarProperty Name="QNL" ColumnName="QNL" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="QuoteNumber" ColumnName="QuoteNumber" />
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="get_easyLoad" FunctionName="abab1199_qsyncModel.Store.get_easyLoad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="abab1199_qsyncModel.get_easyLoad_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="QUOTESLOADING" FunctionName="abab1199_qsyncModel.Store.QUOTESLOADING">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="abab1199_qsyncModel.QUOTESLOADING_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
