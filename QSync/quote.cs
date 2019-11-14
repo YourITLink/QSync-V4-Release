@@ -49,6 +49,7 @@ namespace QSync
         public Nullable<int> OrderNo { get; set; }
         public Nullable<int> PROGRESSPAYMENT { get; set; }
         public Nullable<int> Induction { get; set; }
+        public bool? induction { get; internal set; }
         public string Inductiontime { get; set; }
         public Nullable<int> SWMS { get; set; }
         public string App { get; set; }

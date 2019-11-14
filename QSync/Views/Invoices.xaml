@@ -11,14 +11,14 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
         xmlns:QSync="clr-namespace:QSync" x:Class="QSync.Views.Invoices"
-        TextElement.Foreground="{DynamicResource WordBlueBrush}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
-        TextElement.FontSize="{StaticResource FontSizeRegular}"
-        FontFamily="{StaticResource App}"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
         Title="QSync V4.0 by Your IT Link - Able Door Services (NSW) Pty Ltd" Height="1000" Width="1920" ScrollViewer.CanContentScroll="True"
-        WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded">
+        Icon="/Resources/Icon_64x64.ico" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded">
     <Window.Resources>
         <!-- Insert here your Data Templates -->
         <DataTemplate x:Key="SampleTemplate">

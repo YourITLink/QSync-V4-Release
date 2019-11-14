@@ -24,23 +24,41 @@
     <Setting Name="MyUser" Type="System.String" Scope="User">
       <Value Profile="(Default)">@abledoors.com.au</Value>
     </Setting>
+    <Setting Name="progEmail" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">qsync-able@youritlink.com.au</Value>
+    </Setting>
+    <Setting Name="progPW" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">WPT$Matrix4390</Value>
+    </Setting>
+    <Setting Name="progSMTP" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">outlook.office365.com</Value>
+    </Setting>
+    <Setting Name="progSMTPPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">587</Value>
+    </Setting>
+    <Setting Name="progReplyTo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">qsync-able@youritlink.com.au</Value>
+    </Setting>
     <Setting Name="userEmail" Type="System.String" Scope="User">
-      <Value Profile="(Default)">this is why craig@youritlink.com.au</Value>
+      <Value Profile="(Default)">qsync-able@youritlink.com.au</Value>
     </Setting>
     <Setting Name="userPW" Type="System.String" Scope="User">
-      <Value Profile="(Default)">this is why WPT$Matrix4390</Value>
+      <Value Profile="(Default)">WPT$Matrix4390</Value>
     </Setting>
     <Setting Name="userSMTP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">this is why smtp.office365.com</Value>
+      <Value Profile="(Default)">outlook.office365.com</Value>
     </Setting>
     <Setting Name="userSMTPPort" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">587</Value>
     </Setting>
     <Setting Name="userReplyTo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Not in use</Value>
+      <Value Profile="(Default)">qsync-able@youritlink.com.au</Value>
     </Setting>
     <Setting Name="emailUsed" Type="System.String" Scope="User">
-      <Value Profile="(Default)">User</Value>
+      <Value Profile="(Default)">Program</Value>
+    </Setting>
+    <Setting Name="Version" Type="System.String" Scope="User">
+      <Value Profile="(Default)">QSync V4.0.1.7</Value>
     </Setting>
     <Setting Name="redLoad" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">12</Value>
@@ -67,61 +85,35 @@
     <Setting Name="TempReportsFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\QSync\</Value>
     </Setting>
+    <Setting Name="progTargetName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">STARTTLS/smtp.office365.com</Value>
+    </Setting>
+    <Setting Name="userTargetName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">STARTTLS/smtp.office365.com</Value>
+    </Setting>
+    <Setting Name="tempProgSMTPPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">587</Value>
+    </Setting>
+    <Setting Name="tempProgEmail" Type="System.String" Scope="User">
+      <Value Profile="(Default)">cmcewen82@gmail.com</Value>
+    </Setting>
+    <Setting Name="tempProgSMTP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">smtp.gmail.com</Value>
+    </Setting>
+    <Setting Name="tempProgPW" Type="System.String" Scope="User">
+      <Value Profile="(Default)">WPT$Matrix_4390</Value>
+    </Setting>
     <Setting Name="Status" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Welcome to QSync | For Support Call 0410 669 634 | QSync  by Your IT Link</Value>
+      <Value Profile="(Default)">Welcome to QSync</Value>
     </Setting>
     <Setting Name="Icon" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">/Resources/favicon.ico</Value>
+      <Value Profile="(Default)">/Resources/QSyncIcon.ico</Value>
     </Setting>
     <Setting Name="DBBacukup" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\QSync\Backup\</Value>
     </Setting>
     <Setting Name="DBBackupConn" Type="System.String" Scope="Application">
       <Value Profile="(Default)">server=abledoors.net.au;user id=abab1199_qadacc;password=@mjK%U5eyNOK;convert zero datetime=True;database=abab1199_qsync;charset=utf8</Value>
-    </Setting>
-    <Setting Name="ReportsVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">4.4</Value>
-    </Setting>
-    <Setting Name="Version" Type="System.String" Scope="User">
-      <Value Profile="(Default)">QSync V4.0.1.30</Value>
-    </Setting>
-    <Setting Name="stdEmailTemplate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Hi,
-
-Thank you for your time today! Please find attached a quotation for works required / requested for your premises. 
-If you wish to go ahead with the quotation please complete the attached "QuoteAcceptance.pdf" document and send either via email to: doorservice@abledoors.com.au or via fax on: 02-9757-1652.
-
-If you have any questions or concerns, please do not hesitate to contact us.
-
-Regards,
-
-Craig McEwen
-Able Door Services (NSW) Pty Ltd
-24 Hours Emergency Service
-Ph: 02 9757-1877
-www.abledoors.com.au</Value>
-    </Setting>
-    <Setting Name="customEmailTemplate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Hi,
-
-Thank you for your time today! Please find attached a quotation for works required / requested for your premises. 
-If you wish to go ahead with the quotation please complete the attached "QuoteAcceptance.pdf" document and send either via email to: doorservice@abledoors.com.au or via fax on: 02-9757-1652.
-
-If you have any questions or concerns, please do not hesitate to contact us.
-
-Regards,
-
-Craig McEwen
-Able Door Services (NSW) Pty Ltd
-24 Hours Emergency Service
-Ph: 02 9757-1877
-www.abledoors.com.au</Value>
-    </Setting>
-    <Setting Name="PMR" Type="System.String" Scope="User">
-      <Value Profile="(Default)">PMR-V4.0</Value>
-    </Setting>
-    <Setting Name="INV" Type="System.String" Scope="User">
-      <Value Profile="(Default)">INV-V4.0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

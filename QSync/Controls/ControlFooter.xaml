@@ -8,11 +8,11 @@
         xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
         xmlns:extToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
-        TextElement.Foreground="{DynamicResource WordBlueBrush}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
-        TextElement.FontSize="{StaticResource FontSizeSmaller}"
-        FontFamily="{StaticResource App}"
+        TextElement.FontSize="12"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
         Width="Auto" Height="22">
     <StatusBar>
@@ -23,53 +23,50 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="945"/> <!-- 0 Status Message -->
-                        <ColumnDefinition Width="200"/> <!-- 1 User -->
-                        <ColumnDefinition Width="100"/> <!-- 2 Level -->
-                        <ColumnDefinition Width="100"/> <!-- 3 Date -->
-                        <ColumnDefinition Width="100"/> <!-- 4 Time -->
-                        <ColumnDefinition Width="50"/> <!-- 5 Caps -->
-                        <ColumnDefinition Width="50"/> <!-- 6 NBR -->
-                        <ColumnDefinition Width="50"/> <!-- 7 Ins -->
-                        <ColumnDefinition Width="120"/> <!-- 8 Version -->
-                        <ColumnDefinition Width="57"/> <!-- 9 Note -->
-                       <ColumnDefinition Width="100"/> <!-- 10 YIL --> 
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="175"/>
                     </Grid.ColumnDefinitions>
                 </Grid>
             </ItemsPanelTemplate>
         </StatusBar.ItemsPanel>
         <StatusBarItem>
-            <TextBlock x:Name="StatusText" Padding="5,0,15,0" Text="{Binding Status, Source={StaticResource Settings}}" Foreground="#FF263B8F" FontFamily="Roboto" Width="934">PLACEHOLDER FOR STATUS WITHIN SYSTEM OBJECTS</TextBlock>
+            <TextBlock x:Name="StatusText" Padding="5,0,15,0" Text="{Binding Status, Source={StaticResource Settings}}" Foreground="#FF263B8F" FontFamily="Roboto" Width="464">PLACEHOLDER FOR STATUS WITHIN SYSTEM OBJECTS</TextBlock>
         </StatusBarItem>
-        <StatusBarItem Grid.Column="1" Padding="3,3,3,3" Margin="0,0,0,-0.333">
-            <TextBlock x:Name="StatusUser" Foreground="#FF263B8F" FontFamily="Roboto" Text="{Binding Name, Source={StaticResource Settings}}" Width="160"></TextBlock>
+        <StatusBarItem Grid.Column="1" Padding="3,3,15,3" Margin="0,0,340,-0.333">
+            <TextBlock x:Name="StatusUser" Foreground="#FF263B8F" FontFamily="Roboto" Text="{Binding Name, Source={StaticResource Settings}}" Width="128"></TextBlock>
         </StatusBarItem>
-        <StatusBarItem Grid.Column="2" Padding="3,3,15,3" Margin="0,0,0,0" Foreground="#FF263B8F" HorizontalAlignment="Left" Width="80">
-            <TextBlock x:Name="StatusUserAccess" Foreground="#FF263B8F" Text="{Binding Accesslevel, Source={StaticResource Settings}}" FontFamily="Roboto" Width="70"></TextBlock>
+        <StatusBarItem Grid.Column="2" Padding="3,3,15,3" Margin="-312,0,463.667,-0.333">
+            <Label x:Name="StatusTime" Content="%TIME%" FontSize="12" Foreground="#FF263B8F" FontFamily="Roboto" Height="21" Width="63" HorizontalAlignment="Center" Margin="0,-3,0,0"></Label>
         </StatusBarItem>
-        <StatusBarItem Grid.Column="3" Padding="3,3,15,3" Margin="0,0,0,-0.555">
-            <TextBlock x:Name="StatusDate" Foreground="#FF263B8F" FontFamily="Roboto" HorizontalAlignment="Center" VerticalAlignment="Center">[29/08/2019]</TextBlock>
+        <StatusBarItem Grid.Column="3" Padding="3,3,15,3" Margin="-451.667,0,632.333,-0.333">
+            <TextBlock x:Name="StatusDate" Foreground="#FF263B8F" FontFamily="Roboto">[ DATE PLACEHOLD ]</TextBlock>
         </StatusBarItem>
-        <StatusBarItem Grid.Column="4" Padding="3,3,15,3" Margin="0,-4,0,0">
-            <Label x:Name="StatusTime" Content="%TIME%" Foreground="#FF263B8F" FontFamily="Roboto" Height="25" Width="98" HorizontalAlignment="Center" Margin="1,-2,-10,1"></Label>
-        </StatusBarItem>
-        <StatusBarItem Grid.Column="5" Padding="3,3,15,3" Margin="0,0,0,0">
+        <StatusBarItem Grid.Column="4" Padding="3,3,15,3" Margin="-96.333,0,88.333,-0.333">
             <TextBlock x:Name="StatusCaps" Foreground="Red" FontFamily="Roboto">CAPS</TextBlock>
         </StatusBarItem>
-        <StatusBarItem Grid.Column="6" Padding="3,3,15,3" Margin="0,0,0,-0.333">
+        <StatusBarItem Grid.Column="5" Padding="3,3,15,3" Margin="-89.333,0,77.333,-0.333">
             <TextBlock x:Name="StatusNum" HorizontalAlignment="Right" Foreground="Red" FontFamily="Roboto" Width="33">NUM</TextBlock>
         </StatusBarItem>
-        <StatusBarItem Grid.Column="7" Padding="3,3,15,3" Margin="0,0,0,-0.333">
-            <TextBlock x:Name="StatusIns" Foreground="Red" FontFamily="Roboto" Width="25">INS</TextBlock>
+        <StatusBarItem Grid.Column="6" Padding="3,3,15,3" Margin="-77.333,0,71.333,-0.333">
+            <TextBlock x:Name="StatusIns" Foreground="Red" FontFamily="Roboto" Width="23">INS</TextBlock>
         </StatusBarItem>
-        
-        <StatusBarItem Grid.Column="8" Padding="3,3,15,3" Margin="0,0,0,-0.333">
-            <TextBlock x:Name="StatusVersion" FlowDirection="RightToLeft" Text="{Binding Version, Source={StaticResource Settings}}" Foreground="#FF263B8F" FontFamily="Roboto" Margin="0"></TextBlock>
+        <StatusBarItem Grid.Column="7" Padding="3,3,15,3" Margin="-66.333,0,0,0" Foreground="#FF263B8F" HorizontalAlignment="Left" Width="80">
+            <TextBlock x:Name="StatusUserAccess" Foreground="#FF263B8F" Text="{Binding Accesslevel, Source={StaticResource Settings}}" FontFamily="Roboto" Width="70"></TextBlock>
         </StatusBarItem>
-        <StatusBarItem Grid.Column="9" Padding="3,3,15,3" Margin="0.333,0,0,-0.333">
+        <StatusBarItem Grid.Column="8" Padding="3,3,15,3" Margin="-25.333,0,0,-0.333">
+            <TextBlock x:Name="StatusVersion"  FlowDirection="RightToLeft" Text="{Binding Version, Source={StaticResource Settings}}" Foreground="#FF263B8F" FontFamily="Roboto" Margin="0"></TextBlock>
+        </StatusBarItem>
+        <StatusBarItem Grid.Column="8" Padding="3,3,15,3" Margin="55.333,0,0,-0.333">
             <TextBlock x:Name="StatusVersionNote"  FlowDirection="RightToLeft" Foreground="#FF263B8F" FontFamily="Roboto" Margin="0">BETA |</TextBlock>
         </StatusBarItem>
-        <StatusBarItem Grid.Column="10" Padding="3,3,15,3" Margin="0,0,0,-0.333">
+        <StatusBarItem Grid.Column="8" Padding="3,3,15,3" Margin="90,0,0,-0.333">
             <TextBlock x:Name="StatusYIL"  FlowDirection="RightToLeft" Foreground="#FF263B8F" FontFamily="Roboto" Margin="0">Your IT Link |</TextBlock>
         </StatusBarItem>
     </StatusBar>

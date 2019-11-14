@@ -24,6 +24,11 @@ namespace QSync.Controls
         public qMessageBox()
         {
             InitializeComponent();
+            txtbMessage.Text = "QSync system message box";
+            btnOK.Visibility = Visibility.Visible;
+            btnYes.Visibility = Visibility.Collapsed;
+            btnNo.Visibility = Visibility.Collapsed;
+            btnCancel.Visibility = Visibility.Collapsed;
         }
 
         

@@ -48,6 +48,7 @@ namespace QSync.Views
             bcViewSource.View.MoveCurrentToLast();
             
         }
+
         //LHS btn commands
         private void LastCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
@@ -117,7 +118,7 @@ namespace QSync.Views
         {
             //First set the view to reset the form inform
             existingBuildChangeDataGrid.Visibility = Visibility.Collapsed;
-            newBuildChangesDataGrid.Visibility = Visibility.Visible;
+            newBuildChangesDataGrid.Visibility = Visibility.Collapsed;
             btnUpdate.Visibility = Visibility.Collapsed;
             btnCommit.Visibility = Visibility.Visible;
             // Clear all the text boxes before adding a new quote.  
@@ -187,10 +188,8 @@ namespace QSync.Views
                             //Close the secondary ADD grid and move back to EXISTING grid
                             newBuildChangesDataGrid.Visibility = Visibility.Collapsed;
                             existingBuildChangeDataGrid.Visibility = Visibility.Visible;
-                            btnUpdate.Visibility = Visibility.Visible;
-                            btnCommit.Visibility = Visibility.Collapsed;
 
-            }    //Save to the database now all has been checked
+                        }    //Save to the database now all has been checked
                         context.SaveChanges();
                         bcViewSource.View.MoveCurrentToPrevious();
                         bcViewSource.View.MoveCurrentToNext();
@@ -312,7 +311,6 @@ namespace QSync.Views
             qt.Show();
         }
 
-
         #endregion ShutterPro Menu
 
         #region Mgr Menu
@@ -323,14 +321,5 @@ namespace QSync.Views
 
         #endregion Dev Menu
 
-        private void GetBuild_Click(object sender, RoutedEventArgs e)
-        {
-            displayedBuild.Text = Properties.Settings.Default.Version;
-        }
-        private void SetBuild_Click(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.Version = displayedBuild.Text;
-            Properties.Settings.Default.Save();
-        }
     }
 }

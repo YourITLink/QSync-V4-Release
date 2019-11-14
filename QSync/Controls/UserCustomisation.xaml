@@ -9,17 +9,17 @@
         xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
         xmlns:extToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
-        TextElement.Foreground="{DynamicResource WordBlueBrush}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
-        TextElement.FontSize="{StaticResource FontSizeRegular}"
-        FontFamily="{StaticResource App}"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
-        Height="721" Width="1537.717" ScrollViewer.CanContentScroll="True"
-        Icon="/QSync;component/Resources/QSync_Q.png" WindowStartupLocation="CenterScreen" WindowState="Normal">
+        Height="721" Width="1130" ScrollViewer.CanContentScroll="True"
+        Icon="/Resources/Icon_64x64.ico" WindowStartupLocation="CenterScreen" WindowState="Normal">
     <Window.Resources>
-        <RoutedUICommand x:Key="FirstCommand" Text="Save"/>
-        <RoutedUICommand x:Key="LastCommand" Text="Close"/>
+        <RoutedUICommand x:Key="FirstCommand" Text="First"/>
+        <RoutedUICommand x:Key="LastCommand" Text="Last"/>
         <RoutedUICommand x:Key="NextCommand" Text="Next"/>
         <RoutedUICommand x:Key="PreviousCommand" Text="Previous"/>
         <RoutedUICommand x:Key="DeleteCustomerCommand" Text="Delete Customer"/>
@@ -91,12 +91,14 @@
 
         <DockPanel Margin="0">
             <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" Height="70">
-                <materialDesign:DrawerHost Height="69">
+                <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding IsChecked, ElementName=MenuToggleButton}" Height="69">
                     <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryDark" DockPanel.Dock="Top" Background="#FF263B8F">
                         <Grid>
                             <TextBlock x:Name="lblLocation" Foreground="GhostWhite" Text="lblLocation" FontSize="22" HorizontalAlignment="Left" DockPanel.Dock="Left"></TextBlock>
                             <TextBlock x:Name="title" FontSize="22" Margin="0" Foreground="#FFFDD835" HorizontalAlignment="Center">
                                 <Run Text=""></Run></TextBlock>
+                            <TextBlock x:Name="QID" HorizontalAlignment="Right" Height="30" FontSize="24" Foreground="#FFFDD835" FontWeight="Bold" DockPanel.Dock="Right">
+                                <Run Text="{Binding Text, ElementName=intquoteid}"></Run><Run Text="{Binding Text, ElementName=quoteid}"></Run></TextBlock>
                         </Grid>
                     </materialDesign:ColorZone>
                 </materialDesign:DrawerHost>
@@ -108,17 +110,17 @@
             <!-- Command Buttons -->
             <Grid Margin="0,-0.333">
                 <StackPanel x:Name="formBtnGrp" Orientation="Vertical" Margin="0,76,0,0" HorizontalAlignment="Left" Visibility="Visible">
-                    <Button x:Name="nameBtn1" Content="Save" Grid.Row="2" FontSize="18" Grid.Column="0" Command="{StaticResource FirstCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Save changes" Background="#FF1C8C10" BorderBrush="#FF263B8F" Opacity="1" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
-                    <Button x:Name="nameBtn2" Content="Close" Grid.Row="2" FontSize="18" Grid.Column="0" Command="{StaticResource PreviousCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Close user settings" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Opacity="1" Background="#FF263B8F" Margin="10,5" Height="60"/>
-                    <Button x:Name="nameBtn3" Visibility="Collapsed" Content="Reload Current" Grid.Row="2" FontSize="12" Grid.Column="11" Command="{StaticResource NextCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Load Next Quote" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
-                    <Button x:Name="nameBtn4" Visibility="Collapsed" Content="Reset to Default" Grid.Row="2" FontSize="12" Grid.Column="12" Command="{StaticResource LastCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Load Newest Quote" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Opacity="1" Background="#FF263B8F" Margin="10,5" Height="60"/>
-                    <Button x:Name="mgrSave" Visibility="Visible" Content="Save Other" Grid.Row="2" FontSize="18" Grid.Column="12" Click="mgrChanges_Click" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Load Newest Quote" BorderBrush="#FF263B8F" Foreground="#ff263B8f" Opacity="1" Background="#ff5500" Margin="10,5" Height="60"/>
+                    <Button x:Name="nameBtn1" Content="Send" Grid.Row="2" FontSize="18" Grid.Column="0" Command="{StaticResource FirstCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Send Email" Background="#FF263B8F" BorderBrush="#FF263B8F" Opacity="1" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
+                    <Button x:Name="nameBtn2" Content="Attach" Grid.Row="2" FontSize="18" Grid.Column="0" Command="{StaticResource PreviousCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Load Previous Quote" Background="#FF263B8F" BorderBrush="#FF263B8F" Opacity="1" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
+                    <Button x:Name="nameBtn3" Content="Setup" Grid.Row="2" FontSize="18" Grid.Column="11" Command="{StaticResource NextCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Load Next Quote" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
+                    <Button x:Name="nameBtn4" Content="Cancel" Grid.Row="2" FontSize="18" Grid.Column="12" Command="{StaticResource LastCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Load Newest Quote" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Opacity="1" Background="#FF263B8F" Margin="10,5" Height="60"/>
                 </StackPanel>
             </Grid>
 
 
+            <!-- Email Main Contents -->
             <Grid x:Name="emailContents" Margin="0,26,0,14" Visibility="Visible" Background="Transparent">
-                <!-- User settings display -->
+                <!-- Existing Quotes form -->
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -137,19 +139,26 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Label>Basic Settings</Label>
-                <TextBox x:Name="Username" materialDesign:HintAssist.Hint="QSync Username (*)" Grid.Column="0" Grid.Row="1" Margin="10,6,10,7" Text="{Binding MyUser, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="50" IsEnabled="False"/>
-                <TextBox x:Name="Name" materialDesign:HintAssist.Hint="Name (*)"  Grid.Column="0" Grid.Row="2" Text="{Binding Name, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50" IsEnabled="False"/>
-                <TextBox x:Name="al" materialDesign:HintAssist.Hint="QSync Access Level (*)"  Grid.Column="0" Grid.Row="3" Text="{Binding Accesslevel, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50" IsEnabled="False"/>
-                <TextBox x:Name="qid" materialDesign:HintAssist.Hint="Quote ID (*)"  Grid.Column="0" Grid.Row="4" Text="{Binding Qid, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
-                <TextBox x:Name="syspw" materialDesign:HintAssist.Hint="QSync Password (*)"  Grid.Column="0" Grid.Row="5" Text="N/A" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
-                <TextBox x:Name="stdEmail" materialDesign:HintAssist.Hint="Quick Email Template" HorizontalAlignment="Left" Height="165" Margin="10,76.667,0,0" Grid.Column="0" Grid.Row="5" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True" Text="{Binding stdEmailTemplate, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Width="671" Grid.RowSpan="5"/>
-                <Label Grid.Column="1" Grid.Row="0" Content="User Email Configuration - Defines where emails are sent from within QSync"/>
-                <TextBox x:Name="selsmtp" materialDesign:HintAssist.Hint="SMTP Address"  Grid.Column="1" Grid.Row="1" Text="{Binding userSMTP, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
-                <TextBox x:Name="selsmtpport" materialDesign:HintAssist.Hint="SMTP Port"  Grid.Column="1" Grid.Row="2" Text="{Binding userSMTPPort, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
-                <TextBox x:Name="selusername" materialDesign:HintAssist.Hint="Email Username"  Grid.Column="1" Grid.Row="3" Text="{Binding userEmail, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
-                <TextBox x:Name="selpassword" materialDesign:HintAssist.Hint="Email Password" Visibility="Visible" Grid.Column="1" Grid.Row="4" Text="{Binding userPW, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10.333,3,174.333,5.667" Height="50"/>
-                <Button x:Name="updatePW" Content="Set Email PW" Grid.Row="4" FontSize="12" Grid.Column="1" Click="setEmailPW_Click" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Save PW change" Background="#FF263B8F" BorderBrush="#FF263B8F" Opacity="1" Foreground="#FFFDD835" Margin="407,5,-105,5" Height="30"/>
-                <TextBox x:Name="customEmail" materialDesign:HintAssist.Hint="Custom Email Template" HorizontalAlignment="Left" Height="240" Margin="9.333,1.667,0,-0.333" Grid.Column="1" Grid.Row="5" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True" Text="{Binding customEmailTemplate, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Width="671" Grid.RowSpan="5"/>
+                <TextBox x:Name="Username" materialDesign:HintAssist.Hint="QSync Username" Grid.Column="0" Grid.Row="1" Margin="10,6,10,7" Text="{Binding MyUser, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="50"/>
+                <TextBox x:Name="Name" materialDesign:HintAssist.Hint="Name"  Grid.Column="0" Grid.Row="2" Text="{Binding Name, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <TextBox x:Name="al" materialDesign:HintAssist.Hint="QSync Access Level"  Grid.Column="0" Grid.Row="3" Text="{Binding Accesslevel, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <TextBox x:Name="qid" materialDesign:HintAssist.Hint="Quote ID"  Grid.Column="0" Grid.Row="4" Text="{Binding Qid, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <TextBox x:Name="email" materialDesign:HintAssist.Hint="Email Address"  Grid.Column="0" Grid.Row="5" Text="{Binding Username, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <TextBox x:Name="syspw" materialDesign:HintAssist.Hint="QSync Password"  Grid.Column="0" Grid.Row="6" Text="N/A" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <TextBox x:Name="redloading" materialDesign:HintAssist.Hint="Quote Load Setting"  Grid.Column="0" Grid.Row="7" Text="{Binding redLoad, Source={StaticResource Settings}}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <Label Grid.Column="1" Grid.Row="0">Application Email Options</Label>
+                <TextBox x:Name="selemail" materialDesign:HintAssist.Hint="Email in Use"  Grid.Column="1" Grid.Row="1" Text="{Binding emailUsed, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <TextBox x:Name="selsmtp" materialDesign:HintAssist.Hint="SMTP Address"  Grid.Column="1" Grid.Row="2" Text="{Binding userSMTP, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <TextBox x:Name="selsmtpport" materialDesign:HintAssist.Hint="SMTP Port"  Grid.Column="1" Grid.Row="3" Text="{Binding userSMTPPort, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <TextBox x:Name="selreplyto" materialDesign:HintAssist.Hint="Reply to Address"  Grid.Column="1" Grid.Row="4" Text="{Binding userReplyTo, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <TextBox x:Name="selpassword" materialDesign:HintAssist.Hint="Password"  Grid.Column="1" Grid.Row="5" Text="{Binding userPW, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <TextBox x:Name="selpasswordver" materialDesign:HintAssist.Hint="Verify Password"  Grid.Column="1" Grid.Row="6" Text="{Binding userPW, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <TextBox x:Name="selusername" materialDesign:HintAssist.Hint="Email In Use"  Grid.Column="1" Grid.Row="7" Text="{Binding userEmail, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+
+
+
+
+
 
             </Grid>
         </DockPanel>

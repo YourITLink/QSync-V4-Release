@@ -93,14 +93,14 @@
 
         <DockPanel Margin="0">
             <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" Height="70">
-                <materialDesign:DrawerHost Height="69">
+                <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding IsChecked, ElementName=MenuToggleButton}" Height="69">
                     <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryDark" DockPanel.Dock="Top" Background="#FF263B8F">
                         <Grid>
                             <TextBlock x:Name="lblLocation" Foreground="GhostWhite" Text="lblLocation" FontSize="22" HorizontalAlignment="Left" DockPanel.Dock="Left"></TextBlock>
                             <TextBlock x:Name="title" FontSize="22" Margin="0" Foreground="#FFFDD835" HorizontalAlignment="Center">
-                                <Run Text="QSync Testing - Able Door Services | support@youritlink.com.au"></Run></TextBlock>
+                                <Run Text="QSync Email - Able Door Services | qsync-able@youritlink.com.au"></Run></TextBlock>
                             <TextBlock x:Name="QID" HorizontalAlignment="Right" Height="30" FontSize="24" Foreground="#FFFDD835" FontWeight="Bold" DockPanel.Dock="Right">
-                                <Run Text="Diagnostics"></Run></TextBlock>
+                                <Run Text="{Binding Text, ElementName=intquoteid}"></Run><Run Text="{Binding Text, ElementName=quoteid}"></Run></TextBlock>
                         </Grid>
                     </materialDesign:ColorZone>
                 </materialDesign:DrawerHost>
@@ -114,7 +114,7 @@
                 <StackPanel x:Name="emailBtnGrp" Orientation="Vertical" Margin="0,76,0,0" HorizontalAlignment="Left" Visibility="Visible">
                     <Button x:Name="emailBtnSend" Content="Send" Grid.Row="2" FontSize="18" Grid.Column="0" Command="{StaticResource FirstCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Send Email" Background="#FF263B8F" BorderBrush="#FF263B8F" Opacity="1" Foreground="#FFFDD835" Margin="10,5" Height="60" Click="EmailBtnSend_Click"/>
                     <Button x:Name="emailBtnAttach" Content="Attach" Grid.Row="2" FontSize="18" Grid.Column="0" Command="{StaticResource PreviousCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Load Previous Quote" Background="#FF263B8F" BorderBrush="#FF263B8F" Opacity="1" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
-                    <Button x:Name="emailBtnSetup" Visibility="Collapsed" Content="Setup" Grid.Row="2" FontSize="18" Grid.Column="11" Command="{StaticResource NextCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Load Next Quote" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
+                    <Button x:Name="emailBtnSetup" Content="Setup" Grid.Row="2" FontSize="18" Grid.Column="11" Command="{StaticResource NextCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Load Next Quote" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
                     <Button x:Name="emailBtnCancel" Content="Cancel" Grid.Row="2" FontSize="18" Grid.Column="12" Command="{StaticResource LastCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Load Newest Quote" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Opacity="1" Background="#FF263B8F" Margin="10,5" Height="60"/>
                 </StackPanel>
             </Grid>
@@ -137,7 +137,7 @@
                 <TextBox x:Name="emailTo" materialDesign:HintAssist.Hint="To" Grid.Column="0" Grid.Row="0" Margin="10,6,10,7" Text="{Binding Representative, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="50"/>
                 <TextBox x:Name="emailSubject" materialDesign:HintAssist.Hint="Subject"  Grid.Column="0" Grid.Row="3" Text="{Binding ContactPerson, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
                 <TextBox x:Name="emailBody" materialDesign:HintAssist.Hint="Email Body" VerticalContentAlignment="Top"  TextWrapping="Wrap" Grid.Column="0" Grid.Row="4" Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Margin="10,3,10,-276"/>
-                <TextBox x:Name="from" materialDesign:HintAssist.Hint="from" Visibility="Collapsed" Grid.Column="0" Grid.Row="0" Text="" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
+                <TextBox x:Name="from" materialDesign:HintAssist.Hint="from" Visibility="Collapsed" Grid.Column="0" Grid.Row="3" Text="qsync-able@youritlink.com.au" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,2,10,5" Height="50"/>
 
 
 

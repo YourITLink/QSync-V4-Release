@@ -94,9 +94,54 @@ namespace QSync.Properties {
             }
         }
         
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("qsync-able@youritlink.com.au")]
+        public string progEmail {
+            get {
+                return ((string)(this["progEmail"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("WPT$Matrix4390")]
+        public string progPW {
+            get {
+                return ((string)(this["progPW"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("outlook.office365.com")]
+        public string progSMTP {
+            get {
+                return ((string)(this["progSMTP"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("587")]
+        public int progSMTPPort {
+            get {
+                return ((int)(this["progSMTPPort"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("qsync-able@youritlink.com.au")]
+        public string progReplyTo {
+            get {
+                return ((string)(this["progReplyTo"]));
+            }
+        }
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("this is why craig@youritlink.com.au")]
+        [global::System.Configuration.DefaultSettingValueAttribute("qsync-able@youritlink.com.au")]
         public string userEmail {
             get {
                 return ((string)(this["userEmail"]));
@@ -108,7 +153,7 @@ namespace QSync.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("this is why WPT$Matrix4390")]
+        [global::System.Configuration.DefaultSettingValueAttribute("WPT$Matrix4390")]
         public string userPW {
             get {
                 return ((string)(this["userPW"]));
@@ -120,7 +165,7 @@ namespace QSync.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("this is why smtp.office365.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("outlook.office365.com")]
         public string userSMTP {
             get {
                 return ((string)(this["userSMTP"]));
@@ -144,7 +189,7 @@ namespace QSync.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Not in use")]
+        [global::System.Configuration.DefaultSettingValueAttribute("qsync-able@youritlink.com.au")]
         public string userReplyTo {
             get {
                 return ((string)(this["userReplyTo"]));
@@ -156,13 +201,25 @@ namespace QSync.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("User")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Program")]
         public string emailUsed {
             get {
                 return ((string)(this["emailUsed"]));
             }
             set {
                 this["emailUsed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("QSync V4.0.1.7")]
+        public string Version {
+            get {
+                return ((string)(this["Version"]));
+            }
+            set {
+                this["Version"] = value;
             }
         }
         
@@ -224,9 +281,78 @@ namespace QSync.Properties {
             }
         }
         
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("STARTTLS/smtp.office365.com")]
+        public string progTargetName {
+            get {
+                return ((string)(this["progTargetName"]));
+            }
+        }
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Welcome to QSync | For Support Call 0410 669 634 | QSync  by Your IT Link")]
+        [global::System.Configuration.DefaultSettingValueAttribute("STARTTLS/smtp.office365.com")]
+        public string userTargetName {
+            get {
+                return ((string)(this["userTargetName"]));
+            }
+            set {
+                this["userTargetName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("587")]
+        public int tempProgSMTPPort {
+            get {
+                return ((int)(this["tempProgSMTPPort"]));
+            }
+            set {
+                this["tempProgSMTPPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cmcewen82@gmail.com")]
+        public string tempProgEmail {
+            get {
+                return ((string)(this["tempProgEmail"]));
+            }
+            set {
+                this["tempProgEmail"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("smtp.gmail.com")]
+        public string tempProgSMTP {
+            get {
+                return ((string)(this["tempProgSMTP"]));
+            }
+            set {
+                this["tempProgSMTP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("WPT$Matrix_4390")]
+        public string tempProgPW {
+            get {
+                return ((string)(this["tempProgPW"]));
+            }
+            set {
+                this["tempProgPW"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Welcome to QSync")]
         public string Status {
             get {
                 return ((string)(this["Status"]));
@@ -238,7 +364,7 @@ namespace QSync.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("/Resources/favicon.ico")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/Resources/QSyncIcon.ico")]
         public string Icon {
             get {
                 return ((string)(this["Icon"]));
@@ -261,104 +387,6 @@ namespace QSync.Properties {
         public string DBBackupConn {
             get {
                 return ((string)(this["DBBackupConn"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4.4")]
-        public string ReportsVersion {
-            get {
-                return ((string)(this["ReportsVersion"]));
-            }
-            set {
-                this["ReportsVersion"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("QSync V4.0.1.30")]
-        public string Version {
-            get {
-                return ((string)(this["Version"]));
-            }
-            set {
-                this["Version"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"Hi,
-
-Thank you for your time today! Please find attached a quotation for works required / requested for your premises. 
-If you wish to go ahead with the quotation please complete the attached ""QuoteAcceptance.pdf"" document and send either via email to: doorservice@abledoors.com.au or via fax on: 02-9757-1652.
-
-If you have any questions or concerns, please do not hesitate to contact us.
-
-Regards,
-
-Craig McEwen
-Able Door Services (NSW) Pty Ltd
-24 Hours Emergency Service
-Ph: 02 9757-1877
-www.abledoors.com.au")]
-        public string stdEmailTemplate {
-            get {
-                return ((string)(this["stdEmailTemplate"]));
-            }
-            set {
-                this["stdEmailTemplate"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"Hi,
-
-Thank you for your time today! Please find attached a quotation for works required / requested for your premises. 
-If you wish to go ahead with the quotation please complete the attached ""QuoteAcceptance.pdf"" document and send either via email to: doorservice@abledoors.com.au or via fax on: 02-9757-1652.
-
-If you have any questions or concerns, please do not hesitate to contact us.
-
-Regards,
-
-Craig McEwen
-Able Door Services (NSW) Pty Ltd
-24 Hours Emergency Service
-Ph: 02 9757-1877
-www.abledoors.com.au")]
-        public string customEmailTemplate {
-            get {
-                return ((string)(this["customEmailTemplate"]));
-            }
-            set {
-                this["customEmailTemplate"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PMR-V4.0")]
-        public string PMR {
-            get {
-                return ((string)(this["PMR"]));
-            }
-            set {
-                this["PMR"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("INV-V4.0")]
-        public string INV {
-            get {
-                return ((string)(this["INV"]));
-            }
-            set {
-                this["INV"] = value;
             }
         }
     }

@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using QSync;
 
 namespace QSync.Controls
 {
@@ -27,26 +26,14 @@ namespace QSync.Controls
         public ControlFooter()
         {
             InitializeComponent();
+            StatusText.Text = "Welcome to QSync";
             StatusDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            //   StatusTime.Text = DateTime.Now.ToString("hh:mm tt");
             DispatcherTimer LiveTime = new DispatcherTimer();
             LiveTime.Interval = TimeSpan.FromSeconds(1);
             LiveTime.Tick += timeStatus_Tick;
             LiveTime.Start();
-        //    Closed += new EventHandler(MainWindow_Closed);
-            // Window Status Information
-            //  statusHead = "For support call";
-            //  statusVar = "0410 669 634";
-            //  Title = ApplicationContext.windowTitle;
-            //  lblLocation.Text = ApplicationContext.windowLocation;
-            //  title.Text = ApplicationContext.windowTitleBar;
-            //  Properties.Settings.Default.Status = statusHead + " " + statusVar + " " + ApplicationContext.windowStatus; // For Support Call 0410 669 634 | QSync | by Your IT Link
-            //  Properties.Settings.Default.Save();
-
-
-        }
-        void MainWindow_Closed(object sender, EventArgs e)
-        {
-            Application.Current.Shutdown();
+            
         }
         void timeStatus_Tick(object sender, EventArgs e)
         {
@@ -92,7 +79,6 @@ namespace QSync.Controls
         private void versionUpdate()
         {
             StatusText.Text = Properties.Settings.Default.Status;
-            StatusVersion.Text = Properties.Settings.Default.Version;
         }
     }
 }

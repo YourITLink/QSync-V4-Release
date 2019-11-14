@@ -16,7 +16,6 @@ using System.Windows.Shapes;
 using QSync.Controls;
 using System.Configuration;
 using Microsoft.AppCenter.Analytics;
-using log4net;
 using MySql.Data.MySqlClient;
 
 
@@ -25,57 +24,42 @@ namespace QSync
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    /// 
-    // Notes: Window called via 2 seperate methods, one at login and the other from within the application
-    // Window variables are defined in WindowSettings on load.
     public partial class MainWindow : Window
     {
-        string btn; string statusHead; string statusVar;
-
-        //log4net
-        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        string btn;
         public MainWindow()
         {
             InitializeComponent();
             Footer.Content = new ControlFooter();
             loadUserMenu();
-            Closed += new EventHandler(MainWindow_Closed);
-            WindowGet();
-            WindowSet();
-            //log4net
-            log4net.Config.XmlConfigurator.Configure();
-        }
-        public MainWindow(string currentUser, string currentAcclvl, string currentName, string currentQid)
-        {
-            InitializeComponent();
-            var LoginPage = this.DataContext;
-            Footer.Content = new ControlFooter();
-            loadUserMenu();
-            WindowGet();
-            WindowSet();
-            Closed += new EventHandler(MainWindow_Closed);
-            //log4net
-            log4net.Config.XmlConfigurator.Configure();
+            Title = "QSync V4.0 by Your IT Link | Able Door Services (NSW) Pty Ltd | by Your IT Link";
+            lblLocation.Text = "Main Menu";
+            title.Text = "Welcome to QSync - Able Door Services";
+            Properties.Settings.Default.Status = "Main Menu - QSync - Able Door Services";
+            Properties.Settings.Default.Save();
+            this.Closed += new EventHandler(MainWindow_Closed);
 
         }
         void MainWindow_Closed(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Save();
             Application.Current.Shutdown();
         }
-        public void WindowGet()
+
+        public MainWindow(string currentUser, string currentAcclvl, string currentName, string currentQid)
         {
-        }
-        public void WindowSet()
-        {
-            statusHead = "For support call";
-            statusVar = "0410 669 634";
-            Title = "QSync V4.0 | Able Door Services | by Your IT Link";
-            navLocation.Text = "Main Menu";
-            title.Text = "QSync V4.0 | Able Door Services NSW (Pty Ltd)";
-            Properties.Settings.Default.Status = "Welcome to QSync | For Support Call 0410 669 634 | QSync | by Your IT Link";
+            InitializeComponent();
+            var LoginPage = this.DataContext;
+            lblLocation.Text = "Main Menu";
+            Footer.Content = new ControlFooter();
+            loadUserMenu();
+            Title = "QSync V4.0 by Your IT Link | Able Door Services (NSW) Pty Ltd | by Your IT Link";
+            lblLocation.Text = "Main Menu";
+            title.Text = "Welcome to QSync - Able Door Services";
+            //Update status text
+            Properties.Settings.Default.Status = "Welcome to QSync - For Support Call - 0410-669-634";
             Properties.Settings.Default.Save();
+         //   var iconHandle = QSync.Properties.Resources.QSync_Q.GetHicon();
+        //    this.notifyIcon.Icon = System.Drawing.Icon.FromHandle(iconHandle);
         }
 
         #region ROLE BASED MENU LOADING - loadUserMenu();
@@ -358,15 +342,11 @@ namespace QSync
         private void quote_MouseDown(object sender, MouseButtonEventArgs e)
         {
                 Analytics.TrackEvent("Main Menu Quotes Click");
-            //        qtbtn.Visibility = Visibility.Hidden;
-            Analytics.TrackEvent("DEBUG - MW359");
-            this.Visibility = Visibility.Hidden;
-            Analytics.TrackEvent("DEBUG - MW361");
-            var qt = new Views.Quotes();
-            Analytics.TrackEvent("DEBUG - MW363");
-            qt.Show();
-            Analytics.TrackEvent("DEBUG - QUOTES VIEW OPEN");
-            //        qtbtn.Visibility = Visibility.Visible;
+                qtbtn.Visibility = Visibility.Hidden;
+                this.Visibility = Visibility.Hidden;
+                var qt = new Views.Quotes();
+                qt.Show();
+                qtbtn.Visibility = Visibility.Visible;
         }
         private void service_MouseDown(object sender, MouseButtonEventArgs e)
         {

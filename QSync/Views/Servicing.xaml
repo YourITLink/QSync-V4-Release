@@ -12,14 +12,14 @@
         xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
         xmlns:extToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:QSync="clr-namespace:QSync"
-        TextElement.Foreground="{DynamicResource WordBlueBrush}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
-        TextElement.FontSize="{StaticResource FontSizeRegular}"
-        FontFamily="{StaticResource App}"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
         Title="QSync V4.0 by Your IT Link - Able Door Services (NSW) Pty Ltd" Height="1100" Width="1920" ScrollViewer.CanContentScroll="True"
-        WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded">
+        Icon="/Resources/Icon_64x64.ico" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded">
 
     <Window.Resources>
         <RoutedUICommand x:Key="FirstCommand" Text="First"/>

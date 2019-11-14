@@ -11,13 +11,15 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
         xmlns:extToolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended"
-        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:QSync="clr-namespace:QSync" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="QSync.Views.Quotes"
-        TextElement.Foreground="{DynamicResource WordBlueBrush}"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:QSync="clr-namespace:QSync" x:Class="QSync.Views.Quotes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
         Height="1000" Width="1920" ScrollViewer.CanContentScroll="True"
-        WindowStartupLocation="CenterOwner" WindowState="Maximized" Loaded="Window_Loaded">
+        Icon="/Resources/Icon_64x64.ico" WindowStartupLocation="CenterOwner" WindowState="Maximized" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="quoteViewSource" d:DesignSource="{d:DesignInstance {x:Type QSync:quote}, CreateList=True}"/>
         <CollectionViewSource x:Key="quotequoteitemsViewSource" Source="{Binding quoteitems, Source={StaticResource quoteViewSource}}"/>
@@ -32,12 +34,6 @@
         <RoutedUICommand x:Key="CancelCommand" Text="Cancel"/>
         <RoutedUICommand x:Key="CommitInvoice" Text="Commit"/>
     </Window.Resources>
-    <TextElement.FontSize>
-        <StaticResource ResourceKey="FontSizeRegular"/>
-    </TextElement.FontSize>
-    <Window.FontFamily>
-        <StaticResource ResourceKey="App"/>
-    </Window.FontFamily>
     <Window.CommandBindings>
         <CommandBinding Command="{StaticResource FirstCommand}" Executed="FirstCommandHandler"/>
         <CommandBinding Command="{StaticResource LastCommand}" Executed="LastCommandHandler"/>
@@ -49,6 +45,8 @@
         <CommandBinding Command="{StaticResource AddCommand}" Executed="AddCommandHandler"/>
         <CommandBinding Command="{StaticResource CancelCommand}" Executed="CancelCommandHandler"/>
     </Window.CommandBindings>
+
+
     <DockPanel>
         <!-- File Menu -->
         <Menu DockPanel.Dock="Top" Margin="0,0,0.4,0">
@@ -91,27 +89,28 @@
             <MenuItem x:Name="fileDev" Header="Your IT Link" FontSize="18" Visibility="Collapsed">
                 <MenuItem Header="Email Test" Click="dev1_Click" />
                 <MenuItem Header="Build Changes" Click="dev2_Click" />
-                <MenuItem Header="Duplicate" Click="quoteDuplicate_Click"/>
-                <MenuItem Header="Dev 4" Click="dev5_Click"  />
+                <MenuItem Header="Dev 3" Click="dev3_Click"/>
+                <MenuItem Header="Dev 4" Click="dev4_Click"  />
                 <MenuItem Header="Dev 5" Click="dev5_Click"  />
             </MenuItem>
             <MenuItem Header="About" Click="about_Click" FontSize="18"/>
         </Menu>
 
 
+        <DockPanel Margin="0">
             <StackPanel VerticalAlignment="Top" DockPanel.Dock="Top" Height="70">
                 <materialDesign:DrawerHost Height="69">
                     <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryDark" DockPanel.Dock="Top" Background="#FF263B8F">
                         <Grid>
-                            <TextBlock x:Name="lblLocation" Foreground="GhostWhite" Text="USER LOCATION" FontSize="22" HorizontalAlignment="Left" DockPanel.Dock="Left"/>
-                            <TextBlock x:Name="title" FontSize="22" Margin="0" Foreground="#FFFDD835" HorizontalAlignment="Center"><Run Text="Quotations - QSync - Able Door Services"/></TextBlock>
-                            <TextBlock x:Name="QID" HorizontalAlignment="Right" Height="30" FontSize="24" Foreground="#FFFDD835" FontWeight="Bold" DockPanel.Dock="Right"><Run Text="{Binding Text, ElementName=intquoteid}"/><Run Text="{Binding Text, ElementName=quoteid}"/></TextBlock>
+                            <TextBlock x:Name="lblLocation" Foreground="GhostWhite" Text="USER LOCATION" FontSize="22" HorizontalAlignment="Left" DockPanel.Dock="Left"></TextBlock>
+                            <TextBlock x:Name="title" FontSize="22" Margin="0" Foreground="#FFFDD835" HorizontalAlignment="Center">
+                                <Run Text="Quotations - QSync - Able Door Services"></Run></TextBlock>
+                            <TextBlock x:Name="QID" HorizontalAlignment="Right" Height="30" FontSize="24" Foreground="#FFFDD835" FontWeight="Bold" DockPanel.Dock="Right">
+                                <Run Text="{Binding Text, ElementName=intquoteid}"></Run><Run Text="{Binding Text, ElementName=quoteid}"></Run></TextBlock>
                         </Grid>
                     </materialDesign:ColorZone>
                 </materialDesign:DrawerHost>
             </StackPanel>
-
-            
 
             <!-- Footer placeholder -->
             <Frame DockPanel.Dock="Bottom" x:Name="Footer" />
@@ -134,7 +133,7 @@
                 <Grid Margin="0,-13,0.333,-0.001">
                     <StackPanel x:Name="quoteSearchBtn" Visibility="Collapsed" Orientation="Vertical" Margin="0,76,0,0" HorizontalAlignment="Left">
                         <Button x:Name="btnLoadQuote" Content="Load Quote" Grid.Row="2" FontSize="18" Grid.Column="0" Click="LoadSelectedQuoteView_click" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Load Selected Quote" Background="#FF263B8F" BorderBrush="#FF263B8F" Opacity="1" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
-                        <Button x:Name="btnDuplicate" Content="Duplicate" Grid.Row="2" Grid.Column="3" Click="quoteDuplicate_Click" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Duplicate Quote" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" FontSize="18" Height="60"/>
+                        <Button x:Name="btnDuplicate" Content="Duplicate" Grid.Row="2" Grid.Column="3" Click="DuplicateQuote_Click" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Duplicate Quote" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" FontSize="18" Height="60"/>
                         <Button x:Name="btnViewQuote" Visibility="Collapsed" Content="View Report" Grid.Row="2" FontSize="18" Grid.Column="11" Command="{StaticResource NextCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="View Current Quote" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
                         <Button x:Name="btnPrintQuote" Content="Print Quote" Grid.Row="2" FontSize="18" Grid.Column="12" Click="BtnPreview_Click" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Print Quote" Background="#FFFDD835" BorderBrush="#FFFDD835" Foreground="#FF263B8F" Opacity="1" Margin="10,5" Height="60"/>
                         <Button x:Name="btnEmailQuote" Visibility="Collapsed" Content="Email Quote" Grid.Row="2" Grid.Column="5" Command="{StaticResource AddCommand}" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Email Quote" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" FontSize="18" Height="60"/>
@@ -157,266 +156,162 @@
                             <Button x:Name="btnAddCancel" Content="Cancel" Grid.Row="2" FontSize="18" Grid.Column="0" Click="CancelAddQuotes_click" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Cancel New Quote" Background="#FF263B8F" BorderBrush="#FF263B8F" Opacity="1" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
                         </StackPanel>
 
-                        <!-- Duplicate Quote Tab Command Buttons -->
-                        <Grid Margin="0,-13,0.333,-0.001">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1829*"/>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="29*"/>
-                                <ColumnDefinition Width="40*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel x:Name="duplicateQuoteBtn" Visibility="Collapsed" Orientation="Vertical" Margin="0,76,0,-0.332" HorizontalAlignment="Left">
-                                <Button x:Name="btnDupCommit" Content="Commit" Grid.Row="2" Click="DuplicateCommit_Click" Grid.Column="8" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Confirm Quote and Continue" Opacity="1" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" Margin="10,5" FontSize="18" Height="60"/>
-                                <Button x:Name="btnDupCancel" Content="Cancel" Grid.Row="2" FontSize="18" Grid.Column="0" Click="CancelAddQuotes_click" Style="{StaticResource MaterialDesignRaisedButton}" Width="130" ToolTip="Cancel New Quote" Background="#FF263B8F" BorderBrush="#FF263B8F" Opacity="1" Foreground="#FFFDD835" Margin="10,5" Height="60"/>
-                            </StackPanel>
 
+                        <telerik:RadTabControl HorizontalAlignment="Stretch" Margin="155,28,9.333,9.668" VerticalAlignment="Stretch" Grid.ColumnSpan="4" >
+                            <telerik:RadTabItem x:Name="quoteinfo" Header="Quote Main Information" Height="68" Width="202" MouseDown="Quoteinfo_MouseDown" FontSize="16" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                <Grid x:Name="existingQuoteDataGrid" DataContext="{StaticResource quoteViewSource}" Margin="0,26,0,14" Visibility="Visible" Background="Transparent">
+                                    <!-- Existing Quotes form -->
 
-                            <telerik:RadTabControl HorizontalAlignment="Stretch" Margin="155,28,9.333,9.668" VerticalAlignment="Stretch" Grid.ColumnSpan="4" >
-                                <telerik:RadTabItem x:Name="quoteinfo" Visibility="Visible" Header="Main Info" Height="68" Width="202" MouseDown="Quoteinfo_MouseDown" FontSize="16" ScrollViewer.HorizontalScrollBarVisibility="Auto">
-                                    <Grid x:Name="existingQuoteDataGrid" DataContext="{StaticResource quoteViewSource}" Margin="0,26,0,14" Visibility="Visible" Background="Transparent">
-                                        <!-- Existing Quotes form -->
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="558.5"/>
+                                        <ColumnDefinition Width="41.5"/>
+                                        <ColumnDefinition Width="600"/>
+                                        <ColumnDefinition Width="600"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Company Details" Grid.ColumnSpan="2" />
+                                    <DatePicker x:Name="quotedate" materialDesign:HintAssist.Hint="Date" Grid.Column="0" Margin="122,5,140.5,6" Grid.Row="1" VerticalAlignment="Stretch" Width="296" Height="50" SelectedDate="{Binding Date1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    <!-- Representitive = People / RepName = FullName -->
 
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="558.5"/>
-                                            <ColumnDefinition Width="41.5"/>
-                                            <ColumnDefinition Width="600"/>
-                                            <ColumnDefinition Width="600"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Company Details" Grid.ColumnSpan="2" />
-                                        <DatePicker x:Name="quotedate" materialDesign:HintAssist.Hint="Date" Grid.Column="0" Margin="122,5,140.5,6" Grid.Row="1" VerticalAlignment="Stretch" Width="296" Height="50" SelectedDate="{Binding Date1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    <TextBox x:Name="rep" materialDesign:HintAssist.Hint="Representative" Grid.Column="0" Grid.Row="2" Margin="120,6,138.5,5" Text="{Binding Representative, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" Height="50"/>
+                                    <TextBox x:Name="custname" materialDesign:HintAssist.Hint="Company" Grid.Column="0" Grid.Row="3" Margin="120,3,138.5,3" Text="{Binding Company, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" Height="45"/>
+                                    <TextBox x:Name="custaddress" materialDesign:HintAssist.Hint="Customer Address" Margin="120,13,138.5,3" TextWrapping="Wrap" VerticalContentAlignment="Top" Width="300" Height="120" AcceptsReturn="True" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto"/>
 
 
 
-                                        <!-- NEED TO LINK SUBURB/PC TO COMBO -->
-                                        <!-- Representitive = People / RepName = FullName -->
-
-                                        <TextBox x:Name="rep" materialDesign:HintAssist.Hint="Representative" Grid.Column="0" Grid.Row="2" Margin="120,6,138.5,5" Text="{Binding Representative, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" Height="50"/>
-                                        <TextBox x:Name="custname" materialDesign:HintAssist.Hint="Company" Grid.Column="0" Grid.Row="3" Margin="120,3,138.5,3" Text="{Binding Company, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" Height="45"/>
-                                        <TextBox x:Name="custaddress" materialDesign:HintAssist.Hint="Customer Address" Margin="120,13,138.5,3" TextWrapping="Wrap" VerticalContentAlignment="Top" Width="300" Height="120" AcceptsReturn="True" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto"/>
-
-
-
-                                        <!-- NEED TO AUTO FILL COMBINED STATE/PC FROM SUBURB ABOVE -->
-                                        <TextBox x:Name="custcontact" materialDesign:HintAssist.Hint="Company Contact"  Grid.Column="0" Grid.Row="6" Text="{Binding ContactPerson, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,2,138.5,3" Width="300" Height="50"/>
-                                        <TextBox x:Name="custphone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="0" Grid.Row="7" Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,3,138.5,2" Width="300" Height="50"/>
-                                        <TextBox x:Name="custmobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="0" Grid.Row="8" Text="{Binding Mobile, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,2,138.5,3" Width="300" Height="50"/>
-                                        <TextBox x:Name="custemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="0" Grid.Row="9" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,3,138.5,2" Width="300" Height="50"/>
-                                        <TextBox x:Name="custstrata" materialDesign:HintAssist.Hint="Cust Strata #" Grid.Column="0" Grid.Row="10" Text="{Binding StrataNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,0,138.5,1" Width="300" Height="50"/>
-                                        <TextBox x:Name="custref" materialDesign:HintAssist.Hint="Cust Ref #" Grid.Column="0" Grid.Row="11" Text="{Binding RefNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,1,138.5,0" Width="300" Height="50"/>
-                                        <!-- COLUMN 1 SITE DETAILS -->
-                                        <Label Grid.Column="2" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Site Details" />
-                                        <TextBox x:Name="siteaddress" materialDesign:HintAssist.Hint="Site Address" Margin="120,1,180,1" VerticalContentAlignment="Top" TextWrapping="Wrap" Width="300" AcceptsReturn="True" Text="{Binding JobLocation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="120" Grid.ColumnSpan="1" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2"/>
-                                        <TextBox x:Name="sitecontact" materialDesign:HintAssist.Hint="Site Contact"  Grid.Column="2" Grid.Row="3" Text="{Binding SiteContact, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,1,180,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="sitephone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="2" Grid.Row="4" Text="{Binding SCPhone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,8,180,8" Width="300" Height="50"/>
-                                        <TextBox x:Name="sitemobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="2" Grid.Row="5" Text="{Binding SCMobile, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,10,180,10" Width="300" Height="50"/>
-                                        <TextBox x:Name="siteemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="2" Grid.Row="6" Text="{Binding SCEmail, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,2,180,3" Width="300" Height="50"/>
-                                        <!--   <CheckBox x:Name="swms" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding SWMS, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="7" Margin="120,0,180,0" Content="SWMS Required?" Grid.RowSpan="3" Width="300"/> -->
-                                        <CheckBox x:Name="swms" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding SWMS, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="7" Margin="120,0,180,0" Content="SWMS Required?" Grid.RowSpan="3" Width="300"/>
-                                        <CheckBox x:Name="induction" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Induction, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="9" Margin="120,0,180,0" Content="Induction Required?" Width="300"/>
-                                        <TextBox x:Name="indtime" materialDesign:HintAssist.Hint="Induction Time"  Grid.Column="2" Grid.Row="10" Text="{Binding Inductiontime, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,0,180,1" Width="300" Height="50"/>
-                                        <!-- COLUMN 2 PAYMENT DETAILS -->
-                                        <Label Grid.Column="3" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Payment Conditions" Margin="0,0,138,0" />
-                                        <CheckBox x:Name="pp" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding PROGRESSPAYMENT, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Grid.Column="3" Grid.Row="1" Margin="160,0,140,0" Content="Progress Payment" Width="300"/>
-                                        <CheckBox x:Name="cod" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding COD, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Grid.Column="3" Grid.Row="2" Margin="160,0,140,0" Content="COD" Width="300"/>
-                                        <CheckBox x:Name="svndays" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding SvnDays, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Grid.Column="3" Grid.Row="3" Margin="160,0,140,0" Content="7 Days" Width="300"/>
-                                        <CheckBox x:Name="orderno" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding OrderNo, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Grid.Column="3" Grid.Row="4" Margin="160,0,140,0" Content="Order No" Width="300"/>
-                                        <TextBox x:Name="notes" materialDesign:HintAssist.Hint="Internal Notes" Margin="25,2,70,8" TextWrapping="Wrap" VerticalAlignment="Stretch" AcceptsReturn="True" Text="{Binding Notes, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                                    <!-- NEED TO LINK SUBURB/PC TO COMBO -->
+                                    <!-- NEED TO AUTO FILL COMBINED STATE/PC FROM SUBURB ABOVE -->
+                                    <TextBox x:Name="custcontact" materialDesign:HintAssist.Hint="Company Contact"  Grid.Column="0" Grid.Row="6" Text="{Binding ContactPerson, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,2,138.5,3" Width="300" Height="50"/>
+                                    <TextBox x:Name="custphone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="0" Grid.Row="7" Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,3,138.5,2" Width="300" Height="50"/>
+                                    <TextBox x:Name="custmobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="0" Grid.Row="8" Text="{Binding Mobile, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,2,138.5,3" Width="300" Height="50"/>
+                                    <TextBox x:Name="custemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="0" Grid.Row="9" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,3,138.5,2" Width="300" Height="50"/>
+                                    <TextBox x:Name="custstrata" materialDesign:HintAssist.Hint="Cust Strata #" Grid.Column="0" Grid.Row="10" Text="{Binding StrataNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,0,138.5,1" Width="300" Height="50"/>
+                                    <TextBox x:Name="custref" materialDesign:HintAssist.Hint="Cust Ref #" Grid.Column="0" Grid.Row="11" Text="{Binding RefNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,1,138.5,0" Width="300" Height="50"/>
+                                    <!-- COLUMN 1 SITE DETAILS -->
+                                    <Label Grid.Column="2" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Site Details" />
+                                    <TextBox x:Name="siteaddress" materialDesign:HintAssist.Hint="Site Address" Margin="120,1,180,1" VerticalContentAlignment="Top" TextWrapping="Wrap" Width="300" AcceptsReturn="True" Text="{Binding JobLocation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="120" Grid.ColumnSpan="1" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2"/>
+                                    <TextBox x:Name="sitecontact" materialDesign:HintAssist.Hint="Site Contact"  Grid.Column="2" Grid.Row="3" Text="{Binding SiteContact, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,1,180,0" Width="300" Height="50"/>
+                                    <TextBox x:Name="sitephone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="2" Grid.Row="4" Text="{Binding SCPhone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,8,180,8" Width="300" Height="50"/>
+                                    <TextBox x:Name="sitemobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="2" Grid.Row="5" Text="{Binding SCMobile, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,10,180,10" Width="300" Height="50"/>
+                                    <TextBox x:Name="siteemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="2" Grid.Row="6" Text="{Binding SCEmail, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,2,180,3" Width="300" Height="50"/>
+                                 <!--   <CheckBox x:Name="swms" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding SWMS, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="7" Margin="120,0,180,0" Content="SWMS Required?" Grid.RowSpan="3" Width="300"/> -->
+                                    <CheckBox x:Name="swms" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Path=SWMS,TargetNullValue='False', NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="7" Margin="120,0,180,0" Content="SWMS Required?" Grid.RowSpan="3" Width="300"/>
+                                    <CheckBox x:Name="induction" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Path=Induction, TargetNullValue='False', NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="9" Margin="120,0,180,0" Content="Induction Required?" Width="300"/>
+                                    <TextBox x:Name="indtime" materialDesign:HintAssist.Hint="Induction Time"  Grid.Column="2" Grid.Row="10" Text="{Binding Inductiontime, TargetNullValue='False', NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="120,0,180,1" Width="300" Height="50"/>
+                                    <!-- COLUMN 2 PAYMENT DETAILS -->
+                                    <Label Grid.Column="3" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Payment Conditions" />
+                                    <CheckBox x:Name="pp" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Path=PROGRESSPAYMENT, TargetNullValue='False', NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="3" Grid.Row="1" Margin="160,0,140,0" Content="Progress Payment" Width="300"/>
+                                    <CheckBox x:Name="cod" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Path=COD, TargetNullValue='False', NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="3" Grid.Row="2" Margin="160,0,140,0" Content="COD" Width="300"/>
+                                    <CheckBox x:Name="svndays" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Path=SvnDays, TargetNullValue='False', NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="3" Grid.Row="3" Margin="160,0,140,0" Content="7 Days" Width="300"/>
+                                    <CheckBox x:Name="orderno" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Path=OrderNo, TargetNullValue='False', NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="3" Grid.Row="4" Margin="160,0,140,0" Content="Order No" Width="300"/>
+                                    <TextBox x:Name="notes" materialDesign:HintAssist.Hint="Internal Notes" Margin="25,2,70,8" TextWrapping="Wrap" VerticalAlignment="Stretch" AcceptsReturn="True" Text="{Binding Notes, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                                      VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="280" VerticalContentAlignment="Top" Grid.ColumnSpan="1" Grid.Row="5" Grid.Column="3" Grid.RowSpan="5"/>
-                                        <TextBox x:Name="quoteid" Visibility="Collapsed" Grid.Row="11" Grid.Column="3" Text="{Binding QuoteNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Quote Number" Width="150" VerticalAlignment="Center"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="225,1,225,-6" Height="58" HorizontalAlignment="Center" Focusable="False" Foreground="#FF263B8F" FontSize="24" FontWeight="Bold" Grid.RowSpan="3"/>
-                                        <TextBox x:Name="intquoteid" Visibility="Collapsed" Grid.Row="11" Grid.Column="3" Text="{Binding repID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=True}" materialDesign:HintAssist.Hint="Rep ID" Width="150" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,23,0,-29" Height="59" HorizontalAlignment="Left" Focusable="False" Foreground="#FF263B8F" FontSize="24" FontWeight="Bold" Grid.RowSpan="3"/>
-                                        <TextBox x:Name="FilterSet" Visibility="Collapsed" Grid.Row="11" Grid.Column="3" Text="30000" materialDesign:HintAssist.Hint="Rep ID" Width="150" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,23,0,-29" Height="59" HorizontalAlignment="Left" Focusable="False" Foreground="#FF263B8F" FontSize="24" FontWeight="Bold" Grid.RowSpan="3"/>
+                                    <TextBox x:Name="quoteid" Visibility="Collapsed" Grid.Row="11" Grid.Column="3" Text="{Binding QuoteNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" materialDesign:HintAssist.Hint="Quote Number" Width="150" VerticalAlignment="Center"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="225,1,225,-6" Height="58" HorizontalAlignment="Center" Focusable="False" Foreground="#FF263B8F" FontSize="24" FontWeight="Bold" Grid.RowSpan="3"/>
+                                    <TextBox x:Name="intquoteid" Visibility="Collapsed" Grid.Row="11" Grid.Column="3" Text="{Binding repID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=True}" materialDesign:HintAssist.Hint="Rep ID" Width="150" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,23,0,-29" Height="59" HorizontalAlignment="Left" Focusable="False" Foreground="#FF263B8F" FontSize="24" FontWeight="Bold" Grid.RowSpan="3"/>
+                                    <TextBox x:Name="FilterSet" Visibility="Collapsed" Grid.Row="11" Grid.Column="3" Text="30000" materialDesign:HintAssist.Hint="Rep ID" Width="150" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,23,0,-29" Height="59" HorizontalAlignment="Left" Focusable="False" Foreground="#FF263B8F" FontSize="24" FontWeight="Bold" Grid.RowSpan="3"/>
 
 
-                                    </Grid>
+                                </Grid>
 
-                                </telerik:RadTabItem>
+                            </telerik:RadTabItem>
 
-                                <!-- END OF SEARCH TAB -->
+                            <!-- Loaded Search Results Quote Details Tab -->
 
-                                <!-- Loaded Search Results Quote Details Tab -->
+                            <telerik:RadTabItem x:Name="quoteinfoLoaded" Visibility="Collapsed" Header="Quote Main Information" Height="68" Width="202" MouseDown="Quoteinfo_MouseDown" FontSize="16" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                <Grid x:Name="loadedQuoteDataGrid" Margin="10,10,0,-4.4" Visibility="Visible" Width="1726" Height="740" Background="Transparent" DataContext="{Binding CurrentItem, ElementName=quoteSearchDataGrid}">
 
-                                <telerik:RadTabItem x:Name="quoteinfoLoaded" Visibility="Collapsed" Header="Main Info" Height="68" Width="202" MouseDown="Quoteinfo_MouseDown" FontSize="16" ScrollViewer.HorizontalScrollBarVisibility="Auto">
-                                    <Grid x:Name="loadedQuoteDataGrid" Margin="10,10,0,-4.4" Visibility="Visible" Width="1726" Height="740" Background="Transparent" DataContext="{Binding CurrentItem, ElementName=quoteSearchDataGrid}">
+                                    <!-- Loaded Search Results Quotes form -->
 
-                                        <!-- Loaded Search Results Quotes form -->
-
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="600"/>
-                                            <ColumnDefinition Width="600"/>
-                                            <ColumnDefinition Width="600"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Company Details" />
-                                        <DatePicker x:Name="Loadedquotedate" materialDesign:HintAssist.Hint="Date" Grid.Column="0" Margin="10,0,70,0" Grid.Row="1" VerticalAlignment="Stretch" Width="296" Height="50" SelectedDate="{Binding CurrentItem.Date1, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-
-
-
-                                        <!-- NEED TO LINK SUBURB/PC TO COMBO -->
-                                        <!-- Representitive = People / RepName = FullName -->
-                                        <TextBox x:Name="Loadedrep" materialDesign:HintAssist.Hint="Representative" Grid.Column="0" Grid.Row="2" Margin="10,0,70,0"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" Height="50" Text="{Binding CurrentItem.Representative, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}"/>
-                                        <TextBox x:Name="Loadedcustname" materialDesign:HintAssist.Hint="Company" Grid.Column="0" Grid.Row="3" Margin="10,0,70,0" Text="{Binding CurrentItem.Company, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" Height="45"/>
-                                        <TextBox x:Name="Loadedcustaddress" materialDesign:HintAssist.Hint="Customer Address" Margin="10,10,70,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Width="300" Height="120" AcceptsReturn="True" Text="{Binding CurrentItem.Address, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto"/>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="600"/>
+                                        <ColumnDefinition Width="600"/>
+                                        <ColumnDefinition Width="600"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Company Details" />
+                                    <DatePicker x:Name="Loadedquotedate" materialDesign:HintAssist.Hint="Date" Grid.Column="0" Margin="10,0,70,0" Grid.Row="1" VerticalAlignment="Stretch" Width="296" Height="50" SelectedDate="{Binding CurrentItem.Date1, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                    <!-- Representitive = People / RepName = FullName -->
+                                    <TextBox x:Name="Loadedrep" materialDesign:HintAssist.Hint="Representative" Grid.Column="0" Grid.Row="2" Margin="10,0,70,0"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" Height="50" Text="{Binding CurrentItem.Representative, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}"/>
+                                    <TextBox x:Name="Loadedcustname" materialDesign:HintAssist.Hint="Company" Grid.Column="0" Grid.Row="3" Margin="10,0,70,0" Text="{Binding CurrentItem.Company, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" Height="45"/>
+                                    <TextBox x:Name="Loadedcustaddress" materialDesign:HintAssist.Hint="Customer Address" Margin="10,10,70,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Width="300" Height="120" AcceptsReturn="True" Text="{Binding CurrentItem.Address, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto"/>
 
 
 
-                                        <!-- NEED TO AUTO FILL COMBINED STATE/PC FROM SUBURB ABOVE -->
-                                        <TextBox x:Name="Loadedcustcontact" materialDesign:HintAssist.Hint="Company Contact"  Grid.Column="0" Grid.Row="6" Text="{Binding CurrentItem.ContactPerson, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="Loadedcustphone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="0" Grid.Row="7" Text="{Binding CurrentItem.Phone, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="Loadedcustmobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="0" Grid.Row="8" Text="{Binding CurrentItem.Mobile, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="Loadedcustemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="0" Grid.Row="9" Text="{Binding CurrentItem.Email, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="Loadedcuststrata" materialDesign:HintAssist.Hint="Cust Strata #" Grid.Column="0" Grid.Row="10" Text="{Binding CurrentItem.StrataNo, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="Loadedcustref" materialDesign:HintAssist.Hint="Cust Ref #" Grid.Column="0" Grid.Row="11" Text="{Binding CurrentItem.RefNo, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <!-- COLUMN 1 SITE DETAILS -->
-                                        <Label Grid.Column="1" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Site Details" />
-                                        <TextBox x:Name="Loadedsiteaddress" materialDesign:HintAssist.Hint="Site Address" Margin="10,0,70,0" VerticalContentAlignment="Top" TextWrapping="Wrap" Width="300" AcceptsReturn="True" Text="{Binding CurrentItem.JobLocation, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="120" Grid.ColumnSpan="1" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"/>
-                                        <TextBox x:Name="Loadedsitecontact" materialDesign:HintAssist.Hint="Site Contact"  Grid.Column="1" Grid.Row="3" Text="{Binding CurrentItem.SiteContact, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="Loadedsitephone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="1" Grid.Row="4" Text="{Binding CurrentItem.SCPhone, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="Loadedsitemobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="1" Grid.Row="5" Text="{Binding CurrentItem.SCMobile, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="Loadedsiteemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="1" Grid.Row="6" Text="{Binding CurrentItem.SCEmail, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <CheckBox x:Name="Loadedswms" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding CurrentItem.SWMS, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" Grid.Row="7" Margin="10,0,70,0" Content="SWMS Required?" Grid.RowSpan="3" Width="300"/>
-                                        <CheckBox x:Name="Loadedinduction" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding CurrentItem.Induction, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" Grid.Row="9" Margin="10,0,70,0" Content="Induction Required?" Width="300"/>
-                                        <TextBox x:Name="Loadedindtime" materialDesign:HintAssist.Hint="Induction Time"  Grid.Column="1" Grid.Row="10" Text="{Binding CurrentItem.Inductiontime, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <!-- COLUMN 2 PAYMENT DETAILS -->
-                                        <Label Grid.Column="2" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Payment Conditions" />
-                                        <CheckBox x:Name="Loadedpp" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding CurrentItem.PROGRESSPAYMENT, ElementName=quoteSearchDataGrid, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="1" Margin="20,0,0,0" Content="Progress Payment" Width="300"/>
-                                        <CheckBox x:Name="Loadedcod" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding CurrentItem.COD, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="2" Margin="20,0,0,0" Content="COD" Width="300"/>
-                                        <CheckBox x:Name="Loadedsvndays" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding CurrentItem.SvnDays, ElementName=quoteSearchDataGrid, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="3" Margin="20,0,0,0" Content="7 Days" Width="300"/>
-                                        <CheckBox x:Name="Loadedorderno" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding CurrentItem.OrderNo, ElementName=quoteSearchDataGrid, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="4" Margin="20,0,0,0" Content="Order No" Width="300"/>
-                                        <TextBox x:Name="Loadednotes" materialDesign:HintAssist.Hint="Internal Notes" Margin="25,0,70,5" TextWrapping="Wrap" VerticalAlignment="Stretch" AcceptsReturn="True" Text="{Binding CurrentItem.Notes, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                                    <!-- NEED TO LINK SUBURB/PC TO COMBO -->
+                                    <!-- NEED TO AUTO FILL COMBINED STATE/PC FROM SUBURB ABOVE -->
+                                    <TextBox x:Name="Loadedcustcontact" materialDesign:HintAssist.Hint="Company Contact"  Grid.Column="0" Grid.Row="6" Text="{Binding CurrentItem.ContactPerson, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
+                                    <TextBox x:Name="Loadedcustphone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="0" Grid.Row="7" Text="{Binding CurrentItem.Phone, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
+                                    <TextBox x:Name="Loadedcustmobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="0" Grid.Row="8" Text="{Binding CurrentItem.Mobile, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
+                                    <TextBox x:Name="Loadedcustemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="0" Grid.Row="9" Text="{Binding CurrentItem.Email, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
+                                    <TextBox x:Name="Loadedcuststrata" materialDesign:HintAssist.Hint="Cust Strata #" Grid.Column="0" Grid.Row="10" Text="{Binding CurrentItem.StrataNo, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
+                                    <TextBox x:Name="Loadedcustref" materialDesign:HintAssist.Hint="Cust Ref #" Grid.Column="0" Grid.Row="11" Text="{Binding CurrentItem.RefNo, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
+                                    <!-- COLUMN 1 SITE DETAILS -->
+                                    <Label Grid.Column="1" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Site Details" />
+                                    <TextBox x:Name="Loadedsiteaddress" materialDesign:HintAssist.Hint="Site Address" Margin="10,0,70,0" VerticalContentAlignment="Top" TextWrapping="Wrap" Width="300" AcceptsReturn="True" Text="{Binding CurrentItem.JobLocation, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="120" Grid.ColumnSpan="1" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"/>
+                                    <TextBox x:Name="Loadedsitecontact" materialDesign:HintAssist.Hint="Site Contact"  Grid.Column="1" Grid.Row="3" Text="{Binding CurrentItem.SiteContact, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
+                                    <TextBox x:Name="Loadedsitephone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="1" Grid.Row="4" Text="{Binding CurrentItem.SCPhone, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
+                                    <TextBox x:Name="Loadedsitemobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="1" Grid.Row="5" Text="{Binding CurrentItem.SCMobile, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
+                                    <TextBox x:Name="Loadedsiteemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="1" Grid.Row="6" Text="{Binding CurrentItem.SCEmail, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
+                                    <CheckBox x:Name="Loadedswms" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Path=CurrentItem.SWMS, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" Grid.Row="7" Margin="10,0,70,0" Content="SWMS Required?" Grid.RowSpan="3" Width="300"/>
+                                    <CheckBox x:Name="Loadedinduction" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Path=CurrentItem.Induction, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" Grid.Row="9" Margin="10,0,70,0" Content="Induction Required?" Width="300"/>
+                                    <TextBox x:Name="Loadedindtime" materialDesign:HintAssist.Hint="Induction Time"  Grid.Column="1" Grid.Row="10" Text="{Binding CurrentItem.Inductiontime, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
+                                    <!-- COLUMN 2 PAYMENT DETAILS -->
+                                    <Label Grid.Column="2" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Payment Conditions" />
+                                    <CheckBox x:Name="Loadedpp" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Path=CurrentItem.PROGRESSPAYMENT, ElementName=quoteSearchDataGrid, TargetNullValue='False', NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="1" Margin="20,0,0,0" Content="Progress Payment" Width="300"/>
+                                    <CheckBox x:Name="Loadedcod" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Path=CurrentItem.COD, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="2" Margin="20,0,0,0" Content="COD" Width="300"/>
+                                    <CheckBox x:Name="Loadedsvndays" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Path=CurrentItem.SvnDays, ElementName=quoteSearchDataGrid, TargetNullValue='False', NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="3" Margin="20,0,0,0" Content="7 Days" Width="300"/>
+                                    <CheckBox x:Name="Loadedorderno" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Path=CurrentItem.OrderNo, ElementName=quoteSearchDataGrid, TargetNullValue='False', NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="4" Margin="20,0,0,0" Content="Order No" Width="300"/>
+                                    <TextBox x:Name="Loadednotes" materialDesign:HintAssist.Hint="Internal Notes" Margin="25,0,70,5" TextWrapping="Wrap" VerticalAlignment="Stretch" AcceptsReturn="True" Text="{Binding CurrentItem.Notes, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                                      VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="280" VerticalContentAlignment="Top" Grid.ColumnSpan="1" Grid.Row="5" Grid.Column="2" Grid.RowSpan="5"/>
 
 
 
-                                    </Grid>
-                                </telerik:RadTabItem>
+                                </Grid>
+                            </telerik:RadTabItem>
 
-                                <!-- Duplicate Quote Details Tab -->
-
-                                <telerik:RadTabItem x:Name="duplicateCreate" Visibility="Collapsed" Header="Duplicate Quote" Height="68" Width="202" MouseDown="Quoteinfo_MouseDown" FontSize="16" ScrollViewer.HorizontalScrollBarVisibility="Auto">
-                                    <Grid x:Name="duplicateQuoteDataGrid" Margin="10,10,0,-4.4" Visibility="Collapsed" Width="1726" Height="740" Background="Transparent" DataContext="{Binding dupQuote, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, UpdateSourceTrigger=Explicit}">
-
-                                        <!-- Loaded Search Results Quotes form -->
-
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="600"/>
-                                            <ColumnDefinition Width="600"/>
-                                            <ColumnDefinition Width="600"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Company Details" />
-                                        <DatePicker x:Name="dup_quotedate" materialDesign:HintAssist.Hint="Date" Grid.Column="0" Margin="10,0,70,0" Grid.Row="1" VerticalAlignment="Stretch" Width="296" Height="50" />
-
-                                        <!-- NEED TO LINK SUBURB/PC TO COMBO -->
-                                        <!-- Representitive = People / RepName = FullName -->
-                                        <ComboBox x:Name="dup_salesrep" materialDesign:HintAssist.Hint="Sales Rep" Margin="10,0,70,0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" ItemsSource="{Binding}" Width="300" Height="40" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" MouseLeave="salesrepChanged_MouseLeave" SelectionChanged="Add_salesrep_SelectionChanged">
-                                            <ComboBoxItem Content="Brad Hill"/>
-                                            <ComboBoxItem Content="Gary Thomson"/>
-                                            <ComboBoxItem Content="Greg Reynolds"/>
-                                            <ComboBoxItem Content="Marty Lynch"/>
-                                            <ComboBoxItem Content="Michael Paraskevas"/>
-                                            <ComboBoxItem Content="Steve Rendoth"/>
-                                            <ComboBoxItem Content="Internal"/>
-                                        </ComboBox>
-                                        <TextBox x:Name="dup_custname" materialDesign:HintAssist.Hint="Company" Grid.Column="0" Grid.Row="3" Margin="10,0,70,0" Text="{Binding CurrentItem.Company, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" Height="45"/>
-                                        <TextBox x:Name="dup_custaddress" materialDesign:HintAssist.Hint="Customer Address" Margin="10,10,70,0" TextWrapping="Wrap" VerticalContentAlignment="Top" Width="300" Height="120" AcceptsReturn="True" Text="{Binding CurrentItem.Address, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto"/>
-
-                                        <!-- NEED TO AUTO FILL COMBINED STATE/PC FROM SUBURB ABOVE -->
-                                        <TextBox x:Name="dup_custcontact" materialDesign:HintAssist.Hint="Company Contact"  Grid.Column="0" Grid.Row="6" Text="{Binding CurrentItem.ContactPerson, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="dup_custphone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="0" Grid.Row="7" Text="{Binding CurrentItem.Phone, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="dup_custmobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="0" Grid.Row="8" Text="{Binding CurrentItem.Mobile, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="dup_custemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="0" Grid.Row="9" Text="{Binding CurrentItem.Email, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="dup_custstrata" materialDesign:HintAssist.Hint="Cust Strata #" Grid.Column="0" Grid.Row="10" Text="{Binding CurrentItem.StrataNo, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="dup_custref" materialDesign:HintAssist.Hint="Cust Ref #" Grid.Column="0" Grid.Row="11" Text="{Binding CurrentItem.RefNo, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <!-- COLUMN 1 SITE DETAILS -->
-                                        <Label Grid.Column="1" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Site Details" />
-                                        <TextBox x:Name="dup_siteaddress" materialDesign:HintAssist.Hint="Site Address" Margin="10,0,70,0" VerticalContentAlignment="Top" TextWrapping="Wrap" Width="300" AcceptsReturn="True" Text="{Binding CurrentItem.JobLocation, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="120" Grid.ColumnSpan="1" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"/>
-                                        <TextBox x:Name="dup_sitecontact" materialDesign:HintAssist.Hint="Site Contact"  Grid.Column="1" Grid.Row="3" Text="{Binding CurrentItem.SiteContact, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="dup_sitephone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="1" Grid.Row="4" Text="{Binding CurrentItem.SCPhone, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="dup_sitemobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="1" Grid.Row="5" Text="{Binding CurrentItem.SCMobile, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <TextBox x:Name="dup_siteemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="1" Grid.Row="6" Text="{Binding CurrentItem.SCEmail, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <CheckBox x:Name="dup_swms" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding CurrentItem.SWMS, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" Grid.Row="7" Margin="10,0,70,0" Content="SWMS Required?" Grid.RowSpan="3" Width="300"/>
-                                        <CheckBox x:Name="dup_induction" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding CurrentItem.Induction, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" Grid.Row="9" Margin="10,0,70,0" Content="Induction Required?" Width="300"/>
-                                        <TextBox x:Name="dup_indtime" materialDesign:HintAssist.Hint="Induction Time"  Grid.Column="1" Grid.Row="10" Text="{Binding CurrentItem.Inductiontime, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="50"/>
-                                        <!-- COLUMN 2 PAYMENT DETAILS -->
-                                        <Label Grid.Column="2" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Payment Conditions" />
-                                        <CheckBox x:Name="dup_pp" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding CurrentItem.PROGRESSPAYMENT, ElementName=quoteSearchDataGrid, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="1" Margin="20,0,0,0" Content="Progress Payment" Width="300"/>
-                                        <CheckBox x:Name="dup_cod" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding CurrentItem.COD, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="2" Margin="20,0,0,0" Content="COD" Width="300"/>
-                                        <CheckBox x:Name="dup_svndays" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding CurrentItem.SvnDays, ElementName=quoteSearchDataGrid, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="3" Margin="20,0,0,0" Content="7 Days" Width="300"/>
-                                        <CheckBox x:Name="dup_orderno" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding CurrentItem.OrderNo, ElementName=quoteSearchDataGrid, NotifyOnValidationError=true, TargetNullValue=False, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="4" Margin="20,0,0,0" Content="Order No" Width="300"/>
-                                        <TextBox x:Name="dup_notes" materialDesign:HintAssist.Hint="Internal Notes" Margin="25,0,70,5" TextWrapping="Wrap" VerticalAlignment="Stretch" AcceptsReturn="True" Text="{Binding CurrentItem.Notes, ElementName=quoteSearchDataGrid, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                                     VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="280" VerticalContentAlignment="Top" Grid.ColumnSpan="1" Grid.Row="5" Grid.Column="2" Grid.RowSpan="5"/>
-                                        <ComboBox x:Name="dup_repID" Visibility="Visible" materialDesign:HintAssist.Hint="Rep ID" Margin="486,12,26,11" Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" Height="40" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16">
-                                            <ComboBoxItem Content="BH"/>
-                                            <ComboBoxItem Content="GT"/>
-                                            <ComboBoxItem Content="GR"/>
-                                            <ComboBoxItem Content="ML"/>
-                                            <ComboBoxItem Content="MP"/>
-                                            <ComboBoxItem Content="SR"/>
-                                            <ComboBoxItem Content="IT"/>
-                                        </ComboBox>
-
-
-
-                                    </Grid>
-                                </telerik:RadTabItem>
-
-                                <telerik:RadTabItem x:Name="quoteitemdetails" Header="Quote Items"  Height="68" Width="170" MouseDown="Quoteinfo_MouseDown">
-                                    <DataGrid x:Name="quoteitemsDataGrid" AutoGenerateColumns="False" KeyboardNavigation.TabNavigation="Contained" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource quotequoteitemsViewSource}}" Margin="10" RowDetailsVisibilityMode="VisibleWhenSelected" FontSize="18" CanUserReorderColumns="False" CanUserSortColumns="False">
+                            <!-- Quote Items Form -->
+                            <telerik:RadTabItem x:Name="quoteitemdetails" Header="Quote Items" Height="68" Width="170" MouseDown="Quoteinfo_MouseDown">
+                                <DataGrid x:Name="quoteitemsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource quotequoteitemsViewSource}}" Margin="10" RowDetailsVisibilityMode="VisibleWhenSelected" FontSize="18">
                                     <DataGrid.Columns>
+
                                         <DataGridTextColumn Header="Desc" Binding="{Binding ItemDescription}"  Width="*" FontSize="20" FontFamily="Roboto">
                                             <DataGridTextColumn.ElementStyle>
-                                                <Style TargetType="{x:Type TextBlock}">
+                                                <Style TargetType="TextBlock">
                                                     <Setter Property="TextWrapping" Value="Wrap" />
                                                 </Style>
                                             </DataGridTextColumn.ElementStyle>
                                             <DataGridTextColumn.EditingElementStyle>
-                                                <Style TargetType="{x:Type TextBox}">
+                                                <Style TargetType="TextBox">
                                                     <Setter Property="TextWrapping" Value="Wrap" />
                                                     <Setter Property="AcceptsReturn" Value="true" />
                                                     <Setter Property="SpellCheck.IsEnabled" Value="True"/>
@@ -426,11 +321,11 @@
                                         <DataGridTextColumn x:Name="priceColumn" Binding="{Binding Price}" Header="Price" Width="150" FontSize="18" FontFamily="Roboto" CanUserReorder="False" CanUserSort="False"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
-                                </telerik:RadTabItem>
+                            </telerik:RadTabItem>
 
-                                <!-- Quote Search Form -->
-                                <telerik:RadTabItem x:Name="quoteSearch" Visibility="Collapsed" Header="Find Quote" Height="68" Width="170">
-                                    <telerik:RadGridView DataContext="{StaticResource quoteViewSource}" RowDetailsVisibilityMode="VisibleWhenSelected" x:Name="quoteSearchDataGrid" ItemsSource="{Binding}" GroupRenderMode="Flat" Margin="0,10,0,0" Height="728" Width="1750"
+                            <!-- Quote Search Form -->
+                            <telerik:RadTabItem x:Name="quoteSearch" Visibility="Collapsed" Header="Find Quote" Height="68" Width="170">
+                                <telerik:RadGridView DataContext="{StaticResource quoteViewSource}" RowDetailsVisibilityMode="VisibleWhenSelected" x:Name="quoteSearchDataGrid" ItemsSource="{Binding}" GroupRenderMode="Flat" Margin="0,10,0,0" Height="728" Width="1750"
                              IsFilteringAllowed="True"
 							 AutoGenerateColumns="False"
                              ColumnWidth="*"
@@ -442,119 +337,146 @@
 							 IsSearchingDeferred="False"
                              CanUserSearchInHiddenColumns="True"
                              Grid.ColumnSpan="2" SearchPanelForeground="#FF263B8F" AlternateRowBackground="#FFF7F7AA" FontSize="18" GroupPanelForeground="#FF263B8F" SelectionChanged="QuoteSearchDataGrid_SelectionChanged" DataLoadMode="Asynchronous">
-                                        <!-- Changed line 331 Removed: ElementName=ComboBox1 -->
-                                        <telerik:RadGridView.Columns>
-                                            <telerik:GridViewDataColumn x:Name="quoteID" DataMemberBinding="{Binding QuoteNumber}" Header="Quote #" Width="SizeToHeader"/>
-                                            <telerik:GridViewDataColumn x:Name="REPid" DataMemberBinding="{Binding repID}" Header="Rep ID #" Width="SizeToHeader"/>
-                                            <telerik:GridViewDataColumn x:Name="quoteDate" DataMemberBinding="{Binding Date1, StringFormat=dd/MM/yy}" Header="Quote Date" Width="SizeToHeader"/>
-                                            <telerik:GridViewDataColumn x:Name="salesPerson" DataMemberBinding="{Binding Representative}" Header="Rep" Width="150"/>
-                                            <telerik:GridViewDataColumn x:Name="company" DataMemberBinding="{Binding Company}" Header="Company" Width="250"/>
-                                            <telerik:GridViewDataColumn x:Name="address" DataMemberBinding="{Binding Address}" Header="Address" Width="350"/>
-                                            <telerik:GridViewDataColumn x:Name="jobLocation" DataMemberBinding="{Binding JobLocation}" Header="Job Location" Width="350"/>
-                                            <telerik:GridViewDataColumn x:Name="compContact" DataMemberBinding="{Binding ContactPerson}" Header="Contact Person" Width="150"/>
-                                            <telerik:GridViewDataColumn x:Name="compEmail" DataMemberBinding="{Binding Email}" Header="Comp Email" Width="180"/>
-                                            <telerik:GridViewDataColumn x:Name="compMobile" DataMemberBinding="{Binding Mobile}" Header="Comp Mobile" Width="100"/>
-                                            <telerik:GridViewDataColumn x:Name="compPhone" DataMemberBinding="{Binding Phone}" Header="Comp Phone" Width="100"/>
-                                            <telerik:GridViewDataColumn x:Name="siteContact" DataMemberBinding="{Binding SiteContact}" Header="Site Contact" Width="150"/>
-                                            <telerik:GridViewDataColumn x:Name="contactEmail" DataMemberBinding="{Binding SCEmail}" Header="Site Email" Width="180"/>
-                                            <telerik:GridViewDataColumn x:Name="contactMobile" DataMemberBinding="{Binding SCMobile}" Header="Site Mobile" Width="100"/>
-                                            <telerik:GridViewDataColumn x:Name="contactPhone" DataMemberBinding="{Binding SCPhone}" Header="Site Phone" Width="100"/>
-                                            <telerik:GridViewDataColumn x:Name="strataNbr" DataMemberBinding="{Binding StrataNo}" Header="Strata No" Width="sizeToHeader"/>
-                                            <telerik:GridViewDataColumn x:Name="refNo" DataMemberBinding="{Binding RefNo}" Header="Cust Ref No" Width="sizeToHeader"/>
-                                            <telerik:GridViewDataColumn x:Name="suburbOld" DataMemberBinding="{Binding Suburb}" Header="Suburb (old)" Width="SizeToHeader" IsVisible="False"/>
-                                            <telerik:GridViewDataColumn x:Name="internalNotes" DataMemberBinding="{Binding Notes}" Header="Internal Notes" Width="300"/>
-                                        </telerik:RadGridView.Columns>
-                                    </telerik:RadGridView>
-                                </telerik:RadTabItem>
+<!-- Changed line 331 Removed: ElementName=ComboBox1 -->
+                                    <telerik:RadGridView.Columns>
+                                        <telerik:GridViewDataColumn x:Name="quoteID" DataMemberBinding="{Binding QuoteNumber}" Header="Quote #" Width="SizeToHeader"/>
+                                        <telerik:GridViewDataColumn x:Name="REPid" DataMemberBinding="{Binding repID}" Header="Rep ID #" Width="SizeToHeader"/>
+                                        <telerik:GridViewDataColumn x:Name="quoteDate" DataMemberBinding="{Binding Date1, StringFormat=dd/MM/yy}" Header="Quote Date" Width="SizeToHeader"/>
+                                        <telerik:GridViewDataColumn x:Name="salesPerson" DataMemberBinding="{Binding Representative}" Header="Rep" Width="150"/>
+                                        <telerik:GridViewDataColumn x:Name="company" DataMemberBinding="{Binding Company}" Header="Company" Width="250"/>
+                                        <telerik:GridViewDataColumn x:Name="address" DataMemberBinding="{Binding Address}" Header="Address" Width="350"/>
+                                        <telerik:GridViewDataColumn x:Name="jobLocation" DataMemberBinding="{Binding JobLocation}" Header="Job Location" Width="350"/>
+                                        <telerik:GridViewDataColumn x:Name="compContact" DataMemberBinding="{Binding ContactPerson}" Header="Contact Person" Width="150"/>
+                                        <telerik:GridViewDataColumn x:Name="compEmail" DataMemberBinding="{Binding Email}" Header="Comp Email" Width="180"/>
+                                        <telerik:GridViewDataColumn x:Name="compMobile" DataMemberBinding="{Binding Mobile}" Header="Comp Mobile" Width="100"/>
+                                        <telerik:GridViewDataColumn x:Name="compPhone" DataMemberBinding="{Binding Phone}" Header="Comp Phone" Width="100"/>
+                                        <telerik:GridViewDataColumn x:Name="siteContact" DataMemberBinding="{Binding SiteContact}" Header="Site Contact" Width="150"/>
+                                        <telerik:GridViewDataColumn x:Name="contactEmail" DataMemberBinding="{Binding SCEmail}" Header="Site Email" Width="180"/>
+                                        <telerik:GridViewDataColumn x:Name="contactMobile" DataMemberBinding="{Binding SCMobile}" Header="Site Mobile" Width="100"/>
+                                        <telerik:GridViewDataColumn x:Name="contactPhone" DataMemberBinding="{Binding SCPhone}" Header="Site Phone" Width="100"/>
+                                        <telerik:GridViewDataColumn x:Name="strataNbr" DataMemberBinding="{Binding StrataNo}" Header="Strata No" Width="sizeToHeader"/>
+                                        <telerik:GridViewDataColumn x:Name="refNo" DataMemberBinding="{Binding RefNo}" Header="Cust Ref No" Width="sizeToHeader"/>
+                                        <telerik:GridViewDataColumn x:Name="suburbOld" DataMemberBinding="{Binding Suburb}" Header="Suburb (old)" Width="SizeToHeader" IsVisible="False"/>
+                                        <telerik:GridViewDataColumn x:Name="internalNotes" DataMemberBinding="{Binding Notes}" Header="Internal Notes" Width="300"/>
+                                    </telerik:RadGridView.Columns>
+                                </telerik:RadGridView>
+                            </telerik:RadTabItem>
 
-                                <!-- New Quote hidden form -->
-                                <telerik:RadTabItem x:Name="newquote" Visibility="Collapsed" Header="New Quote" Height="68" Width="202" MouseDown="Quoteinfo_MouseDown" FontSize="16" ScrollViewer.HorizontalScrollBarVisibility="Auto">
-                                    <Grid x:Name="newQuoteDataGrid" Visibility="Collapsed" DataContext="{Binding newQuote, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, UpdateSourceTrigger=Explicit}" Margin="10,10,0,0" Width="1726" Height="686" Background="Transparent">
+                            <!-- END OF SEARCH TAB -->
 
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="600"/>
-                                            <ColumnDefinition Width="600"/>
-                                            <ColumnDefinition Width="600"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Company Details" />
-                                        <DatePicker x:Name="add_quotedate" materialDesign:HintAssist.Hint="Date" Grid.Column="0" Margin="10,0,70,0" Grid.Row="1" VerticalAlignment="Stretch" Width="300" Height="40" SelectedDate="{Binding Date1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" FontSize="16"/>
+                            <!-- New Quote hidden form -->
+                            <telerik:RadTabItem x:Name="newquote" Visibility="Collapsed" Header="Quote Main Information" Height="68" Width="202" MouseDown="Quoteinfo_MouseDown" FontSize="16" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                <Grid x:Name="newQuoteDataGrid" Visibility="Collapsed" DataContext="{Binding newQuote, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, UpdateSourceTrigger=Explicit}" Margin="10,10,0,0" Width="1726" Height="686" Background="Transparent">
 
-                                        <!-- NEED TO LINK SUBURB/PC TO COMBO -->
-                                        <!-- Representitive = People / RepName = FullName -->
-                                        <ComboBox x:Name="add_salesrep" materialDesign:HintAssist.Hint="Sales Rep" Margin="10,0,70,0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" ItemsSource="{Binding}" Width="300" Height="40" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" MouseLeave="salesrepChanged_MouseLeave" SelectionChanged="Add_salesrep_SelectionChanged">
-                                            <ComboBoxItem Content="Brad Hill"/>
-                                            <ComboBoxItem Content="Gary Thomson"/>
-                                            <ComboBoxItem Content="Greg Reynolds"/>
-                                            <ComboBoxItem Content="Marty Lynch"/>
-                                            <ComboBoxItem Content="Michael Paraskevas"/>
-                                            <ComboBoxItem Content="Steve Rendoth"/>
-                                            <ComboBoxItem Content="Internal"/>
-                                        </ComboBox>
-                                        <TextBox x:Name="add_custname" materialDesign:HintAssist.Hint="Company" Grid.Column="0" Grid.Row="3" Margin="10,0,70,0" Text="{Binding Company, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" Height="40" FontSize="16"/>
-                                        <TextBox x:Name="add_custaddress" materialDesign:HintAssist.Hint="Customer Address" Margin="10,10,70,0" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" Width="300" Height="120" AcceptsReturn="True" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto" FontSize="16"/>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="600"/>
+                                        <ColumnDefinition Width="600"/>
+                                        <ColumnDefinition Width="600"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Company Details" />
+                                    <DatePicker x:Name="add_quotedate" materialDesign:HintAssist.Hint="Date" Grid.Column="0" Margin="10,0,70,0" Grid.Row="1" VerticalAlignment="Stretch" Width="300" Height="40" SelectedDate="{Binding Date1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" FontSize="16"/>
+                                    <!-- Representitive = People / RepName = FullName -->
+                                    <ComboBox x:Name="add_salesrep" materialDesign:HintAssist.Hint="Sales Rep" Margin="10,0,70,0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" ItemsSource="{Binding}" Width="300" Height="40" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16" MouseLeave="salesrepChanged_MouseLeave" SelectionChanged="Add_salesrep_SelectionChanged">
+                                        <ComboBoxItem>
+                                            Brad Hill
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            Gary Thomson
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            Greg Reynolds
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            Marty Lynch
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            Michael Paraskevas
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            Steve Rendoth
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            Internal
+                                        </ComboBoxItem>
+                                    </ComboBox>
+                                    <TextBox x:Name="add_custname" materialDesign:HintAssist.Hint="Company" Grid.Column="0" Grid.Row="3" Margin="10,0,70,0" Text="{Binding Company, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" Height="40" FontSize="16"/>
+                                    <TextBox x:Name="add_custaddress" materialDesign:HintAssist.Hint="Customer Address" Margin="10,10,70,0" TextWrapping="Wrap" VerticalContentAlignment="Top" VerticalAlignment="Top" Width="300" Height="120" AcceptsReturn="True" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" HorizontalScrollBarVisibility="Auto" FontSize="16"/>
 
-                                        <!-- NEED TO AUTO FILL COMBINED STATE/PC FROM SUBURB ABOVE -->
-                                        <TextBox x:Name="add_custcontact" materialDesign:HintAssist.Hint="Company Contact"  Grid.Column="0" Grid.Row="6" Text="{Binding ContactPerson, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
-                                        <TextBox x:Name="add_custphone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="0" Grid.Row="7" Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
-                                        <TextBox x:Name="add_custmobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="0" Grid.Row="8" Text="{Binding Mobile, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
-                                        <TextBox x:Name="add_custemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="0" Grid.Row="9" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
-                                        <TextBox x:Name="add_custstrata" materialDesign:HintAssist.Hint="Cust Strata #" Grid.Column="0" Grid.Row="10" Text="{Binding StrataNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
-                                        <TextBox x:Name="add_custref" materialDesign:HintAssist.Hint="Cust Ref #" Grid.Column="0" Grid.Row="11" Text="{Binding RefNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
-                                        <!-- COLUMN 1 SITE DETAILS -->
-                                        <Label Grid.Column="1" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Site Details" />
-                                        <TextBox x:Name="add_siteaddress" materialDesign:HintAssist.Hint="Site Address" Margin="10,0,70,0" VerticalContentAlignment="Top" TextWrapping="Wrap" VerticalAlignment="Stretch" Width="300" AcceptsReturn="True" Text="{Binding JobLocation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="120" Grid.ColumnSpan="1" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" FontSize="16"/>
-                                        <TextBox x:Name="add_sitecontact" materialDesign:HintAssist.Hint="Site Contact"  Grid.Column="1" Grid.Row="3" Text="{Binding SiteContact, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
-                                        <TextBox x:Name="add_sitephone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="1" Grid.Row="4" Text="{Binding SCPhone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
-                                        <TextBox x:Name="add_sitemobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="1" Grid.Row="5" Text="{Binding SCMobile, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
-                                        <TextBox x:Name="add_siteemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="1" Grid.Row="6" Text="{Binding SCEmail, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
-                                        <CheckBox x:Name="add_swms" Visibility="Hidden" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding SWMS, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" Grid.Column="1" Grid.Row="8" Margin="10,0,70,0" Content="SWMS Required?" Width="300" FontSize="16"/>
-                                        <CheckBox x:Name="add_induction" Visibility="Hidden" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Induction, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" Grid.Column="1" Grid.Row="9" Margin="10,0,70,0" Content="Induction Required?" Width="300" FontSize="16"/>
-                                        <TextBox x:Name="add_indtime" Visibility="Hidden" materialDesign:HintAssist.Hint="Induction Time"  Grid.Column="1" Grid.Row="10" Text="{Binding Inductiontime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
-                                        <!-- COLUMN 2 PAYMENT DETAILS -->
-                                        <Label Grid.Column="2" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Payment Conditions" />
-                                        <CheckBox x:Name="add_pp" Visibility="Hidden" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding PROGRESSPAYMENT, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="1" Margin="10,0,70,0" Content="Progress Payment" Width="300" FontSize="16"/>
-                                        <CheckBox x:Name="add_cod" Visibility="Hidden" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding COD, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="2" Margin="10,0,70,0" Content="COD" Width="300" FontSize="16"/>
-                                        <CheckBox x:Name="add_svndays" Visibility="Hidden" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding SvnDays, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="3" Margin="10,0,70,0" Content="7 Days" Width="300" FontSize="16"/>
-                                        <CheckBox x:Name="add_orderno" Visibility="Hidden" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding OrderNo, Mode=TwoWay, NotifyOnValidationError=true, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=true}" Grid.Column="2" Grid.Row="4" Margin="10,0,70,0" Content="Order No" Width="300" FontSize="16"/>
-                                        <TextBox x:Name="add_notes" materialDesign:HintAssist.Hint="Internal Notes" Margin="10,0,70,5" TextWrapping="Wrap" VerticalAlignment="Stretch" AcceptsReturn="True" Text="{Binding Notes, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                                    <!-- NEED TO LINK SUBURB/PC TO COMBO -->
+                                    <!-- NEED TO AUTO FILL COMBINED STATE/PC FROM SUBURB ABOVE -->
+                                    <TextBox x:Name="add_custcontact" materialDesign:HintAssist.Hint="Company Contact"  Grid.Column="0" Grid.Row="6" Text="{Binding ContactPerson, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
+                                    <TextBox x:Name="add_custphone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="0" Grid.Row="7" Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
+                                    <TextBox x:Name="add_custmobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="0" Grid.Row="8" Text="{Binding Mobile, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
+                                    <TextBox x:Name="add_custemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="0" Grid.Row="9" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
+                                    <TextBox x:Name="add_custstrata" materialDesign:HintAssist.Hint="Cust Strata #" Grid.Column="0" Grid.Row="10" Text="{Binding StrataNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
+                                    <TextBox x:Name="add_custref" materialDesign:HintAssist.Hint="Cust Ref #" Grid.Column="0" Grid.Row="11" Text="{Binding RefNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
+                                    <!-- COLUMN 1 SITE DETAILS -->
+                                    <Label Grid.Column="1" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Site Details" />
+                                    <TextBox x:Name="add_siteaddress" materialDesign:HintAssist.Hint="Site Address" Margin="10,0,70,0" VerticalContentAlignment="Top" TextWrapping="Wrap" VerticalAlignment="Stretch" Width="300" AcceptsReturn="True" Text="{Binding JobLocation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="120" Grid.ColumnSpan="1" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" FontSize="16"/>
+                                    <TextBox x:Name="add_sitecontact" materialDesign:HintAssist.Hint="Site Contact"  Grid.Column="1" Grid.Row="3" Text="{Binding SiteContact, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
+                                    <TextBox x:Name="add_sitephone" materialDesign:HintAssist.Hint="Phone"  Grid.Column="1" Grid.Row="4" Text="{Binding SCPhone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
+                                    <TextBox x:Name="add_sitemobile" materialDesign:HintAssist.Hint="Mobile"  Grid.Column="1" Grid.Row="5" Text="{Binding SCMobile, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
+                                    <TextBox x:Name="add_siteemail" materialDesign:HintAssist.Hint="Email"  Grid.Column="1" Grid.Row="6" Text="{Binding SCEmail, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
+                                    <CheckBox x:Name="add_swms" Visibility="Hidden" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding SWMS, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="8" Margin="10,0,70,0" Content="SWMS Required?" Width="300" FontSize="16"/>
+                                    <CheckBox x:Name="add_induction" Visibility="Hidden" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding Induction, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="9" Margin="10,0,70,0" Content="Induction Required?" Width="300" FontSize="16"/>
+                                    <TextBox x:Name="add_indtime" Visibility="Hidden" materialDesign:HintAssist.Hint="Induction Time"  Grid.Column="1" Grid.Row="10" Text="{Binding Inductiontime, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,70,0" Width="300" Height="40" FontSize="16"/>
+                                    <!-- COLUMN 2 PAYMENT DETAILS -->
+                                    <Label Grid.Column="2" Grid.Row="0" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FF263B8F" Content="Payment Conditions" />
+                                    <CheckBox x:Name="add_pp" Visibility="Hidden" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding PROGRESSPAYMENT, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="1" Margin="10,0,70,0" Content="Progress Payment" Width="300" FontSize="16"/>
+                                    <CheckBox x:Name="add_cod" Visibility="Hidden" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding COD, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="2" Margin="10,0,70,0" Content="COD" Width="300" FontSize="16"/>
+                                    <CheckBox x:Name="add_svndays" Visibility="Hidden" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding SvnDays, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="3" Margin="10,0,70,0" Content="7 Days" Width="300" FontSize="16"/>
+                                    <CheckBox x:Name="add_orderno" Visibility="Hidden" Style="{StaticResource MaterialDesignCheckBox}" IsChecked="{Binding OrderNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="4" Margin="10,0,70,0" Content="Order No" Width="300" FontSize="16"/>
+                                    <TextBox x:Name="add_notes" materialDesign:HintAssist.Hint="Internal Notes" Margin="10,0,70,5" TextWrapping="Wrap" VerticalAlignment="Stretch" AcceptsReturn="True" Text="{Binding Notes, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                                      VerticalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True" Height="280" VerticalContentAlignment="Top" Grid.ColumnSpan="1" Grid.Row="5" Grid.Column="2" Grid.RowSpan="5" FontSize="16"/>
-                                        <ComboBox x:Name="add_repID" Visibility="Visible" materialDesign:HintAssist.Hint="Rep ID" Margin="486,12,26,11" Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" Height="40" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16">
-                                            <ComboBoxItem Content="BH"/>
-                                            <ComboBoxItem Content="GT"/>
-                                            <ComboBoxItem Content="GR"/>
-                                            <ComboBoxItem Content="ML"/>
-                                            <ComboBoxItem Content="MP"/>
-                                            <ComboBoxItem Content="SR"/>
-                                            <ComboBoxItem Content="IT"/>
-                                        </ComboBox>
+                                    <ComboBox x:Name="add_repID" Visibility="Visible" materialDesign:HintAssist.Hint="Rep ID" Margin="486,12,26,11" Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" Height="40" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontSize="16">
+                                        <ComboBoxItem>
+                                            BH
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            GT
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            GR
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            ML
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            MP
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            SR
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            IT
+                                        </ComboBoxItem>
+                                    </ComboBox>
 
 
-                                    </Grid>
+                                </Grid>
 
-                                </telerik:RadTabItem>
-
-
-
-                            </telerik:RadTabControl>
-                            <TextBox x:Name="Quote_Number" HorizontalAlignment="Left" Height="23" Margin="36,737,0,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=quoteid}" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+                            </telerik:RadTabItem>
+                            
 
 
+                        </telerik:RadTabControl>
+                        <TextBox Name="Quote_Number" HorizontalAlignment="Left" Height="23" Margin="36,737,0,0" TextWrapping="Wrap" Text="{Binding Text, ElementName=quoteid}" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
 
 
 
@@ -562,9 +484,11 @@
 
 
 
-                        </Grid>
+
+
                     </Grid>
                 </Grid>
             </Grid>
         </DockPanel>
+    </DockPanel>
 </Window>

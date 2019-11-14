@@ -20,21 +20,22 @@
         <StackPanel Name="stkpnlMessageBody" DockPanel.Dock="Bottom" Background="WhiteSmoke" Height="Auto">
             <Grid Background="WhiteSmoke" Height="Auto">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="78"></ColumnDefinition>
+                    <ColumnDefinition Width="16"/>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Image Name="imgMessageImage" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Source="E:\OneDrive - Your IT Link\Your IT Link\Development\QMS 2018\QSync V4\VS 2019\QSync\QSync\QSync\Resources\ADS Logo.png" Height="64" Width="64" Margin="30,30,0,0"/>
-
-                <TextBlock Name="txtbMessage" Text="" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="WhiteSmoke" Foreground="DarkSlateBlue" FontFamily="Arial" FontWeight="Normal" Height="Auto" Padding="5" Margin="0,30,25,0" TextWrapping="Wrap">
+                <Image Name="imgMessageImage" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Source="E:\OneDrive - Your IT Link\Your IT Link\Development\QMS 2018\QSync V4\VS 2019\QSync\QSync\QSync\Resources\ADS Logo.png" Height="64" Width="74" Margin="10,9,0,0" Grid.ColumnSpan="2"/>
+                <TextBlock Name="txtbMessage" Text="Message box text area. In this box a user message will be displayed as required by the application to the user." Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="WhiteSmoke" Foreground="DarkSlateBlue" FontFamily="Arial" FontWeight="Normal" Height="Auto" Padding="5" Margin="0,30,0,-33.667" TextWrapping="Wrap">
                 </TextBlock>
             </Grid>
 
-            <Grid Background="WhiteSmoke" VerticalAlignment="Bottom" Margin="5,5,5,5" Height="Auto">
+            <Grid Background="WhiteSmoke" VerticalAlignment="Bottom" Margin="5,5,5,5" Height="38">
 
-                <Button Name="btnYes" Content="Yes" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="#FF263B8F" Foreground="WhiteSmoke" FontFamily="Arial" FontWeight="Normal" Height="24" Width="75"/>
-
-                <Button Name="btnNo" Content="No" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="80,0,0,0" Background="#FF263B8F" Foreground="WhiteSmoke" FontFamily="Arial" FontWeight="Normal" Height="24" Width="75"/>
+                <Button Name="btnYes" Visibility="Collapsed" Content="Yes" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="#FF263B8F" Foreground="WhiteSmoke" FontFamily="Arial" FontWeight="Normal" Height="24" Width="75" Margin="430,-4,0,4"/>
+                <Button Name="btnNo" Visibility="Collapsed" Content="No" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="510,-4,0,4" Background="#FF263B8F" Foreground="WhiteSmoke" FontFamily="Arial" FontWeight="Normal" Height="24" Width="75"/>
+                <Button Name="btnOK" Visibility="Visible" Content="OK" VerticalAlignment="Bottom" Background="#FF263B8F" Foreground="WhiteSmoke" FontFamily="Arial" FontWeight="Normal" Height="24" Margin="417,0,83,4"/>
+                <Button Name="btnCancel" Visibility="Visible" Content="Cancel" VerticalAlignment="Bottom" Margin="510,-4,0,4" Background="#FF263B8F" Foreground="WhiteSmoke" FontFamily="Arial" FontWeight="Normal" Height="24" Width="75"/>
             </Grid>
         </StackPanel>
     </DockPanel>

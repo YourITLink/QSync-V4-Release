@@ -24,7 +24,6 @@ namespace QSync.Views
         public ProgressWindow()
         {
             InitializeComponent();
-            
         }
         private void button1_Click(object sender, RoutedEventArgs e)
         {

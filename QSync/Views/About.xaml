@@ -4,15 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        TextElement.Foreground="{DynamicResource WordBlueBrush}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
-        TextElement.FontSize="{StaticResource FontSizeRegular}"
-        FontFamily="{StaticResource App}"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         xmlns:local="clr-namespace:QSync.Views"
         mc:Ignorable="d"
         Title="About QSync V4.0 | Your IT Link | Able Door Services" ScrollViewer.CanContentScroll="True"
-        WindowStartupLocation="CenterScreen" Height="600" Width="1100">
+        Icon="/Resources/Icon_64x64.ico" WindowStartupLocation="CenterScreen" Height="600" Width="1100">
 
     <DockPanel>
         <!-- File Menu -->

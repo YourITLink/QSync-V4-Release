@@ -22,7 +22,6 @@ namespace QSync.Controls
         public SplashScreenWindow()
         {
             InitializeComponent();
-            
         }
         public double Progress
         {

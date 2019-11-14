@@ -5,21 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QSync.Views"
         mc:Ignorable="d"
-        TextElement.Foreground="{DynamicResource WordBlueBrush}"
-        Background="{DynamicResource MaterialDesignPaper}"
-        TextElement.FontWeight="Medium"
-        TextElement.FontSize="{StaticResource FontSizeRegular}"
-        FontFamily="{StaticResource App}"
-        Title="Quotation Email Editor" Height="494.155" Width="773.511" Icon="/QSync;component/Resources/QSync_Q.png" WindowStartupLocation="CenterScreen">
+        Title="Quotation Email Editor" Height="444.468" Width="773.511" Icon="/QSync;component/Resources/QSync_Q.png" WindowStartupLocation="CenterScreen">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo ProgressValue="4"/>
     </Window.TaskbarItemInfo>
     <Grid>
         <TextBox Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="58,10,0,0" TextWrapping="Wrap" x:Name="emailAdd" VerticalAlignment="Top" Width="120"/>
         <TextBox Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="242,10,0,0" TextWrapping="Wrap" x:Name="qtNbr" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Send Email" Click="emailQuote_Click" HorizontalAlignment="Left" Margin="635,412,0,0" VerticalAlignment="Top" Width="107"/>
-        <TextBox x:Name="msgBody" HorizontalAlignment="Left" Height="334" Margin="10,55,0,0" TextWrapping="Wrap" Width="747" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True" Text="{Binding customEmailTemplate, NotifyOnValidationError=True, Source={StaticResource Settings}, ValidatesOnExceptions=True}" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True"/>
-        <Label Content="Make required changes to the email body below and press &quot;Send Email&quot; when complete" Margin="20,10,7,0" VerticalAlignment="Top" Width="741" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Foreground="#FFFF5500" FontWeight="Bold"/>
+        <Button Content="Send Email" Click="emailQuote_Click" HorizontalAlignment="Left" Margin="635,371,0,0" VerticalAlignment="Top" Width="107"/>
+        <TextBox x:Name="msgBody" HorizontalAlignment="Left" Height="318" Margin="20,33,0,0" TextWrapping="Wrap" Width="722" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True" Text="Hi,&#xD;&#xA;&#xD;&#xA;Thank you for your time today! Please find attached a quotation for works required / requested to your premises. &#xD;&#xA;If you wish to go ahead with the quotation please complete the attached &quot;QuoteAcceptance.pdf&quot; document and send either via email to: doorservice@abledoors.com.au or via fax on: 02-9757-1652.&#xD;&#xA;If you have any questions or concerns, please do not hesitate to contact us.&#xD;&#xA;&#xD;&#xA;Regards,&#xD;&#xA;Able Door Services (NSW) Pty Ltd&#xD;&#xA;24 Hours Emergency Service - 02 9757-1877&#xD;&#xA;www.abledoors.com.au&#xD;&#xA;" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalScrollBarVisibility="Auto" SpellCheck.IsEnabled="True"/>
+        <Label Content="Make required changes to the email body below and press &quot;Send Email&quot; when complete" Margin="15,2,0,0" VerticalAlignment="Top" Width="741" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Foreground="#FFFF5500" FontWeight="Bold"/>
 
 
     </Grid>

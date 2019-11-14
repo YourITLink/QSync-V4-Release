@@ -37,7 +37,6 @@ namespace QSync.Views
             InitializeComponent();
             qtNbr.Text = qnpass;
             emailAdd.Text = custEmail;
-            
         }
 
         private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -46,6 +45,7 @@ namespace QSync.Views
         }
         private void emailQuote_Click(object sender, RoutedEventArgs e)
         {
+            //   var reportLocation = Properties.Settings.Default.ReportsFolder+"Quote.rpt";
             ReportDocument mailReport = new ReportDocument();
             {
                 //Report Data settings for export
@@ -91,11 +91,11 @@ namespace QSync.Views
         }
         private void sendmail()
         {
-            var server = Properties.Settings.Default.userSMTP;
-            var port = Properties.Settings.Default.userSMTPPort;
-            var emailfrom = Properties.Settings.Default.userEmail;
-            var senderPassword = Properties.Settings.Default.userPW;
-        //    var targetHost = Properties.Settings.Default.progTargetName;
+            var server = Properties.Settings.Default.progSMTP;
+            var port = Properties.Settings.Default.progSMTPPort;
+            var emailfrom = Properties.Settings.Default.progEmail;
+            var senderPassword = Properties.Settings.Default.progPW;
+            var targetHost = Properties.Settings.Default.progTargetName;
         //    string body = "<html><body>hello <b>world</b>.</body></html>";
 
 
@@ -104,7 +104,6 @@ namespace QSync.Views
             {
                 mm.Subject = "Able Doors Quotation " + qtNbr.Text;
                 mm.Body = msgBody.Text;
-                mm.BodyEncoding = Encoding.UTF8;
                 mm.IsBodyHtml = true;
                 mm.Attachments.Add(new Attachment(tempLocation));
                 mm.Attachments.Add(new Attachment(acceptLocation));
@@ -113,13 +112,14 @@ namespace QSync.Views
                 smtp.EnableSsl = true;
                 NetworkCredential NetworkCred = new NetworkCredential(emailfrom, senderPassword);
                 smtp.UseDefaultCredentials = true;
+                //       smtp.TargetName = targetHost;
                 smtp.Credentials = NetworkCred;
                 smtp.Port = port;
 
                 try
                 {
                     smtp.Send(mm);
-                    MessageBox.Show("Your Quote has been emailed to the customer. You can see your sent email history from your Outlook session on your main PC.", "Quote Email Sent!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Your Quote has been emailed to your customer, Please ensure you keep an eye on the Sales Email inbox for replies or bounces.", "Email Sent!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {

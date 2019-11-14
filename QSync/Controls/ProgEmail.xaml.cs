@@ -24,16 +24,35 @@ namespace QSync.Controls
     /// </summary>
     public partial class ProgEmail : Window
     {
-        public static string showQuoteID;public static string showStaffName;public static string varLoad;string thisEmail; string recipient;
+        string progEmail;string progPW;string progSMTP;int progSMTPPort;public static string showQuoteID;public static string showStaffName;public static string varLoad;string thisEmail; string recipient;
         string btn;
         public ProgEmail()
         {
             InitializeComponent();
-            lblLocation.Text = "Test Email Settings";
-            title.Text = "QSync Diagnostics Email Test";
+            lblLocation.Text = "Compose Email";
+            title.Text = "QSync Email";
             recipient = emailTo.Text;
+            
+
         }
-        
+        private void EmailSystemCheck()
+        {
+            if (Properties.Settings.Default.emailUsed == "Program")
+            {
+                string progEmail = Properties.Settings.Default.progEmail;
+                string progPW = Properties.Settings.Default.progPW;
+                string progSMTP = Properties.Settings.Default.progSMTP;
+                int progSMTPPort = Properties.Settings.Default.progSMTPPort;
+                string thisEmail = Properties.Settings.Default.progEmail;
+            }
+            else
+            {
+                string progEmail = Properties.Settings.Default.userEmail;
+                string progPW = Properties.Settings.Default.userPW;
+                string progSMTP = Properties.Settings.Default.userSMTP;
+                int progSMTPPort = Properties.Settings.Default.userSMTPPort;
+            }
+        }
 
 
 
@@ -233,39 +252,80 @@ namespace QSync.Controls
         //Outgoing email 
         private void EmailBtnSend_Click(object sender, RoutedEventArgs e)
         {
-            var server = Properties.Settings.Default.userSMTP;
-            var port = Properties.Settings.Default.userSMTPPort;
-            var emailfrom = Properties.Settings.Default.userReplyTo;
-            var senderPassword = Properties.Settings.Default.userPW;
-         //*   var targetHost = Properties.Settings.Default.progTargetName;
+            //*        var server = Properties.Settings.Default.progSMTP;
+            //*        var port = Properties.Settings.Default.progSMTPPort; 
+            //*   var emailfrom = Properties.Settings.Default.progEmail; 
+            //*    var senderPassword = Properties.Settings.Default.progPW;
 
-            
+            var server = "smtp.gmail.com";
+            var port = 587;
+            var emailfrom = "cmcewen82@gmail.com";
+            var senderPassword = "WPT$Matrix_4390";
+            var pdfPath = "pathtoexportedPDF";
 
-         
+            /*
+            var smptClient = new SmtpClient(smtpServerName, Convert.ToInt32(port))
+                    {
+                        Credentials = new NetworkCredential(emailfrom, senderPassword),
+                        EnableSsl = true
+
+                       };
+            //Attempt to send the email
+            try
+                    {
+                        SmtpClient server = new SmtpClient("smtpClient");
+                        server.Credentials = new NetworkCredential("emailFrom", "senderPassword");
+                        MailMessage message = new MailMessage();
+                        message.From = new MailAddress("emailFrom");
+                        message.To.Add = (recipient);
+                        message.Subject = emailSubject.Text;
+                        message.IsBodyHtml = true;
+                        message.Body = emailBody.Text;
+                        server.Send(message);
+                     //   smptClient.Send(senderEmailId,emailTo.Text.Trim(),emailSubject.Text,emailBody.Text);
+                        MessageBox.Show("Message Sent Successfully","Email Sent",MessageBoxButton.OK,MessageBoxImage.Information);
+                        //Reset form after success
+                        emailTo.Text = "";
+                        emailSubject.Text = "";
+                        emailBody.Text = "";
+                        emailTo.Focus();
+                    }
+            //Display message if email has failed
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error Sending Email",MessageBoxButton.YesNoCancel,MessageBoxImage.Error);
+            }*/
 
             using (MailMessage mm = new MailMessage(emailfrom, emailTo.Text.Trim()))
 
             {
                 mm.Subject = emailSubject.Text;
-                mm.Body = emailBody.Text;             
+                mm.Body = emailBody.Text;
+             //       foreach (string filePath in OpenFileDialog.FileNames)
+             //       {
+             //           if (File.Exists(filePath))
+             //           {
+             //               string fileName = Path.GetFileName(filePath);
+             //               mm.Attachments.Add(new Attachment(filePath));
+             //           }
+             //        }
                 mm.IsBodyHtml = true;
-                //*   mm.Attachments.Add(new Attachment(pdfPath));
+                mm.Attachments.Add(new Attachment(pdfPath));
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = server;
                 smtp.EnableSsl = true;
                 NetworkCredential NetworkCred = new NetworkCredential(emailfrom, senderPassword);
                 smtp.UseDefaultCredentials = true;
-                //       smtp.TargetName = targetHost;
                 smtp.Credentials = NetworkCred;
                 smtp.Port = port;
                 try
                 {
                     smtp.Send(mm);
-                    MessageBox.Show("Diagnostics email has been sent.", "Email Sent!");
+                    MessageBox.Show("Quote has been emailed to customer.", "Email Sent!");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show(ex.Message, "Error Sending Email", MessageBoxButton.YesNoCancel, MessageBoxImage.Error);
                 }
             }
         }

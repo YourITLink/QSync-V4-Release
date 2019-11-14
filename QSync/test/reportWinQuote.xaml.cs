@@ -74,7 +74,7 @@ namespace QSync.test
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                MessageBox.Show(ex.Message, "No connection to database!.",
+                MessageBox.Show(ex.Message, "Database Connectivity Error!.",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
@@ -125,6 +125,7 @@ namespace QSync.test
         }
         private void emailQuote_Click(object sender, RoutedEventArgs e)
         {
+         //   var reportLocation = Properties.Settings.Default.ReportsFolder+"Quote.rpt";
             ReportDocument mailReport = new ReportDocument();
             {
                 //Report Data settings for export
@@ -158,6 +159,7 @@ namespace QSync.test
                     CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
                     CrExportOptions.FormatOptions = CrFormatTypeOptions;
                     mailReport.Export();
+
                     sendmail();
                 }
                 catch (Exception ex)
@@ -169,19 +171,19 @@ namespace QSync.test
         }
         private void sendmail()
         {
-             //Assign user email configuration
-              var server = Properties.Settings.Default.userSMTP;
-              var port = Properties.Settings.Default.userSMTPPort; 
-              var emailfrom = Properties.Settings.Default.userEmail; 
-              var senderPassword = Properties.Settings.Default.userPW;
+              var server = Properties.Settings.Default.progSMTP;
+              var port = Properties.Settings.Default.progSMTPPort; 
+              var emailfrom = Properties.Settings.Default.progEmail; 
+              var senderPassword = Properties.Settings.Default.progPW;
+              var targetHost = Properties.Settings.Default.progTargetName;
+              string body = "<html><body>hello <b>world</b>.</body></html>";
 
-            //Create the email components
+
             using (MailMessage mm = new MailMessage(emailfrom, email_To.Text.Trim()))
 
             {
                 mm.Subject = "Able Doors Quotation " + qnpass.Text;
-                mm.Body = msgBody.Text;
-                mm.BodyEncoding = Encoding.UTF8;
+                mm.Body = body;
                 mm.IsBodyHtml = true;
                 mm.Attachments.Add(new Attachment(tempLocation));
                 mm.Attachments.Add(new Attachment(acceptLocation));
@@ -190,6 +192,7 @@ namespace QSync.test
                 smtp.EnableSsl = true;
                 NetworkCredential NetworkCred = new NetworkCredential(emailfrom, senderPassword);
                 smtp.UseDefaultCredentials = true;
+         //       smtp.TargetName = targetHost;
                 smtp.Credentials = NetworkCred;
                 smtp.Port = port;
                 

@@ -36,7 +36,6 @@ namespace QSync.Views
             Footer.Content = new ControlFooter();
             DataContext = this;
             this.Closed += new EventHandler(Window_Closed);
-            
 
         }
         void Window_Closed(object sender, EventArgs e)

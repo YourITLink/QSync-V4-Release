@@ -7,13 +7,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QSync.Controls"
         xmlns:QSync="clr-namespace:QSync" x:Class="QSync.Controls.LoginPage"
-        TextElement.Foreground="{DynamicResource WordBlueBrush}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
-        TextElement.FontSize="{StaticResource FontSizeRegular}"
-        FontFamily="{StaticResource App}"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
-        Title="QSync Login" WindowStartupLocation="CenterScreen" Height="500" Width="350" WindowStyle="None" 
+        Title="QSyncLogin" WindowStartupLocation="CenterScreen" Height="500" Width="350" WindowStyle="None" 
         AllowsTransparency="True" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="staffViewSource" d:DesignSource="{d:DesignInstance {x:Type QSync:staff}, CreateList=True}"/>
@@ -44,11 +44,11 @@
         <Grid x:Name="loginwindow" DataContext="{StaticResource staffViewSource}" Visibility="Visible" Width="240" Height="240" VerticalAlignment="Bottom" Margin="0,100">
             <TextBlock Text="Staff Login" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="#FF263B8F" FontSize="18" />
             <StackPanel VerticalAlignment="Center" Margin="10">
-                <TextBox x:Name="txtUserName" materialDesign:HintAssist.Hint="Email Address" materialDesign:HintAssist.Foreground="#FF5500" materialDesign:TextFieldAssist.UnderlineBrush="#FF5500" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,10" AutomationProperties.IsRequiredForForm="True" TabIndex="2" />
-                <PasswordBox x:Name="txtPassword" TabIndex="0" Password="" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="#FF5500" materialDesign:TextFieldAssist.UnderlineBrush="#FF5500" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,10" AutomationProperties.IsRequiredForForm="True"/>
+                <TextBox x:Name="txtUserName" materialDesign:HintAssist.Hint="Email Address" materialDesign:HintAssist.Foreground="#FF5500" materialDesign:TextFieldAssist.UnderlineBrush="#FF5500" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,10" AutomationProperties.IsRequiredForForm="True" />
+                <PasswordBox x:Name="txtPassword" Password="" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.Foreground="#FF5500" materialDesign:TextFieldAssist.UnderlineBrush="#FF5500" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,10" AutomationProperties.IsRequiredForForm="True"/>
             </StackPanel>
         </Grid>
-        <Button x:Name="LoginBtn1" IsDefault="True" Click="LoginBtn1_Click" VerticalAlignment="Bottom" Margin="0,85" Width="150" Content="LOGIN" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835" TabIndex="1"/>
+        <Button x:Name="LoginBtn1" IsDefault="True" Click="LoginBtn1_Click" VerticalAlignment="Bottom" Margin="0,85" Width="150" Content="LOGIN" Background="#FF263B8F" BorderBrush="#FF263B8F" Foreground="#FFFDD835"/>
         <Button x:Name="cancel" IsDefault="False" Click="Exit_Click" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="18" FontWeight="Bold" Margin="5" Width="45" Content="X" Background="#FF5500" BorderBrush="#FF5500" Foreground="#FF263B8F"/>
         <Grid>
             <TextBlock Text="QSync V4 WPF | by Your IT Link" VerticalAlignment="Bottom" Margin="0,0,10,10" HorizontalAlignment="Right" Foreground="#FF5500" FontSize="12" Width="174" Height="15"/>

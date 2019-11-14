@@ -19,7 +19,7 @@ namespace QSync.Controls
     /// </summary>
     public partial class UserCustomisation : Window
     {
-        string btn; 
+        string btn;
         public UserCustomisation()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace QSync.Controls
             title.Text = "User Settings - Able Door Services";
             Title = "Settings for " + Properties.Settings.Default.Name + " | QSync | by Your IT Link";
             lblLocation.Text = Properties.Settings.Default.Name + " | Settings";
-         //*   Convert.ToInt32(selsmtpport.Text);
+           
         }
 
         #region APPLICATION MENU COMMANDS
@@ -224,70 +224,21 @@ namespace QSync.Controls
 
         private void PreviousCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
-                    this.Close();
+            /*    qtViewSource.View.MoveCurrentToPrevious();
+                //QID.Text = quoteid.Text; */
         }
 
         private void NextCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
-         //*   Properties.Settings.Default.Reload();
+            /*    qtViewSource.View.MoveCurrentToNext();
+                //QID.Text = quoteid.Text;*/
         }
 
         private void FirstCommandHandler(object sender, ExecutedRoutedEventArgs e)
-        { 
-            MessageBoxResult result = MessageBox.Show("You are about to change settings to the user access, Is this what you wanted to do? Click YES to SAVE or NO to CANCEL", "User Access Changes - ARE YOU SURE?", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            switch (result)
-            {
-                case MessageBoxResult.Yes:
-               Properties.Settings.Default.userEmail = selusername.Text;
-               Properties.Settings.Default.userSMTP = selsmtp.Text;
-               Properties.Settings.Default.userPW = selpassword.Text;
-               Properties.Settings.Default.customEmailTemplate = customEmail.Text;
-               Properties.Settings.Default.stdEmailTemplate = stdEmail.Text;
-               Properties.Settings.Default.Save();
-            MessageBox.Show("Your user setting changes have been updated", "User Settings Updated", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    break;
-            case MessageBoxResult.No:
-                    MessageBox.Show("The user email password has not been updated", "Password NOT CHANGED!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    break;
-            }
-        }
-
-        private void setEmailPW_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("You are about to change the Password for Email, Is this what you wanted to do? Click YES to SAVE or NO to CANCEL", "Email Password Change - ARE YOU SURE?", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            switch (result)
-            {
-                case MessageBoxResult.Yes:
-                    Properties.Settings.Default.userPW = selpassword.Text;
-                    Properties.Settings.Default.Save();
-                    MessageBox.Show("User Email Password has been updated", "Email Password Updated", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    break;
-                case MessageBoxResult.No:
-                    MessageBox.Show("The user email password has not been updated", "Password NOT CHANGED!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    break;
-            }
-            
+            /*    qtViewSource.View.MoveCurrentToFirst();
+                //QID.Text = quoteid.Text;*/
         }
-
-        private void mgrChanges_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult result = MessageBox.Show("You are about to change settings to the user access, Is this what you wanted to do? Click YES to SAVE or NO to CANCEL", "User Access Changes - ARE YOU SURE?", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            switch (result)
-            {
-                case MessageBoxResult.Yes:
-                    Properties.Settings.Default.MyUser = Username.Text;
-                    Properties.Settings.Default.Name = Name.Text;
-                    Properties.Settings.Default.Accesslevel = al.Text;
-                    Properties.Settings.Default.Save();
-                    MessageBox.Show("User Access settings have been updated", "User Access Details Updated", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    break;
-                case MessageBoxResult.No:
-                    MessageBox.Show("The user access details have not been updated", "User Access Details NOT CHANGED!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    break;
-            }
-
-        }
-
         //***REFRESH QUOTE COMMAND HANDLER***
         private void DeleteCustomerCommandHandler(object sender, ExecutedRoutedEventArgs e)
         {
@@ -576,12 +527,6 @@ namespace QSync.Controls
                 fileCustom.Visibility = Visibility.Visible;
                 fileManager.Visibility = Visibility.Visible;
                 fileDev.Visibility = Visibility.Visible;
-                al.IsEnabled = true;
-                Username.IsEnabled = true;
-                Name.IsEnabled = true;
-                syspw.IsEnabled = true;
-                qid.IsEnabled = true;
-                mgrSave.Visibility = Visibility.Visible;
             }
             else if (Properties.Settings.Default.Accesslevel == "Manager")
             {
@@ -592,12 +537,6 @@ namespace QSync.Controls
                 fileCustom.Visibility = Visibility.Visible;
                 fileManager.Visibility = Visibility.Visible;
                 fileDev.Visibility = Visibility.Collapsed;
-                al.IsEnabled = true;
-                Username.IsEnabled = true;
-                Name.IsEnabled = true;
-                syspw.IsEnabled = true;
-                qid.IsEnabled = true;
-                mgrSave.Visibility = Visibility.Visible;
             }
             else if (Properties.Settings.Default.Accesslevel == "Sales")
             {
@@ -608,8 +547,6 @@ namespace QSync.Controls
                 fileCustom.Visibility = Visibility.Visible;
                 fileManager.Visibility = Visibility.Collapsed;
                 fileDev.Visibility = Visibility.Collapsed;
-                al.IsEnabled = true;
-                qid.IsEnabled = false;
             }
             else if (Properties.Settings.Default.Accesslevel == "Accounts")
             {
@@ -620,8 +557,6 @@ namespace QSync.Controls
                 fileCustom.Visibility = Visibility.Visible;
                 fileManager.Visibility = Visibility.Collapsed;
                 fileDev.Visibility = Visibility.Collapsed;
-                al.IsEnabled = true;
-                qid.IsEnabled = false;
             }
             else if (Properties.Settings.Default.Accesslevel == "Service")
             {
@@ -632,8 +567,6 @@ namespace QSync.Controls
                 fileCustom.Visibility = Visibility.Visible;
                 fileManager.Visibility = Visibility.Collapsed;
                 fileDev.Visibility = Visibility.Collapsed;
-                al.IsEnabled = true;
-                qid.IsEnabled = false;
             }
             else if (Properties.Settings.Default.Accesslevel == "Admin")
             {
@@ -644,8 +577,6 @@ namespace QSync.Controls
                 fileCustom.Visibility = Visibility.Visible;
                 fileManager.Visibility = Visibility.Collapsed;
                 fileDev.Visibility = Visibility.Collapsed;
-                al.IsEnabled = true;
-                qid.IsEnabled = false;
             }
             else
             {
@@ -656,8 +587,6 @@ namespace QSync.Controls
                 fileCustom.Visibility = Visibility.Collapsed;
                 fileManager.Visibility = Visibility.Collapsed;
                 fileDev.Visibility = Visibility.Collapsed;
-                al.IsEnabled = true;
-                qid.IsEnabled = false;
             }
 
         }
