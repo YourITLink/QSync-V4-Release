@@ -8,4 +8,6 @@ This application requires the MySql connection information and the tables matchi
 
 This application should not be used as is for any other business. 
 
+The Resources folder, application settings and app.config file have been removed from this repository as those files provide access to live data. 
+
 For any information please contact: craig@youritlink.com.au
